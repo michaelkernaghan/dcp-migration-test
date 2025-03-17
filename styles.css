@@ -1,0 +1,149 @@
+/* Custom Styles for DCP Migration Testing Dashboard */
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Card Design */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Special border styles for phase cards */
+.border-left-primary {
+    border-left: 4px solid #4e73df;
+}
+
+.border-left-warning {
+    border-left: 4px solid #f6c23e;
+}
+
+.border-left-secondary {
+    border-left: 4px solid #858796;
+}
+
+.border-left-success {
+    border-left: 4px solid #1cc88a;
+}
+
+/* Table Styles */
+.table th {
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Progress Bar */
+.progress {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: #4e73df;
+    transition: width 0.5s ease;
+}
+
+/* Section Headers */
+section h2 {
+    color: #2d3748;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    position: relative;
+}
+
+section h2:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #4e73df;
+    margin-top: 8px;
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+/* Navbar Customization */
+.navbar-dark.bg-primary {
+    background-color: #3a55df !important;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+.btn-primary:hover {
+    background-color: #3a57ca;
+    border-color: #3a57ca;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid #edf2f7;
+}
+
+.modal-footer {
+    border-top: 1px solid #edf2f7;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+    border-color: #d1d5db;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+/* Footer */
+footer {
+    color: #6b7280;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+} 
