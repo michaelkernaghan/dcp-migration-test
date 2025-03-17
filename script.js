@@ -340,10 +340,9 @@ function initializeTestAccounts() {
             tezosAddress: 'tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3',
             baseAddress: 'To be assigned',
             status: 'Not Started',
-            balanceTezos: 684.61,
-            balanceBase: 55.88,
-            reputationTezos: 40.4,
-            reputationBase: 40.4,
+            balanceInternal: 55.88,
+            balanceExternal: 684.61,
+            reputation: 40.4,
             verification: 'Not Started',
             progress: 0,
             authMethod: 'Google Auth',
@@ -369,10 +368,9 @@ function initializeTestAccounts() {
             tezosAddress: 'tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN',
             baseAddress: 'To be assigned',
             status: 'Not Started',
-            balanceTezos: 6.06,
-            balanceBase: 0.98,
-            reputationTezos: 0,
-            reputationBase: 0,
+            balanceInternal: 0.98,
+            balanceExternal: 6.06,
+            reputation: 0,
             verification: 'Not Started',
             progress: 0,
             authMethod: 'Google Auth (Secondary)',
@@ -398,10 +396,9 @@ function initializeTestAccounts() {
             tezosAddress: 'tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf',
             baseAddress: 'To be assigned',
             status: 'Not Started',
-            balanceTezos: 0,
-            balanceBase: 2.39,
-            reputationTezos: 0,
-            reputationBase: 0,
+            balanceInternal: 2.39,
+            balanceExternal: 0,
+            reputation: 0,
             verification: 'Not Started',
             progress: 0,
             authMethod: 'X (Twitter) Sign-in',
@@ -427,10 +424,9 @@ function initializeTestAccounts() {
             tezosAddress: 'tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs',
             baseAddress: 'To be assigned',
             status: 'Not Started',
-            balanceTezos: 194.9,
-            balanceBase: 3080.69,
-            reputationTezos: 0,
-            reputationBase: 0,
+            balanceInternal: 3080.69,
+            balanceExternal: 194.9,
+            reputation: 0,
             verification: 'Not Started',
             progress: 0,
             authMethod: 'Sentinel Wallet Login',
@@ -491,8 +487,9 @@ function showAccountDetails(accountId) {
     Blockchain Hash: ${account.details.blockchainHash}
     
     Current Migration Status: ${account.status} (${account.progress}%)
-    Balance: ${account.balanceTezos} → ${account.balanceBase}
-    Reputation: ${account.reputationTezos} → ${account.reputationBase}
+    Internal Balance: ${account.balanceInternal}
+    External Balance: ${account.balanceExternal}
+    Reputation: ${account.reputation}
     `;
     
     alert(detailsMessage);
@@ -535,12 +532,12 @@ function createAccountMigrationTest(account) {
 2. Confirm Base L3 smart contract assignment (${account.baseAddress})
 3. Verify user can sign on to their account
 4. Verify tokens are sent to wallet after user interaction
-5. Confirm balance (${account.balanceTezos}) and reputation (${account.reputationTezos}) are preserved`;
+5. Confirm balance (${account.balanceInternal}) and reputation (${account.reputation}) are preserved`;
     const testExpected = `1. User account information should be correctly captured in snapshot
 2. Base L3 smart contract should contain entry for ${account.name}'s account
 3. User should be able to authenticate successfully
 4. Tokens should be transferred to user's wallet after interaction
-5. Balance should remain ${account.balanceTezos} and reputation should remain ${account.reputationTezos === 'Building' ? 'Building' : account.reputationTezos}`;
+5. Balance should remain ${account.balanceInternal} and reputation should remain ${account.reputation === 'Building' ? 'Building' : account.reputation}`;
 
     // Create test case object
     const newTest = {

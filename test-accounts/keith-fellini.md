@@ -21,7 +21,8 @@
 - **User Role:** Standard User (Baker)
 
 ### Initial Values (Tezos)
-- **Balance:** 194.9
+- **Internal Balance:** 3080.69
+- **External Balance:** 194.9
 - **Reputation:** 0
 - **Blockchain Hash:** tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs
 - **Special Settings/Flags:** 2FA mixed (Yes/no), ID verified (reviewing/no), registered user
@@ -55,16 +56,19 @@
 - [ ] Verify transaction hash and details: __________________
 
 #### 5. Data Integrity Verification
-- [ ] Confirm final balance on Base L3: __________________
-- [ ] Verify balance matches original Tezos balance (194.9)
-- [ ] Confirm reputation value/status on Base L3: __________________
-- [ ] Verify reputation matches original Tezos value (0)
+- [ ] Confirm final internal balance on Base L3: __________________
+- [ ] Verify internal balance matches expected value (3080.69)
+- [ ] Confirm final external balance on Base L3: __________________
+- [ ] Verify external balance matches expected value (194.9)
+- [ ] Confirm reputation value on Base L3: __________________
+- [ ] Verify reputation matches expected value (0)
 - [ ] Validate any additional account attributes or settings
 
 ### Expected Results
 - User should authenticate successfully on the migrated platform
-- Balance should remain identical: 194.9 → 3080.69
-- Reputation should be preserved: 0 → 0
+- Internal balance should be preserved: 3080.69
+- External balance should be preserved: 194.9
+- Reputation should be preserved: 0
 - User should have full control over their assets on Base L3
 - All account settings and preferences should be maintained
 

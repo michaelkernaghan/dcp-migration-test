@@ -21,7 +21,8 @@
 - **User Role:** Standard User
 
 ### Initial Values (Tezos)
-- **Balance:** 6.06
+- **Internal Balance:** 0.98
+- **External Balance:** 6.06
 - **Reputation:** 0
 - **Blockchain Hash:** tz2HYEVeNZ0utXzXChzXcCkrZxSwS3wSpDSN
 - **Special Settings/Flags:** 2FA enabled, ID not verified, registered user
@@ -54,16 +55,19 @@
 - [ ] Verify transaction hash and details: __________________
 
 #### 5. Data Integrity Verification
-- [ ] Confirm final balance on Base L3: __________________
-- [ ] Verify balance matches original Tezos balance (6.06)
-- [ ] Confirm reputation value/status on Base L3: __________________
-- [ ] Verify reputation matches original Tezos value (0)
+- [ ] Confirm final internal balance on Base L3: __________________
+- [ ] Verify internal balance matches expected value (0.98)
+- [ ] Confirm final external balance on Base L3: __________________
+- [ ] Verify external balance matches expected value (6.06)
+- [ ] Confirm reputation value on Base L3: __________________
+- [ ] Verify reputation matches expected value (0)
 - [ ] Validate any additional account attributes or settings
 
 ### Expected Results
 - User should authenticate successfully on the migrated platform
-- Balance should remain identical: 6.06 → 0.98
-- Reputation should be preserved: 0 → 0
+- Internal balance should be preserved: 0.98
+- External balance should be preserved: 6.06
+- Reputation should be preserved: 0
 - User should have full control over their assets on Base L3
 - All account settings and preferences should be maintained
 
