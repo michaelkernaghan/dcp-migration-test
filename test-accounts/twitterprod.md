@@ -17,6 +17,8 @@
 - **Phone/Contact:** @standardtesting
 - **Service Type:** -
 - **Purpose:** Social Testing
+- **Authentication Method:** X (Twitter) Sign-in
+- **User Role:** Standard User
 
 ### Initial Values (Tezos)
 - **Balance:** 0
@@ -39,10 +41,11 @@
 - [ ] Verify mapping between Tezos address and Base address is correct
 
 #### 3. User Authentication
-- [ ] Attempt to authenticate with user credentials
-- [ ] Verify successful login to the migrated application
+- [ ] Attempt to authenticate with X (Twitter) sign-in
+- [ ] Verify successful login to the migrated application via Twitter OAuth
 - [ ] Confirm user profile information is preserved
-- [ ] Verify authentication methods (phone only) are working correctly
+- [ ] Verify phone-only authentication method is working correctly
+- [ ] Test social media account connections and integrations
 
 #### 4. Token Transfer Verification
 - [ ] Trigger user interaction to initiate token transfer

@@ -346,6 +346,8 @@ function initializeTestAccounts() {
             reputationBase: 40.4,
             verification: 'Not Started',
             progress: 0,
+            authMethod: 'Google Auth',
+            userRole: 'Moderator',
             details: {
                 email: 'michaelkerrmaghan@ecadlabs.com',
                 phone: '614-615-9138',
@@ -356,7 +358,9 @@ function initializeTestAccounts() {
                 twoFactor: 'Yes',
                 idVerified: 'no',
                 notes: 'Primary User',
-                blockchainHash: 'tz1XTbJrMGHanCY4cHNiBj3DTZnVd4YmEYmPI3'
+                blockchainHash: 'tz1XTbJrMGHanCY4cHNiBj3DTZnVd4YmEYmPI3',
+                authMethod: 'Google Auth',
+                userRole: 'Moderator'
             }
         },
         {
@@ -371,6 +375,8 @@ function initializeTestAccounts() {
             reputationBase: 0,
             verification: 'Not Started',
             progress: 0,
+            authMethod: 'Google Auth (Secondary)',
+            userRole: 'Standard User',
             details: {
                 email: 'michael.kerrmaghan@gmail.com',
                 phone: '778-949-2186',
@@ -381,7 +387,9 @@ function initializeTestAccounts() {
                 twoFactor: 'Yes',
                 idVerified: 'no',
                 notes: 'prod moderate is bad idea',
-                blockchainHash: 'tz2HYEVeNZ0utXzXChzXcCkrZxSwS3wSpDSN'
+                blockchainHash: 'tz2HYEVeNZ0utXzXChzXcCkrZxSwS3wSpDSN',
+                authMethod: 'Google Auth (Secondary)',
+                userRole: 'Standard User'
             }
         },
         {
@@ -396,6 +404,8 @@ function initializeTestAccounts() {
             reputationBase: 0,
             verification: 'Not Started',
             progress: 0,
+            authMethod: 'X (Twitter) Sign-in',
+            userRole: 'Standard User',
             details: {
                 email: 'none - filed bug report',
                 phone: '@standardtesting',
@@ -406,7 +416,9 @@ function initializeTestAccounts() {
                 twoFactor: 'no',
                 idVerified: 'no',
                 notes: 'none - filed bug report',
-                blockchainHash: 'tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf'
+                blockchainHash: 'tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf',
+                authMethod: 'X (Twitter) Sign-in',
+                userRole: 'Standard User'
             }
         },
         {
@@ -421,6 +433,8 @@ function initializeTestAccounts() {
             reputationBase: 0,
             verification: 'Not Started',
             progress: 0,
+            authMethod: 'Sentinel Wallet Login',
+            userRole: 'Standard User (Baker)',
             details: {
                 email: 'abbotslordcroqust@gmail.com',
                 phone: '236-869-9903',
@@ -431,7 +445,9 @@ function initializeTestAccounts() {
                 twoFactor: 'Yes/no',
                 idVerified: 'Yes (reviewing/no)',
                 notes: 'Baker verification/prod',
-                blockchainHash: 'tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs'
+                blockchainHash: 'tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs',
+                authMethod: 'Sentinel Wallet Login',
+                userRole: 'Standard User (Baker)'
             }
         }
     ];
@@ -462,6 +478,8 @@ function showAccountDetails(accountId) {
     Phone: ${account.details.phone}
     Service: ${account.details.service}
     Purpose: ${account.details.purpose}
+    Authentication Method: ${account.authMethod}
+    User Role: ${account.userRole}
     Production Stage: ${account.details.prodStage}
     Registered: ${account.details.registered}
     Two-Factor Auth: ${account.details.twoFactor}

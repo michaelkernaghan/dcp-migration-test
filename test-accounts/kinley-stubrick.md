@@ -17,6 +17,8 @@
 - **Phone/Contact:** 614-615-9138
 - **Service Type:** Rogers
 - **Purpose:** Main Prod User
+- **Authentication Method:** Google Auth
+- **User Role:** Moderator
 
 ### Initial Values (Tezos)
 - **Balance:** 684.61
@@ -39,10 +41,12 @@
 - [ ] Verify mapping between Tezos address and Base address is correct
 
 #### 3. User Authentication
-- [ ] Attempt to authenticate with user credentials
+- [ ] Attempt to authenticate with Google Auth credentials
 - [ ] Verify successful login to the migrated application
 - [ ] Confirm user profile information is preserved
-- [ ] Verify authentication methods (password, 2FA) are working correctly
+- [ ] Verify authentication methods (Google Auth, 2FA) are working correctly
+- [ ] Confirm moderator privileges are properly assigned and functional
+- [ ] Test moderation-specific features and permissions
 
 #### 4. Token Transfer Verification
 - [ ] Trigger user interaction to initiate token transfer

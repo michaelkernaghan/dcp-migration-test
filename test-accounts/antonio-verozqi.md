@@ -17,6 +17,8 @@
 - **Phone/Contact:** 778-949-2186
 - **Service Type:** NetNow
 - **Purpose:** Social Prod User
+- **Authentication Method:** Google Auth (Secondary)
+- **User Role:** Standard User
 
 ### Initial Values (Tezos)
 - **Balance:** 6.06
@@ -39,10 +41,11 @@
 - [ ] Verify mapping between Tezos address and Base address is correct
 
 #### 3. User Authentication
-- [ ] Attempt to authenticate with user credentials
+- [ ] Attempt to authenticate with Google Auth credentials (Secondary account)
 - [ ] Verify successful login to the migrated application
 - [ ] Confirm user profile information is preserved
-- [ ] Verify authentication methods (password, 2FA) are working correctly
+- [ ] Verify authentication methods (Google Auth, 2FA) are working correctly
+- [ ] Confirm standard user permissions are correctly applied
 
 #### 4. Token Transfer Verification
 - [ ] Trigger user interaction to initiate token transfer

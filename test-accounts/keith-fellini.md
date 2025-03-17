@@ -17,6 +17,8 @@
 - **Phone/Contact:** 236-869-9903
 - **Service Type:** Sentinel Wallet
 - **Purpose:** Baker Testing
+- **Authentication Method:** Sentinel Wallet Login
+- **User Role:** Standard User (Baker)
 
 ### Initial Values (Tezos)
 - **Balance:** 194.9
@@ -39,10 +41,12 @@
 - [ ] Verify mapping between Tezos address and Base address is correct
 
 #### 3. User Authentication
-- [ ] Attempt to authenticate with user credentials
-- [ ] Verify successful login to the migrated application
+- [ ] Attempt to authenticate with Sentinel Wallet Login
+- [ ] Verify successful connection to wallet and login to the migrated application
 - [ ] Confirm user profile information is preserved
-- [ ] Verify authentication methods (password, 2FA) are working correctly
+- [ ] Verify wallet connection and signing methods are working correctly
+- [ ] Test Baker-specific features and permissions
+- [ ] Verify wallet transaction signing capabilities
 
 #### 4. Token Transfer Verification
 - [ ] Trigger user interaction to initiate token transfer
