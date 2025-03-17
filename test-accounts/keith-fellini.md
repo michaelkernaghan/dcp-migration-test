@@ -5,14 +5,14 @@
 ### Basic Information
 - **Test Name:** Verify Keith Fellini Migration
 - **Created By:** Migration Team
-- **Creation Date:** 2023-03-15
+- **Creation Date:** 2025-02-15
 - **Migration Phase:** Phase 3: Base L3 Deployment
 - **Priority:** High
 
 ### Account Information
 - **Account Name:** Keith Fellini
 - **Tezos Address:** tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs
-- **Base Address:** 0xd1d5db... (to be assigned)
+- **Base Address:** To be assigned during migration
 - **Email:** abbotslordcroqust@gmail.com
 - **Phone/Contact:** 236-869-9903
 - **Service Type:** Sentinel Wallet

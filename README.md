@@ -1,6 +1,6 @@
 # DCP Migration Testing Dashboard
 
-A comprehensive web application for tracking the migration of a decentralized pictures application from Tezos to Base L3 blockchain. This dashboard helps teams plan, execute, and monitor test cases throughout the migration process.
+A comprehensive web application for tracking the migration of a decentralized pictures application from Tezos to Base L3 blockchain. This dashboard helps teams plan, execute, and monitor test cases throughout the 2025 migration process.
 
 ## Features
 
@@ -13,7 +13,7 @@ A comprehensive web application for tracking the migration of a decentralized pi
 
 ## Migration Phases
 
-The dashboard tracks testing across three critical phases:
+The dashboard tracks testing across three critical phases scheduled for 2025:
 
 1. **Phase 1: Data Snapshot** - Testing the snapshot creation of user accounts, balances, and data from the Tezos blockchain
 2. **Phase 2: Migration Pipeline** - Testing the secure pipeline for transferring data to Base L3
@@ -49,7 +49,7 @@ The system tracks four test accounts through the migration process:
 4. **Keith Fellini** - Baker testing account with substantial balance and reputation
 
 For each account, the system monitors:
-- Original Tezos address and assigned Base address
+- Original Tezos address (the Base L3 addresses will be assigned during migration)
 - Balance migration (ensuring values are preserved)
 - Reputation migration
 - User authentication and verification

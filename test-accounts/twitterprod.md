@@ -5,14 +5,14 @@
 ### Basic Information
 - **Test Name:** Verify TwitterProd Migration
 - **Created By:** Migration Team
-- **Creation Date:** 2023-03-15
+- **Creation Date:** 2025-02-15
 - **Migration Phase:** Phase 3: Base L3 Deployment
 - **Priority:** High
 
 ### Account Information
 - **Account Name:** TwitterProd
 - **Tezos Address:** tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf
-- **Base Address:** 0x6b7280... (to be assigned)
+- **Base Address:** To be assigned during migration
 - **Email:** none - filed bug report
 - **Phone/Contact:** @standardtesting
 - **Service Type:** -

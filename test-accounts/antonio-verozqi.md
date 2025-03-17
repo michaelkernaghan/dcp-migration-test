@@ -5,14 +5,14 @@
 ### Basic Information
 - **Test Name:** Verify Herner werzog Migration
 - **Created By:** Migration Team
-- **Creation Date:** 2023-03-15
+- **Creation Date:** 2025-02-15
 - **Migration Phase:** Phase 3: Base L3 Deployment
 - **Priority:** High
 
 ### Account Information
 - **Account Name:** Herner werzog
 - **Tezos Address:** tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN
-- **Base Address:** 0x3a57ca... (to be assigned)
+- **Base Address:** To be assigned during migration
 - **Email:** michael.kerrmaghan@gmail.com
 - **Phone/Contact:** 778-949-2186
 - **Service Type:** NetNow

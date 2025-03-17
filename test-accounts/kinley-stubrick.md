@@ -5,14 +5,14 @@
 ### Basic Information
 - **Test Name:** Verify Kanley Stubrick Migration
 - **Created By:** Migration Team
-- **Creation Date:** 2023-03-15
+- **Creation Date:** 2025-02-15
 - **Migration Phase:** Phase 3: Base L3 Deployment
 - **Priority:** High
 
 ### Account Information
 - **Account Name:** Kanley Stubrick
 - **Tezos Address:** tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3
-- **Base Address:** 0x4e73df... (to be assigned)
+- **Base Address:** To be assigned during migration
 - **Email:** michaelkerrmaghan@ecadlabs.com
 - **Phone/Contact:** 614-615-9138
 - **Service Type:** Rogers
