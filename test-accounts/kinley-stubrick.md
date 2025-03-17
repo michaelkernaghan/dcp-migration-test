@@ -19,8 +19,8 @@
 - **Purpose:** Main Prod User
 
 ### Initial Values (Tezos)
-- **Balance:** 11
-- **Reputation:** Building
+- **Balance:** 684.61
+- **Reputation:** 40.4
 - **Blockchain Hash:** tz1XTbJrMGHanCY4cHNiBj3DTZnVd4YmEYmPI3
 - **Special Settings/Flags:** 2FA enabled, ID not verified, registered user
 
@@ -52,15 +52,15 @@
 
 #### 5. Data Integrity Verification
 - [ ] Confirm final balance on Base L3: __________________
-- [ ] Verify balance matches original Tezos balance (11)
+- [ ] Verify balance matches original Tezos balance (684.61)
 - [ ] Confirm reputation value/status on Base L3: __________________
-- [ ] Verify reputation matches original Tezos value (Building)
+- [ ] Verify reputation matches original Tezos value (40.4)
 - [ ] Validate any additional account attributes or settings
 
 ### Expected Results
 - User should authenticate successfully on the migrated platform
-- Balance should remain identical: 11 → 11
-- Reputation should be preserved: Building → Building
+- Balance should remain identical: 684.61 → 55.88
+- Reputation should be preserved: 40.4 → 40.4
 - User should have full control over their assets on Base L3
 - All account settings and preferences should be maintained
 

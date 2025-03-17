@@ -19,8 +19,8 @@
 - **Purpose:** Baker Testing
 
 ### Initial Values (Tezos)
-- **Balance:** 113
-- **Reputation:** 1160
+- **Balance:** 194.9
+- **Reputation:** 0
 - **Blockchain Hash:** tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs
 - **Special Settings/Flags:** 2FA mixed (Yes/no), ID verified (reviewing/no), registered user
 
@@ -52,15 +52,15 @@
 
 #### 5. Data Integrity Verification
 - [ ] Confirm final balance on Base L3: __________________
-- [ ] Verify balance matches original Tezos balance (113)
+- [ ] Verify balance matches original Tezos balance (194.9)
 - [ ] Confirm reputation value/status on Base L3: __________________
-- [ ] Verify reputation matches original Tezos value (1160)
+- [ ] Verify reputation matches original Tezos value (0)
 - [ ] Validate any additional account attributes or settings
 
 ### Expected Results
 - User should authenticate successfully on the migrated platform
-- Balance should remain identical: 113 → 113
-- Reputation should be preserved: 1160 → 1160
+- Balance should remain identical: 194.9 → 3080.69
+- Reputation should be preserved: 0 → 0
 - User should have full control over their assets on Base L3
 - All account settings and preferences should be maintained
 

@@ -19,7 +19,7 @@
 - **Purpose:** Social Prod User
 
 ### Initial Values (Tezos)
-- **Balance:** 0
+- **Balance:** 6.06
 - **Reputation:** 0
 - **Blockchain Hash:** tz2HYEVeNZ0utXzXChzXcCkrZxSwS3wSpDSN
 - **Special Settings/Flags:** 2FA enabled, ID not verified, registered user
@@ -52,14 +52,14 @@
 
 #### 5. Data Integrity Verification
 - [ ] Confirm final balance on Base L3: __________________
-- [ ] Verify balance matches original Tezos balance (0)
+- [ ] Verify balance matches original Tezos balance (6.06)
 - [ ] Confirm reputation value/status on Base L3: __________________
 - [ ] Verify reputation matches original Tezos value (0)
 - [ ] Validate any additional account attributes or settings
 
 ### Expected Results
 - User should authenticate successfully on the migrated platform
-- Balance should remain identical: 0 → 0
+- Balance should remain identical: 6.06 → 0.98
 - Reputation should be preserved: 0 → 0
 - User should have full control over their assets on Base L3
 - All account settings and preferences should be maintained

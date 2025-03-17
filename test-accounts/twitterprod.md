@@ -20,7 +20,7 @@
 
 ### Initial Values (Tezos)
 - **Balance:** 0
-- **Reputation:** 2.39
+- **Reputation:** 0
 - **Blockchain Hash:** tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf
 - **Special Settings/Flags:** Phone only registration, no 2FA, ID not verified
 
@@ -54,13 +54,13 @@
 - [ ] Confirm final balance on Base L3: __________________
 - [ ] Verify balance matches original Tezos balance (0)
 - [ ] Confirm reputation value/status on Base L3: __________________
-- [ ] Verify reputation matches original Tezos value (2.39)
+- [ ] Verify reputation matches original Tezos value (0)
 - [ ] Validate any additional account attributes or settings
 
 ### Expected Results
 - User should authenticate successfully on the migrated platform
-- Balance should remain identical: 0 → 0
-- Reputation should be preserved: 2.39 → 2.39
+- Balance should remain identical: 0 → 2.39
+- Reputation should be preserved: 0 → 0
 - User should have full control over their assets on Base L3
 - All account settings and preferences should be maintained
 
