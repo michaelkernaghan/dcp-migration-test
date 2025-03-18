@@ -93,10 +93,15 @@ APPCHAIN_EXPLORER="https://talntnet-explorer-testnet.appchain.base.org/"
 BASE_RPC="https://api.developer.coinbase.com/rpc/v1/base-sepolia/Ohv86XN7C0pATtzGc2f5LMmFNO1PUi33"
 
 # Owner wallet
-OWNER_PRIVATE_KEY="0xbd23f0598c74b15bbee00c0a8612b62e1363e218c2f02cfab2aa5480698ba268"
+OWNER_PRIVATE_KEY="<PRIVATE_KEY_REDACTED>"
 
 # Tezos snapshot block
 SNAPSHOT_BLOCK_LEVEL="6522212"</code></pre>
+
+                        <div class="alert alert-danger mt-3">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <strong>Security Warning:</strong> Never commit private keys to version control or share them in public documentation. Always use environment variables or secure key management solutions in production environments. The private key shown above has been redacted and should be replaced with your own deployment wallet's private key.
+                        </div>
 
                         <h3 class="h5 mt-4 mb-3">3. Database Seeding</h3>
                         <p>We seeded the MongoDB database with production user wallets:</p>
@@ -109,10 +114,14 @@ npm run seed-db</code></pre>
                         <pre><code class="language-bash">cd ~/dcp-smartcontract
 cast wallet new
 # Created wallet address: 0x9BE2D500E83eC7335e2078a06D7B931803a73829
-# Private key: 0xbd23f0598c74b15bbee00c0a8612b62e1363e218c2f02cfab2aa5480698ba268</code></pre>
+# Private key: <PRIVATE_KEY_REDACTED></code></pre>
                         <div class="alert alert-warning">
                             <i class="bi bi-exclamation-triangle me-2"></i>
                             <strong>Note:</strong> This wallet needs to be funded with testnet tokens before contract deployment.
+                        </div>
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-shield-lock me-2"></i>
+                            <strong>Security Best Practice:</strong> For production deployments, consider using hardware wallets or secure key management solutions. Store private keys in secure, encrypted storage and never expose them in plaintext.
                         </div>
                     </div>
                 </div>
