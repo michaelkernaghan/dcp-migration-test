@@ -131,6 +131,12 @@ function setupEventListeners() {
         saveTestBtn.addEventListener('click', saveTestCase);
     }
     
+    // Token claiming test case button
+    const addClaimTestBtn = document.getElementById('add-claim-test-btn');
+    if (addClaimTestBtn) {
+        addClaimTestBtn.addEventListener('click', addTokenClaimingTestCase);
+    }
+    
     // View/Edit test case buttons - update selectors for all test tabs
     document.querySelectorAll('#migration-tests-body .btn, #signing-tests-body .btn, #ui-tests-body .btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -554,4 +560,50 @@ function createAccountMigrationTest(account) {
     };
     
     return newTest;
+}
+
+/**
+ * Add a pre-defined token claiming test case
+ */
+function addTokenClaimingTestCase() {
+    // Create token claiming test case
+    const tokenClaimTest = {
+        id: 'SIGN-' + (document.querySelectorAll('#signing-tests-body tr').length + 1).toString().padStart(3, '0'),
+        name: 'Token Claiming User Experience Flow Validation',
+        phase: 'Phase 3: Base L3 Deployment',
+        status: 'Not Started',
+        category: 'Signing',
+        priority: 'High',
+        description: 'Verify the complete user experience flow for claiming tokens during migration, including authentication, transaction signing, and confirmation.',
+        steps: `1. User authenticates with supported method (Google, X, Sentinel Wallet)
+2. System verifies user's account in migration smart contract
+3. User receives notification of available tokens
+4. User is prompted to sign transaction with wallet
+5. Smart contract transfers tokens to user's Base wallet
+6. User receives confirmation with transaction details
+7. Test with different authentication methods
+8. Test error handling and recovery paths`,
+        expected: `1. All authentication methods should work correctly
+2. Token amounts should match migration contract values
+3. Signing process should be clear and user-friendly
+4. Transaction should complete within acceptable time
+5. Success confirmation should display accurate details
+6. User should see updated balances reflected
+7. Error handling should provide clear guidance
+8. User satisfaction metrics should meet targets`,
+        dateCreated: new Date().toISOString()
+    };
+    
+    // Add to localStorage
+    saveTestToStorage(tokenClaimTest);
+    
+    // Add to table
+    addTestToTable(tokenClaimTest);
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('tokenClaimModal'));
+    modal.hide();
+    
+    // Show confirmation
+    alert('Token Claiming test case has been added successfully!');
 } 
