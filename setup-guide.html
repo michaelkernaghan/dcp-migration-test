@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCP Migration Setup Guide - Test Management Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-hdd-network me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="setup-guide.html">Setup Guide</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h1 class="h3 mb-0">DCP Migration Setup Guide</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">This document provides a comprehensive guide for setting up the DCP migration from Tezos to EVM (Coinbase AppChain and Base).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h4 mb-0">Prerequisites Setup</h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h5 mt-3 mb-3">1. MongoDB Installation and Configuration</h3>
+                        <p>We installed MongoDB for storing user data and migration records:</p>
+                        <pre><code class="language-bash"># Install MongoDB
+sudo apt-get update
+sudo apt-get install gnupg curl
+curl -fsSL https://pgp.mongodb.com/server-8.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+
+# Start MongoDB service
+sudo systemctl start mongod
+sudo systemctl status mongod
+
+# Configure authentication
+sudo sed -i 's/#security:/security:\n  authorization: enabled/' /etc/mongod.conf
+sudo systemctl restart mongod
+
+# Create user for authentication
+mongosh --eval "db.getSiblingDB('admin').createUser({user: 'dcp', pwd: 'dcp', roles: [{role: 'readWrite', db: 'dcp'}]})"</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">2. Environment Configuration</h3>
+                        <p>We created and populated the <code>.env</code> file with the necessary settings:</p>
+                        <pre><code class="language-bash"># MongoDB connection settings
+DB_CONN_STRING="mongodb://dcp:dcp@localhost:27017/?authMechanism=DEFAULT"
+DB_NAME="dcp"
+
+# Contract addresses (to be filled after deployment)
+EVM_FILM_LEDGER_ADDRESS=""
+BAILEE_CUTOVER_EXTERNAL_BALANCE=""
+BAILEE_CUTOVER_FILM_CREW_NFTS=""
+
+# APPCHAIN connection URLs
+APPCHAIN_RPC="https://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+APPCHAIN_EXPLORER="https://talntnet-explorer-testnet.appchain.base.org/"
+
+# BASE connection URL
+BASE_RPC="https://api.developer.coinbase.com/rpc/v1/base-sepolia/Ohv86XN7C0pATtzGc2f5LMmFNO1PUi33"
+
+# Owner wallet
+OWNER_PRIVATE_KEY="0xbd23f0598c74b15bbee00c0a8612b62e1363e218c2f02cfab2aa5480698ba268"
+
+# Tezos snapshot block
+SNAPSHOT_BLOCK_LEVEL="6522212"</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">3. Database Seeding</h3>
+                        <p>We seeded the MongoDB database with production user wallets:</p>
+                        <pre><code class="language-bash">cd ~/dcp-migrations/migration
+npm install
+npm run seed-db</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">4. Wallet Setup for Contract Deployment</h3>
+                        <p>We created a new wallet for deploying contracts:</p>
+                        <pre><code class="language-bash">cd ~/dcp-smartcontract
+cast wallet new
+# Created wallet address: 0x9BE2D500E83eC7335e2078a06D7B931803a73829
+# Private key: 0xbd23f0598c74b15bbee00c0a8612b62e1363e218c2f02cfab2aa5480698ba268</code></pre>
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong>Note:</strong> This wallet needs to be funded with testnet tokens before contract deployment.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h4 mb-0">Smart Contract Deployment</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>The following smart contracts need to be deployed:</p>
+
+                        <h3 class="h5 mt-3 mb-3">1. Film Ledger Contract</h3>
+                        <p>This contract handles the token balances and acts as the main contract for the DCP platform:</p>
+                        <pre><code class="language-bash">forge script --force "./script/DeployFilmLedger.s.sol" --rpc-url https://talntnet-rpc-testnet.appchain.base.org/ --private-key &lt;OWNER_PRIVATE_KEY&gt; --broadcast</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">2. Bailee Cutover External Balance Contract</h3>
+                        <p>This contract manages the migration of external balances from Tezos to EVM:</p>
+                        <pre><code class="language-bash">forge script --force "./script/DeployBaileeCutoverExternalBalance.s.sol" --rpc-url https://talntnet-rpc-testnet.appchain.base.org/ --private-key &lt;OWNER_PRIVATE_KEY&gt; --broadcast</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">3. Bailee Cutover Film Crew NFTs Contract</h3>
+                        <p>This contract handles the migration of Film Crew NFTs:</p>
+                        <pre><code class="language-bash">forge script --force "./script/DeployBaileeCutoverFilmCrewNfts.s.sol" --rpc-url https://base-sepolia-rpc.publicnode.com --private-key &lt;OWNER_PRIVATE_KEY&gt; --broadcast</code></pre>
+
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-info-circle me-2"></i>
+                            After deployment, the contract addresses need to be added to the <code>.env</code> file.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h4 mb-0">Running the Migration</h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h5 mt-3 mb-3">1. Snapshot Generation</h3>
+                        <p>Fetch Tezos balances at the specified block height:</p>
+                        <pre><code class="language-bash">cd ~/dcp-migrations/migration
+npm run snapshot</code></pre>
+                        <p>This creates balance snapshot files in the <code>src/tezos/</code> directory based on the <code>SNAPSHOT_BLOCK_LEVEL</code> specified in the <code>.env</code> file.</p>
+
+                        <h3 class="h5 mt-4 mb-3">2. Migration Execution</h3>
+                        <p>Execute the migration to the EVM chains:</p>
+                        <pre><code class="language-bash">npm run migrate</code></pre>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h4 mb-0">Verification</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>To verify if specific addresses were migrated properly:</p>
+
+                        <h3 class="h5 mt-3 mb-3">1. Check MongoDB</h3>
+                        <pre><code class="language-bash"># Connect to MongoDB
+mongosh "mongodb://dcp:dcp@localhost:27017/dcp?authMechanism=DEFAULT"
+
+# Query user migrations collection
+use dcp
+db.user_migrations.find({ "evmAddress": "&lt;ADDRESS_TO_CHECK&gt;" })</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">2. Check On-Chain Data</h3>
+                        <pre><code class="language-bash"># Check balance on AppChain
+cast balance &lt;ADDRESS_TO_CHECK&gt; --rpc-url https://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2
+
+# Check if NFTs were migrated (on Base Sepolia)
+# This would require inspecting the Bailee Cutover Film Crew NFTs contract</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">3. Check Migration Logs</h3>
+                        <pre><code class="language-bash"># Examine log files in the logs directory
+cat ~/dcp-migrations/migration/logs/migration-&lt;TIMESTAMP&gt;.log</code></pre>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h4 mb-0">Troubleshooting</h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h5 mt-3 mb-3">Common Issues</h3>
+                        <div class="accordion" id="troubleshootingAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        MongoDB Connection Problems
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#troubleshootingAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Check MongoDB service: <code>sudo systemctl status mongod</code></li>
+                                            <li>Verify connection string in <code>.env</code></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                        Contract Deployment Failures
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Ensure the owner wallet has sufficient funds</li>
+                                            <li>Check RPC endpoints are accessible</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                        Migration Failures
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Verify all contract addresses are correctly set in <code>.env</code></li>
+                                            <li>Check MongoDB connection and data integrity</li>
+                                            <li>Review detailed logs in the logs directory</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h4 mb-0">Next Steps</h2>
+                    </div>
+                    <div class="card-body">
+                        <ol class="list-group list-group-numbered mb-3">
+                            <li class="list-group-item">Fund the deployment wallet at address <code>0x9BE2D500E83eC7335e2078a06D7B931803a73829</code></li>
+                            <li class="list-group-item">Deploy the three required contracts</li>
+                            <li class="list-group-item">Update the <code>.env</code> file with the deployed contract addresses</li>
+                            <li class="list-group-item">Run the snapshot and migration scripts</li>
+                            <li class="list-group-item">Verify the migration was successful</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize syntax highlighting
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+</body>
+</html> 
