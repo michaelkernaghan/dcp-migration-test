@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwitterProd - Character Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-hdd-network me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="setup-guide.html">Setup Guide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Characters</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="characters.html">Characters</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">TwitterProd</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card border-left-info">
+                    <div class="card-header bg-info text-white">
+                        <h2 class="h4 mb-0">TwitterProd</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-twitter" style="font-size: 6rem; color: #36b9cc;"></i>
+                            <div class="mt-3">
+                                <span class="badge bg-info me-2">Social Testing</span>
+                                <span class="badge bg-secondary">Phone Only</span>
+                            </div>
+                        </div>
+                        
+                        <h5 class="border-bottom pb-2">Contact Info</h5>
+                        <div class="mb-3">
+                            <p><i class="bi bi-envelope me-2"></i> <span class="text-danger">None - Bug Report Filed</span></p>
+                            <p><i class="bi bi-twitter me-2"></i> @standardtesting</p>
+                            <p><i class="bi bi-phone me-2"></i> <span class="text-muted">X (formerly Twitter)</span></p>
+                        </div>
+                        
+                        <h5 class="border-bottom pb-2">Authentication</h5>
+                        <div class="mb-3">
+                            <p><i class="bi bi-shield-lock me-2"></i> X Sign-in</p>
+                            <p><i class="bi bi-shield me-2"></i> 2FA: <span class="text-danger">Disabled</span></p>
+                            <p><i class="bi bi-person-badge me-2"></i> ID Verification: <span class="text-danger">Not Verified</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="h5 mb-0">Character Profile</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">TwitterProd is an experimental account representing the "social influencer" crowd. Instead of a traditional phone number, it uses the handle @standardtesting on X (formerly Twitter).</p>
+                        
+                        <p>This account focuses on social media integrations—posting updates, bug reports, and test findings. It skips ID verification and 2FA, making it a bare-bones but convenient test user.</p>
+                        
+                        <p>Most of its activity involves filing bug reports and retweeting official platform news. Minimal security, minimal verification—just enough to maintain a public-facing presence.</p>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Social Auth Note:</strong> This account tests the social authentication pathway and phone-only registration flow during migration.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="h5 mb-0">Tezos Blockchain Data</h4>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Current Values</h5>
+                                <p><strong>Tezos Address:</strong><br><code>tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog</code></p>
+                                <p><strong>Internal Balance:</strong> <span class="text-success">0</span></p>
+                                <p><strong>External Balance:</strong> <span class="text-primary">2.39</span></p>
+                                <p><strong>Total Balance:</strong> <span class="text-danger">2.39</span></p>
+                                <p><strong>Reputation Score:</strong> <span class="text-secondary">0</span></p>
+                                <p><strong>Block Hash:</strong> <code>tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog</code></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="h5 mb-0">Base L3 Migration Target</h4>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Values to Preserve</h5>
+                                <p><strong>Base L3 Address:</strong> <span class="text-muted">To be assigned</span></p>
+                                <p><strong>Internal Balance Target:</strong> <span class="text-success">0</span></p>
+                                <p><strong>External Balance Target:</strong> <span class="text-primary">2.39</span></p>
+                                <p><strong>Total Balance Target:</strong> <span class="text-danger">2.39</span></p>
+                                <p><strong>Reputation Target:</strong> <span class="text-secondary">0</span></p>
+                                <p><strong>Social Auth Status:</strong> <span class="text-info">Must preserve X connection</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h3 class="h5 mb-0">Migration Verification Steps</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Step</th>
+                                        <th>Verification Method</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1. Data Snapshot</td>
+                                        <td>Verify Tezos blockchain data capture</td>
+                                        <td><span class="badge bg-secondary">Not Started</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. Smart Contract Assignment</td>
+                                        <td>Check EVM address mapping in contract</td>
+                                        <td><span class="badge bg-secondary">Not Started</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. Social Authentication</td>
+                                        <td>Test login via X (Twitter) OAuth</td>
+                                        <td><span class="badge bg-secondary">Not Started</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. Token Transfer</td>
+                                        <td>Verify TALNT token balance on Base L3</td>
+                                        <td><span class="badge bg-secondary">Not Started</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5. Social Integration</td>
+                                        <td>Test social media connections</td>
+                                        <td><span class="badge bg-secondary">Not Started</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-warning mt-3">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong>Verification Note:</strong> Run the account migration scripts to automate verification of this character's migration:
+                            <pre class="mt-2 mb-0"><code>./account-migration-tracer.sh</code></pre>
+                        </div>
+
+                        <div class="alert alert-danger mt-3">
+                            <i class="bi bi-bug me-2"></i>
+                            <strong>Bug Report:</strong> Missing email field for this account. This issue should be tracked and resolved as part of the migration process.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
