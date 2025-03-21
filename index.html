@@ -107,7 +107,7 @@
         </section>
 
         <section id="test-servers" class="mb-5">
-            <h2>Test Environments & Token Claiming Flow</h2>
+            <h2>Test Environments</h2>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="card h-100">
@@ -154,59 +154,6 @@
                             <div class="alert alert-info mt-3">
                                 <strong>Migration Code Repository:</strong> <a href="https://github.com/Decentralized-Pictures/dcp-migrations" target="_blank">github.com/Decentralized-Pictures/dcp-migrations</a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-header bg-light">
-                            <h5 class="mb-0">Token Claiming Process</h5>
-                        </div>
-                        <div class="card-body">
-                            <ol class="list-group list-group-numbered mb-3">
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">User Authentication</div>
-                                        User logs in with their preferred authentication method (Google, X, Sentinel Wallet)
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Eligibility Check</div>
-                                        System verifies user's account exists in migration smart contract
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Claim Notification</div>
-                                        User is notified of available tokens and balance amounts to claim
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Signature Request</div>
-                                        User prompted to sign transaction with wallet to verify identity
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Token Distribution</div>
-                                        Upon successful signature, smart contract transfers tokens to user's Base wallet
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Confirmation & Receipt</div>
-                                        User receives confirmation of successful migration with transaction details
-                                    </div>
-                                </li>
-                            </ol>
-                            <div class="alert alert-info">
-                                <strong>Key Testing Areas:</strong> Authentication methods, signature validation, gas optimization, error handling/recovery, and cross-browser/device compatibility.
-                            </div>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tokenClaimModal">
-                                <i class="bi bi-diagram-3 me-2"></i>View Detailed Process
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -350,6 +297,62 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Token Claiming Process</h5>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-group list-group-numbered mb-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">User Authentication</div>
+                                        User logs in with their preferred authentication method (Google, X, Sentinel Wallet)
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Eligibility Check</div>
+                                        System verifies user's account exists in migration smart contract
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Claim Notification</div>
+                                        User is notified of available tokens and balance amounts to claim
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Signature Request</div>
+                                        User prompted to sign transaction with wallet to verify identity
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Token Distribution</div>
+                                        Upon successful signature, smart contract transfers tokens to user's Base wallet
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Confirmation & Receipt</div>
+                                        User receives confirmation of successful migration with transaction details
+                                    </div>
+                                </li>
+                            </ol>
+                            <div class="alert alert-info">
+                                <strong>Key Testing Areas:</strong> Authentication methods, signature validation, gas optimization, error handling/recovery, and cross-browser/device compatibility.
+                            </div>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tokenClaimModal">
+                                <i class="bi bi-diagram-3 me-2"></i>View Detailed Process
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">Migration Progress</h5>
