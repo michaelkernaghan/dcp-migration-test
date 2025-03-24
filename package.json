@@ -1,0 +1,14 @@
+{
+  "name": "kanley-reputation-verifier",
+  "version": "1.0.0",
+  "description": "Independent verification tool for Kanley's reputation migration to Base L3",
+  "main": "verify-reputation.js",
+  "scripts": {
+    "verify": "node verify-reputation.js",
+    "install-deps": "npm install"
+  },
+  "dependencies": {
+    "web3": "^1.9.0",
+    "ethers": "^5.7.2"
+  }
+} 
