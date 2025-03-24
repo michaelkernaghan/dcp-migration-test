@@ -85,6 +85,9 @@ EVM_FILM_LEDGER_ADDRESS=""
 BAILEE_CUTOVER_EXTERNAL_BALANCE=""
 BAILEE_CUTOVER_FILM_CREW_NFTS=""
 
+# Tezos contract address for data snapshot
+TEZOS_FILM_LEDGER_ADDRESS="KT1RYT2ypZB7hiTJhfQBFi8g9Ar8VJMkce9b"
+
 # APPCHAIN connection URLs
 APPCHAIN_RPC="https://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
 APPCHAIN_EXPLORER="https://talntnet-explorer-testnet.appchain.base.org/"
@@ -162,6 +165,11 @@ cast wallet new
                         <pre><code class="language-bash">cd ~/dcp-migrations/migration
 npm run snapshot</code></pre>
                         <p>This creates balance snapshot files in the <code>src/tezos/</code> directory based on the <code>SNAPSHOT_BLOCK_LEVEL</code> specified in the <code>.env</code> file.</p>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Data Source:</strong> The snapshot is taken from the Tezos Film Ledger smart contract at <a href="https://explorer.tlnt.net/KT1RYT2ypZB7hiTJhfQBFi8g9Ar8VJMkce9b/storage/" target="_blank">https://explorer.tlnt.net/KT1RYT2ypZB7hiTJhfQBFi8g9Ar8VJMkce9b/storage/</a> (referred to as the <code>TEZOS_FILM_LEDGER_ADDRESS</code> in the migration scripts). This contract contains all the user balances, reputation scores, and associated data that need to be migrated.
+                        </div>
 
                         <h3 class="h5 mt-4 mb-3">2. Migration Execution</h3>
                         <p>Execute the migration to the EVM chains:</p>
