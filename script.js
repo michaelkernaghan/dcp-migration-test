@@ -343,14 +343,14 @@ function initializeTestAccounts() {
         {
             id: 'kanley',
             name: 'Kanley Stubrick',
-            tezosAddress: 'tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3',
-            baseAddress: 'To be assigned',
-            status: 'Not Started',
+            tezosAddress: 'tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33',
+            baseAddress: '0x476bB9fADF338B7cB58D9775ab6E635faA042B47',
+            status: 'Completed',
             balanceInternal: 55.88,
             balanceExternal: 684.61,
             reputation: 40.4,
-            verification: 'Not Started',
-            progress: 0,
+            verification: 'Verified',
+            progress: 100,
             authMethod: 'Google Auth',
             userRole: 'Moderator',
             details: {
@@ -363,16 +363,18 @@ function initializeTestAccounts() {
                 twoFactor: 'Yes',
                 idVerified: 'no',
                 notes: 'Primary User',
-                blockchainHash: 'tz1XTbJrMGHanCY4cHNiBj3DTZnVd4YmEYmPI3',
+                blockchainHash: 'tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33',
                 authMethod: 'Google Auth',
-                userRole: 'Moderator'
+                userRole: 'Moderator',
+                userId: '62336a78f628805c6149652a',
+                cutoverEvmAddress: '0x476bB9fADF338B7cB58D9775ab6E635faA042B47'
             }
         },
         {
             id: 'herner',
             name: 'Herner werzog',
-            tezosAddress: 'tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN',
-            baseAddress: 'To be assigned',
+            tezosAddress: 'tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN',
+            baseAddress: '0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3',
             status: 'Not Started',
             balanceInternal: 0.98,
             balanceExternal: 6.06,
@@ -391,16 +393,18 @@ function initializeTestAccounts() {
                 twoFactor: 'Yes',
                 idVerified: 'no',
                 notes: 'prod moderate is bad idea',
-                blockchainHash: 'tz2HYEVeNZ0utXzXChzXcCkrZxSwS3wSpDSN',
+                blockchainHash: 'tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN',
                 authMethod: 'Google Auth (Secondary)',
-                userRole: 'Standard User'
+                userRole: 'Standard User',
+                userId: '650b531499d4186d35031684',
+                cutoverEvmAddress: '0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3'
             }
         },
         {
             id: 'twitter',
             name: 'TwitterProd',
-            tezosAddress: 'tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf',
-            baseAddress: 'To be assigned',
+            tezosAddress: 'tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog',
+            baseAddress: '0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed',
             status: 'Not Started',
             balanceInternal: 2.39,
             balanceExternal: 0,
@@ -419,16 +423,18 @@ function initializeTestAccounts() {
                 twoFactor: 'no',
                 idVerified: 'no',
                 notes: 'none - filed bug report',
-                blockchainHash: 'tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf',
+                blockchainHash: 'tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog',
                 authMethod: 'X (Twitter) Sign-in',
-                userRole: 'Standard User'
+                userRole: 'Standard User',
+                userId: '650c463610686c64bc000862',
+                cutoverEvmAddress: '0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed'
             }
         },
         {
             id: 'keith',
             name: 'Keith Fellini',
-            tezosAddress: 'tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs',
-            baseAddress: 'To be assigned',
+            tezosAddress: 'tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9',
+            baseAddress: '0x95d8eee141DFf4961233B12e140b771f798fEBeB',
             status: 'Not Started',
             balanceInternal: 3080.69,
             balanceExternal: 194.9,
@@ -447,9 +453,11 @@ function initializeTestAccounts() {
                 twoFactor: 'Yes/no',
                 idVerified: 'Yes (reviewing/no)',
                 notes: 'Baker verification/prod',
-                blockchainHash: 'tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs',
+                blockchainHash: 'tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9',
                 authMethod: 'Sentinel Wallet Login',
-                userRole: 'Standard User (Baker)'
+                userRole: 'Standard User (Baker)',
+                userId: '675bad90a9183d95fb01e572',
+                cutoverEvmAddress: '0x95d8eee141DFf4961233B12e140b771f798fEBeB'
             }
         }
     ];
@@ -491,6 +499,8 @@ function showAccountDetails(accountId) {
     Tezos Address: ${account.tezosAddress}
     Base Address: ${account.baseAddress}
     Blockchain Hash: ${account.details.blockchainHash}
+    MongoDB User ID: ${account.details.userId || 'Not assigned'}
+    Cutover EVM Address: ${account.details.cutoverEvmAddress || 'Not assigned'}
     
     Current Migration Status: ${account.status} (${account.progress}%)
     Internal Balance: ${account.balanceInternal}
