@@ -234,6 +234,46 @@ npm run snapshot</code></pre>
                                             <li>Internal database user IDs (MongoDB ObjectIDs)</li>
                                             <li>Newly generated EVM addresses for the migrated system</li>
                                         </ul>
+                                        
+                                        <h6 class="mt-3">Test User Mappings Example:</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-bordered">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th>Test Account</th>
+                                                        <th>MongoDB User ID</th>
+                                                        <th>Tezos Wallet Address</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Kanley Stubrick</td>
+                                                        <td><code>62336a78f628805c6149652a</code></td>
+                                                        <td><code>tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Herner werzog</td>
+                                                        <td><code>650b531499d4186d35031684</code></td>
+                                                        <td><code>tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>TwitterProd</td>
+                                                        <td><code>650c463610686c64bc000862</code></td>
+                                                        <td><code>tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Keith Fellini</td>
+                                                        <td><code>675bad90a9183d95fb01e572</code></td>
+                                                        <td><code>tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        <div class="alert alert-info mt-3">
+                                            <i class="bi bi-info-circle me-2"></i>
+                                            <strong>Note:</strong> These MongoDB ObjectIDs represent the unique identifiers within the database that maintain the relationship between user accounts, wallets, and their migrated data.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -247,11 +287,10 @@ npm run snapshot</code></pre>
                                     <div class="accordion-body">
                                         <p>For each Tezos address, the file contains:</p>
                                         <ul>
-                                            <li>DCP token balances</li>
-                                            <li>Staked token amounts</li>
-                                            <li>Film tokens or NFTs owned</li>
-                                            <li>Voting power or governance rights</li>
-                                            <li>Historical transaction data references</li>
+                                            <li>Internal token balance</li>
+                                            <li>External token balance (where applicable)</li>
+                                            <li>Reputation score</li>
+                                            <li>Migration status indicator</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -280,19 +319,19 @@ npm run snapshot</code></pre>
                         <pre><code class="language-json">{
   "tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3": {
     "tezosPublicKeyHash": "tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3",
-    "balance": 740.49,
-    "stake": 0,
+    "internalBalance": 55.88,
+    "externalBalance": 684.61,
     "reputation": 40.4,
     "migrationStatus": "COMPLETED",
     "evmAddress": "0x7A23608a8eBe71868013BDA0d900351A83bb4Dc2"
   },
   "tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN": {
     "tezosPublicKeyHash": "tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN",
-    "balance": 7.04,
-    "stake": 0,
+    "internalBalance": 0.98,
+    "externalBalance": 6.06,
     "reputation": 0,
     "migrationStatus": "COMPLETED",
-    "evmAddress": "0x..."
+    "evmAddress": "0x7A23608a8eBe71868013BDA0d900351A83bb4Dc2"
   }
   // Additional addresses...
 }</code></pre>
@@ -308,10 +347,10 @@ npm run snapshot</code></pre>
                         
                         <h3 class="h5 mt-4 mb-3">6. Next Steps</h3>
                         <ul>
-                            <li>Validate token balances against known test accounts</li>
-                            <li>Compare total supply figures pre and post migration</li>
-                            <li>Verify random sample of user balances match blockchain records</li>
-                            <li>Archive this log file securely for regulatory compliance</li>
+                            <li>Validate the four test accounts against the values in their migration records</li>
+                            <li>Use the verification scripts to check on-chain balances in the FilmLedger contract</li>
+                            <li>Confirm EVM addresses are correctly assigned in the MongoDB records</li>
+                            <li>Execute test transactions to verify control of migrated tokens</li>
                         </ul>
                         
                         <div class="alert alert-info mt-4">
@@ -333,9 +372,15 @@ npm run snapshot</code></pre>
                         <pre><code class="language-bash"># Connect to MongoDB
 mongosh "mongodb://dcp:dcp@localhost:27017/dcp?authMechanism=DEFAULT"
 
-# Query user migrations collection
+# Query user migrations collection by EVM address
 use dcp
-db.user_migrations.find({ "evmAddress": "&lt;ADDRESS_TO_CHECK&gt;" })</code></pre>
+db.user_migrations.find({ "evmAddress": "&lt;ADDRESS_TO_CHECK&gt;" })
+
+# Query by MongoDB User ID
+db.user_migrations.find({ "userId": "62336a78f628805c6149652a" })  # Kanley Stubrick's ID
+
+# Query by Tezos address 
+db.user_migrations.find({ "tezosAddress": "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33" })</code></pre>
 
                         <h3 class="h5 mt-4 mb-3">2. Check On-Chain Data</h3>
                         <pre><code class="language-bash"># Check balance on AppChain
@@ -393,6 +438,11 @@ cat ~/dcp-migrations/migration/logs/migration-&lt;TIMESTAMP&gt;.log</code></pre>
                         <div class="alert alert-success mt-3">
                             <i class="bi bi-check-circle me-2"></i>
                             <strong>Verification Result:</strong> All test addresses were properly captured in the snapshot and included in the migration process. This confirms the data extraction from the Tezos Film Ledger contract is working correctly.
+                        </div>
+
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-database me-2"></i>
+                            <strong>Database Mapping:</strong> Each Tezos wallet address is mapped to a unique MongoDB user ID in the database. This mapping is critical for tracking user data throughout the migration process. See the <a href="#collapseUserMapping" data-bs-toggle="collapse" data-bs-target="#collapseUserMapping" aria-expanded="false" aria-controls="collapseUserMapping">User Account Mappings</a> section for the specific test user ID mappings.
                         </div>
                     </div>
                 </div>
