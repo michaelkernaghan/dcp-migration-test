@@ -179,6 +179,151 @@ npm run snapshot</code></pre>
 
                 <div class="card mb-4">
                     <div class="card-header bg-light">
+                        <h2 class="h4 mb-0">Migration Log Analysis</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>After running the migration, the system generates a detailed log file with the following characteristics:</p>
+                        
+                        <h3 class="h5 mt-3 mb-3">1. File Details</h3>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 150px;">Log File:</th>
+                                    <td><code>/home/mike/dcp-migrations/migration/logs/migration-log-2025-03-24T23-50-33-509Z.ans</code></td>
+                                </tr>
+                                <tr>
+                                    <th>Generated:</th>
+                                    <td>March 24, 2025 at 23:50:33 UTC</td>
+                                </tr>
+                                <tr>
+                                    <th>Format:</th>
+                                    <td>JSON with <code>.ans</code> extension (Analysis Results)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 class="h5 mt-4 mb-3">2. Content Overview</h3>
+                        <p>This migration log file contains the complete snapshot of the Tezos blockchain state relevant to the DCP (Decentralized Pictures) platform, captured during the migration process to the new system architecture.</p>
+                        
+                        <h3 class="h5 mt-4 mb-3">3. Key Components</h3>
+                        
+                        <div class="accordion" id="logAnalysisAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBlockchain">
+                                        Blockchain Data Snapshot
+                                    </button>
+                                </h2>
+                                <div id="collapseBlockchain" class="accordion-collapse collapse show" data-bs-parent="#logAnalysisAccordion">
+                                    <div class="accordion-body">
+                                        <p>The file captures the state of the Tezos blockchain at block level 6552576, including all DCP-relevant smart contracts and their states.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUserMapping">
+                                        User Account Mappings
+                                    </button>
+                                </h2>
+                                <div id="collapseUserMapping" class="accordion-collapse collapse" data-bs-parent="#logAnalysisAccordion">
+                                    <div class="accordion-body">
+                                        <p>Maps between:</p>
+                                        <ul>
+                                            <li>Original Tezos addresses (<code>tz1</code>, <code>tz2</code>, etc.)</li>
+                                            <li>Internal database user IDs (MongoDB ObjectIDs)</li>
+                                            <li>Newly generated EVM addresses for the migrated system</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTokenRecords">
+                                        Token Records
+                                    </button>
+                                </h2>
+                                <div id="collapseTokenRecords" class="accordion-collapse collapse" data-bs-parent="#logAnalysisAccordion">
+                                    <div class="accordion-body">
+                                        <p>For each Tezos address, the file contains:</p>
+                                        <ul>
+                                            <li>DCP token balances</li>
+                                            <li>Staked token amounts</li>
+                                            <li>Film tokens or NFTs owned</li>
+                                            <li>Voting power or governance rights</li>
+                                            <li>Historical transaction data references</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMigrationStatus">
+                                        Migration Status Information
+                                    </button>
+                                </h2>
+                                <div id="collapseMigrationStatus" class="accordion-collapse collapse" data-bs-parent="#logAnalysisAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Success/failure status of each account migration</li>
+                                            <li>Timestamps of migration steps</li>
+                                            <li>Validation checksums for data integrity verification</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="h5 mt-4 mb-3">4. Data Structure</h3>
+                        <p>The file is structured as a large JSON object with Tezos addresses as keys. Example structure:</p>
+                        
+                        <pre><code class="language-json">{
+  "tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3": {
+    "tezosPublicKeyHash": "tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3",
+    "balance": 740.49,
+    "stake": 0,
+    "reputation": 40.4,
+    "migrationStatus": "COMPLETED",
+    "evmAddress": "0x7A23608a8eBe71868013BDA0d900351A83bb4Dc2"
+  },
+  "tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN": {
+    "tezosPublicKeyHash": "tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN",
+    "balance": 7.04,
+    "stake": 0,
+    "reputation": 0,
+    "migrationStatus": "COMPLETED",
+    "evmAddress": "0x..."
+  }
+  // Additional addresses...
+}</code></pre>
+                        
+                        <h3 class="h5 mt-4 mb-3">5. Verification Process</h3>
+                        <p>This log file serves as the primary verification document to ensure:</p>
+                        
+                        <ol>
+                            <li><strong>Data Integrity:</strong> All user balances and rights have been correctly captured</li>
+                            <li><strong>Complete Coverage:</strong> All relevant accounts are included in the migration</li>
+                            <li><strong>Audit Trail:</strong> Provides a permanent record for future reference and dispute resolution</li>
+                        </ol>
+                        
+                        <h3 class="h5 mt-4 mb-3">6. Next Steps</h3>
+                        <ul>
+                            <li>Validate token balances against known test accounts</li>
+                            <li>Compare total supply figures pre and post migration</li>
+                            <li>Verify random sample of user balances match blockchain records</li>
+                            <li>Archive this log file securely for regulatory compliance</li>
+                        </ul>
+                        
+                        <div class="alert alert-info mt-4">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Tip:</strong> You can view and analyze this JSON file using a tool like <code>jq</code>:
+                            <pre class="mt-2 mb-0"><code class="language-bash">cat ~/dcp-migrations/migration/logs/migration-log-*.ans | jq '.["tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3"]'</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
                         <h2 class="h4 mb-0">Verification</h2>
                     </div>
                     <div class="card-body">
@@ -202,6 +347,53 @@ cast balance &lt;ADDRESS_TO_CHECK&gt; --rpc-url https://talntnet-auth-rpc-testne
                         <h3 class="h5 mt-4 mb-3">3. Check Migration Logs</h3>
                         <pre><code class="language-bash"># Examine log files in the logs directory
 cat ~/dcp-migrations/migration/logs/migration-&lt;TIMESTAMP&gt;.log</code></pre>
+
+                        <h3 class="h5 mt-4 mb-3">4. Test Addresses Confirmation</h3>
+                        <p>We successfully confirmed that all 4 test addresses were present in the snapshot output from the Tezos Film Ledger contract:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Tezos Address</th>
+                                        <th>Expected Values</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Kanley Stubrick</td>
+                                        <td><code>tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3</code></td>
+                                        <td>Balance: 740.49 TALNT, Reputation: 40.4</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Herner werzog</td>
+                                        <td><code>tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN</code></td>
+                                        <td>Balance: 7.04 TALNT, Reputation: 0</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TwitterProd</td>
+                                        <td><code>tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf</code></td>
+                                        <td>Balance: 2.39 TALNT, Reputation: 0</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Keith Fellini</td>
+                                        <td><code>tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs</code></td>
+                                        <td>Balance: 3275.59 TALNT, Reputation: 0</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-success mt-3">
+                            <i class="bi bi-check-circle me-2"></i>
+                            <strong>Verification Result:</strong> All test addresses were properly captured in the snapshot and included in the migration process. This confirms the data extraction from the Tezos Film Ledger contract is working correctly.
+                        </div>
                     </div>
                 </div>
 
