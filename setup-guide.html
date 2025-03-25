@@ -243,6 +243,7 @@ npm run snapshot</code></pre>
                                                         <th>Test Account</th>
                                                         <th>MongoDB User ID</th>
                                                         <th>Tezos Wallet Address</th>
+                                                        <th>Assigned EVM Address</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -250,21 +251,25 @@ npm run snapshot</code></pre>
                                                         <td>Kanley Stubrick</td>
                                                         <td><code>62336a78f628805c6149652a</code></td>
                                                         <td><code>tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33</code></td>
+                                                        <td><code>0x476bB9fADF338B7cB58D9775ab6E635faA042B47</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Herner werzog</td>
                                                         <td><code>650b531499d4186d35031684</code></td>
                                                         <td><code>tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN</code></td>
+                                                        <td><code>0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>TwitterProd</td>
                                                         <td><code>650c463610686c64bc000862</code></td>
                                                         <td><code>tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog</code></td>
+                                                        <td><code>0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Keith Fellini</td>
                                                         <td><code>675bad90a9183d95fb01e572</code></td>
                                                         <td><code>tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9</code></td>
+                                                        <td><code>0x95d8eee141DFf4961233B12e140b771f798fEBeB</code></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -273,6 +278,22 @@ npm run snapshot</code></pre>
                                         <div class="alert alert-info mt-3">
                                             <i class="bi bi-info-circle me-2"></i>
                                             <strong>Note:</strong> These MongoDB ObjectIDs represent the unique identifiers within the database that maintain the relationship between user accounts, wallets, and their migrated data.
+                                        </div>
+                                        
+                                        <div class="alert alert-secondary mt-3">
+                                            <i class="bi bi-code-slash me-2"></i>
+                                            <strong>EVM Address Generation:</strong> During the migration process, the system generates a unique EVM address for each Tezos account using a deterministic algorithm. The mapping is logged in the migration output:
+                                            <pre class="mt-2 mb-0"><code>Processing tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33...
+  Found EVM address: 0x476bB9fADF338B7cB58D9775ab6E635faA042B47
+
+Processing tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN...
+  Found EVM address: 0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3
+
+Processing tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog...
+  Found EVM address: 0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed
+
+Processing tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9...
+  Found EVM address: 0x95d8eee141DFf4961233B12e140b771f798fEBeB</code></pre>
                                         </div>
                                     </div>
                                 </div>
@@ -317,21 +338,21 @@ npm run snapshot</code></pre>
                         <p>The file is structured as a large JSON object with Tezos addresses as keys. Example structure:</p>
                         
                         <pre><code class="language-json">{
-  "tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3": {
-    "tezosPublicKeyHash": "tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3",
+  "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33": {
+    "tezosPublicKeyHash": "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33",
     "internalBalance": 55.88,
     "externalBalance": 684.61,
     "reputation": 40.4,
     "migrationStatus": "COMPLETED",
-    "evmAddress": "0x7A23608a8eBe71868013BDA0d900351A83bb4Dc2"
+    "evmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47"
   },
-  "tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN": {
-    "tezosPublicKeyHash": "tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN",
+  "tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN": {
+    "tezosPublicKeyHash": "tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN",
     "internalBalance": 0.98,
     "externalBalance": 6.06,
     "reputation": 0,
     "migrationStatus": "COMPLETED",
-    "evmAddress": "0x7A23608a8eBe71868013BDA0d900351A83bb4Dc2"
+    "evmAddress": "0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3"
   }
   // Additional addresses...
 }</code></pre>
@@ -374,20 +395,23 @@ mongosh "mongodb://dcp:dcp@localhost:27017/dcp?authMechanism=DEFAULT"
 
 # Query user migrations collection by EVM address
 use dcp
-db.user_migrations.find({ "evmAddress": "&lt;ADDRESS_TO_CHECK&gt;" })
+db.user_migrations.find({ "evmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47" })  # Kanley's EVM address
 
 # Query by MongoDB User ID
 db.user_migrations.find({ "userId": "62336a78f628805c6149652a" })  # Kanley Stubrick's ID
 
 # Query by Tezos address 
-db.user_migrations.find({ "tezosAddress": "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33" })</code></pre>
+db.user_migrations.find({ "tezosAddress": "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33" })  # Kanley's Tezos address</code></pre>
 
                         <h3 class="h5 mt-4 mb-3">2. Check On-Chain Data</h3>
-                        <pre><code class="language-bash"># Check balance on AppChain
-cast balance &lt;ADDRESS_TO_CHECK&gt; --rpc-url https://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2
+                        <pre><code class="language-bash"># Check balance on AppChain for Kanley Stubrick
+cast balance 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url https://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2
 
-# Check if NFTs were migrated (on Base Sepolia)
-# This would require inspecting the Bailee Cutover Film Crew NFTs contract</code></pre>
+# Check token balance in Film Ledger contract
+cast call $EVM_FILM_LEDGER_ADDRESS "balanceOf(address)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url $APPCHAIN_RPC
+
+# Check reputation in Film Ledger contract
+cast call $EVM_FILM_LEDGER_ADDRESS "getReputation(address)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url $APPCHAIN_RPC</code></pre>
 
                         <h3 class="h5 mt-4 mb-3">3. Check Migration Logs</h3>
                         <pre><code class="language-bash"># Examine log files in the logs directory
@@ -409,25 +433,25 @@ cat ~/dcp-migrations/migration/logs/migration-&lt;TIMESTAMP&gt;.log</code></pre>
                                 <tbody>
                                     <tr>
                                         <td>Kanley Stubrick</td>
-                                        <td><code>tz1XTbJrMGHan4vEYmE7xpCKExBi3oDYYmPI3</code></td>
+                                        <td><code>tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33</code></td>
                                         <td>Balance: 740.49 TALNT, Reputation: 40.4</td>
                                         <td><span class="badge bg-success">Confirmed</span></td>
                                     </tr>
                                     <tr>
                                         <td>Herner werzog</td>
-                                        <td><code>tz2HYEVENZnJxtzXChvZxSwQaSVnJDSN</code></td>
+                                        <td><code>tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN</code></td>
                                         <td>Balance: 7.04 TALNT, Reputation: 0</td>
                                         <td><span class="badge bg-success">Confirmed</span></td>
                                     </tr>
                                     <tr>
                                         <td>TwitterProd</td>
-                                        <td><code>tz2GYLLxLJQqyaYmE1qVkLppEKfKRK4q52gf</code></td>
+                                        <td><code>tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog</code></td>
                                         <td>Balance: 2.39 TALNT, Reputation: 0</td>
                                         <td><span class="badge bg-success">Confirmed</span></td>
                                     </tr>
                                     <tr>
                                         <td>Keith Fellini</td>
-                                        <td><code>tz1YX9mD4pdrz4vYpyE9dMMkJJaWFX6qa9Qs</code></td>
+                                        <td><code>tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9</code></td>
                                         <td>Balance: 3275.59 TALNT, Reputation: 0</td>
                                         <td><span class="badge bg-success">Confirmed</span></td>
                                     </tr>
