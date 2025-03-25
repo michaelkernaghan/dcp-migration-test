@@ -295,6 +295,35 @@ Processing tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog...
 Processing tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9...
   Found EVM address: 0x95d8eee141DFf4961233B12e140b771f798fEBeB</code></pre>
                                         </div>
+                                        
+                                        <div class="alert alert-primary mt-3">
+                                            <i class="bi bi-arrow-repeat me-2"></i>
+                                            <strong>Cutover EVM Addresses:</strong> The migration process maintains a direct 1:1 relationship between Tezos addresses and their assigned EVM addresses. For the test accounts, the cutover EVM addresses match their generated EVM addresses:
+                                            <pre class="mt-2 mb-0"><code>// MongoDB data structure
+{
+    "userId": "62336a78f628805c6149652a",
+    "wallet": "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33",
+    "cutoverEvmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47"
+}
+
+{
+    "userId": "650b531499d4186d35031684",
+    "wallet": "tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN",
+    "cutoverEvmAddress": "0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3"
+}
+
+{
+    "userId": "650c463610686c64bc000862",
+    "wallet": "tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog",
+    "cutoverEvmAddress": "0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed"
+}
+
+{
+    "userId": "675bad90a9183d95fb01e572",
+    "wallet": "tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9",
+    "cutoverEvmAddress": "0x95d8eee141DFf4961233B12e140b771f798fEBeB"
+}</code></pre>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -344,7 +373,9 @@ Processing tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9...
     "externalBalance": 684.61,
     "reputation": 40.4,
     "migrationStatus": "COMPLETED",
-    "evmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47"
+    "evmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47",
+    "userId": "62336a78f628805c6149652a",
+    "cutoverEvmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47"
   },
   "tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN": {
     "tezosPublicKeyHash": "tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN",
@@ -352,7 +383,9 @@ Processing tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9...
     "externalBalance": 6.06,
     "reputation": 0,
     "migrationStatus": "COMPLETED",
-    "evmAddress": "0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3"
+    "evmAddress": "0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3",
+    "userId": "650b531499d4186d35031684",
+    "cutoverEvmAddress": "0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3"
   }
   // Additional addresses...
 }</code></pre>
@@ -372,6 +405,7 @@ Processing tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9...
                             <li>Use the verification scripts to check on-chain balances in the FilmLedger contract</li>
                             <li>Confirm EVM addresses are correctly assigned in the MongoDB records</li>
                             <li>Execute test transactions to verify control of migrated tokens</li>
+                            <li>Verify cutover EVM addresses match the deterministically generated EVM addresses for each account</li>
                         </ul>
                         
                         <div class="alert alert-info mt-4">
@@ -401,7 +435,16 @@ db.user_migrations.find({ "evmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042
 db.user_migrations.find({ "userId": "62336a78f628805c6149652a" })  # Kanley Stubrick's ID
 
 # Query by Tezos address 
-db.user_migrations.find({ "tezosAddress": "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33" })  # Kanley's Tezos address</code></pre>
+db.user_migrations.find({ "tezosAddress": "tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33" })  # Kanley's Tezos address
+
+# Query by cutover EVM address
+db.user_migrations.find({ "cutoverEvmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47" })  # Kanley's cutover EVM address
+
+# Verify cutover address matches expected value
+db.user_migrations.find({ 
+  "userId": "62336a78f628805c6149652a", 
+  "cutoverEvmAddress": "0x476bB9fADF338B7cB58D9775ab6E635faA042B47" 
+})</code></pre>
 
                         <h3 class="h5 mt-4 mb-3">2. Check On-Chain Data</h3>
                         <pre><code class="language-bash"># Check balance on AppChain for Kanley Stubrick
@@ -411,7 +454,10 @@ cast balance 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url https://talntn
 cast call $EVM_FILM_LEDGER_ADDRESS "balanceOf(address)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url $APPCHAIN_RPC
 
 # Check reputation in Film Ledger contract
-cast call $EVM_FILM_LEDGER_ADDRESS "getReputation(address)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url $APPCHAIN_RPC</code></pre>
+cast call $EVM_FILM_LEDGER_ADDRESS "getReputation(address)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url $APPCHAIN_RPC
+
+# Verify cutover address is registered in the Film Ledger contract
+cast call $EVM_FILM_LEDGER_ADDRESS "isRegistered(address)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url $APPCHAIN_RPC</code></pre>
 
                         <h3 class="h5 mt-4 mb-3">3. Check Migration Logs</h3>
                         <pre><code class="language-bash"># Examine log files in the logs directory
