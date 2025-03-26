@@ -48,67 +48,6 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="card border-left-success">
-                    <div class="card-header bg-light">
-                        <h3 class="h5 mb-0">EVM Ledger Contract Verification</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="mb-3">Onchain verification results from the FilmLedger smart contract calls on Base L3:</p>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>User</th>
-                                        <th>EVM Address</th>
-                                        <th>Contract Balance</th>
-                                        <th>Contract Reputation</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Kanley Stubrick</td>
-                                        <td><code class="small">0x476bB9fADF338B7cB58D9775ab6E635faA042B47</code></td>
-                                        <td>686.26 TALNT</td>
-                                        <td>40.45</td>
-                                        <td><span class="badge bg-success">Verified</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Herner werzog</td>
-                                        <td><code class="small">0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3</code></td>
-                                        <td>6.06 TALNT</td>
-                                        <td>0</td>
-                                        <td><span class="badge bg-success">Verified</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>TwitterProd</td>
-                                        <td><code class="small">0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed</code></td>
-                                        <td>1.00 TALNT</td>
-                                        <td>0</td>
-                                        <td><span class="badge bg-warning text-dark">Partial</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keith Fellini</td>
-                                        <td><code class="small">0x95d8eee141DFf4961233B12e140b771f798fEBeB</code></td>
-                                        <td>194.90 TALNT</td>
-                                        <td>0</td>
-                                        <td><span class="badge bg-success">Verified</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="alert alert-info mt-3 mb-0">
-                            <strong>Contract Address:</strong> <code>0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d</code> on Base L3 Testnet
-                            <br>
-                            <small class="d-block mt-2">Verification performed using the <code>getBalance(address)(uint256)</code> and <code>getUserReputation(address)(uint256)</code> functions</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <section id="dashboard" class="mb-5">
             <h2>Migration Setup</h2>
             <div class="row">
@@ -223,6 +162,67 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4 mt-4">
+                <div class="col-12">
+                    <div class="card border-left-success">
+                        <div class="card-header bg-light">
+                            <h3 class="h5 mb-0">EVM Ledger Contract Verification</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-3">Onchain verification results from the FilmLedger smart contract calls on Base L3:</p>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>User</th>
+                                            <th>EVM Address</th>
+                                            <th>Contract Balance</th>
+                                            <th>Contract Reputation</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Kanley Stubrick</td>
+                                            <td><code class="small">0x476bB9fADF338B7cB58D9775ab6E635faA042B47</code></td>
+                                            <td>686.26 TALNT</td>
+                                            <td>40.45</td>
+                                            <td><span class="badge bg-success">Verified</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Herner werzog</td>
+                                            <td><code class="small">0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3</code></td>
+                                            <td>6.06 TALNT</td>
+                                            <td>0</td>
+                                            <td><span class="badge bg-success">Verified</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>TwitterProd</td>
+                                            <td><code class="small">0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed</code></td>
+                                            <td>1.00 TALNT</td>
+                                            <td>0</td>
+                                            <td><span class="badge bg-warning text-dark">Partial</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Keith Fellini</td>
+                                            <td><code class="small">0x95d8eee141DFf4961233B12e140b771f798fEBeB</code></td>
+                                            <td>194.90 TALNT</td>
+                                            <td>0</td>
+                                            <td><span class="badge bg-success">Verified</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-info mt-3 mb-0">
+                                <strong>Contract Address:</strong> <code>0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d</code> on Base L3 Testnet
+                                <br>
+                                <small class="d-block mt-2">Verification performed using the <code>getBalance(address)(uint256)</code> and <code>getUserReputation(address)(uint256)</code> functions</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
