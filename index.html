@@ -107,10 +107,10 @@
                                     <th>Account Name</th>
                                     <th>Tezos Address</th>
                                     <th>Base Address</th>
-                                    <th>Status</th>
                                     <th>Authentication</th>
                                     <th>Wallet Balance</th>
                                     <th>App Balance</th>
+                                    <th>Locked Balance</th>
                                     <th>Reputation</th>
                                     <th>Verification</th>
                                 </tr>
@@ -120,10 +120,10 @@
                                     <td>Kanley Stubrick</td>
                                     <td><span class="text-monospace small">tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33</span></td>
                                     <td><span class="text-monospace small">0x476bB9fADF338B7cB58D9775ab6E635faA042B47</span></td>
-                                    <td><span class="badge bg-warning text-dark">Partial</span></td>
                                     <td><span class="badge bg-info">Google Auth</span> <span class="badge bg-warning text-dark">Moderator</span></td>
                                     <td>55.88</td>
                                     <td>684.61</td>
+                                    <td>0</td>
                                     <td>40.4</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
@@ -131,10 +131,10 @@
                                     <td>Herner werzog</td>
                                     <td><span class="text-monospace small">tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN</span></td>
                                     <td><span class="text-monospace small">0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3</span></td>
-                                    <td><span class="badge bg-warning text-dark">Partial</span></td>
                                     <td><span class="badge bg-info">Google Auth</span></td>
                                     <td>0.98</td>
                                     <td>6.06</td>
+                                    <td>0</td>
                                     <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
@@ -142,10 +142,10 @@
                                     <td>TwitterProd</td>
                                     <td><span class="text-monospace small">tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog</span></td>
                                     <td><span class="text-monospace small">0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed</span></td>
-                                    <td><span class="badge bg-warning text-dark">Partial</span></td>
                                     <td><span class="badge bg-primary">X (Twitter)</span></td>
                                     <td>1.37</td>
                                     <td>1</td>
+                                    <td>0</td>
                                     <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
@@ -153,10 +153,10 @@
                                     <td>Keith Fellini</td>
                                     <td><span class="text-monospace small">tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9</span></td>
                                     <td><span class="text-monospace small">0x95d8eee141DFf4961233B12e140b771f798fEBeB</span></td>
-                                    <td><span class="badge bg-warning text-dark">Partial</span></td>
                                     <td><span class="badge bg-success">Sentinel Wallet</span></td>
                                     <td>3080.69</td>
                                     <td>194.9</td>
+                                    <td>0</td>
                                     <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
@@ -181,6 +181,7 @@
                                             <th>User</th>
                                             <th>EVM Address</th>
                                             <th>Contract Balance</th>
+                                            <th>Contract Locked Balance</th>
                                             <th>Contract Reputation</th>
                                             <th>Status</th>
                                         </tr>
@@ -190,6 +191,7 @@
                                             <td>Kanley Stubrick</td>
                                             <td><code class="small">0x476bB9fADF338B7cB58D9775ab6E635faA042B47</code></td>
                                             <td>686.26 TALNT</td>
+                                            <td>0 TALNT</td>
                                             <td>40.45</td>
                                             <td><span class="badge bg-success">Verified</span></td>
                                         </tr>
@@ -197,6 +199,7 @@
                                             <td>Herner werzog</td>
                                             <td><code class="small">0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3</code></td>
                                             <td>6.06 TALNT</td>
+                                            <td>0 TALNT</td>
                                             <td>0</td>
                                             <td><span class="badge bg-success">Verified</span></td>
                                         </tr>
@@ -204,6 +207,7 @@
                                             <td>TwitterProd</td>
                                             <td><code class="small">0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed</code></td>
                                             <td>1.00 TALNT</td>
+                                            <td>0 TALNT</td>
                                             <td>0</td>
                                             <td><span class="badge bg-success">Verified</span></td>
                                         </tr>
@@ -211,6 +215,7 @@
                                             <td>Keith Fellini</td>
                                             <td><code class="small">0x95d8eee141DFf4961233B12e140b771f798fEBeB</code></td>
                                             <td>194.90 TALNT</td>
+                                            <td>0 TALNT</td>
                                             <td>0</td>
                                             <td><span class="badge bg-success">Verified</span></td>
                                         </tr>
@@ -220,7 +225,7 @@
                             <div class="alert alert-info mt-3 mb-0">
                                 <strong>Contract Address:</strong> <code>0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d</code> on Base L3 Testnet
                                 <br>
-                                <small class="d-block mt-2">Verification performed using the <code>getBalance(address)(uint256)</code> and <code>getUserReputation(address)(uint256)</code> functions</small>
+                                <small class="d-block mt-2">Verification performed using the <code>getBalance(address)(uint256)</code>, <code>getLockedBalance(address)(uint256)</code>, and <code>getUserReputation(address)(uint256)</code> functions</small>
                             </div>
                         </div>
                     </div>
