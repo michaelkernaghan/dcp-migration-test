@@ -485,6 +485,47 @@
         </div>
     </div>
 
+    <section class="container mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-left-info">
+                    <div class="card-header bg-light">
+                        <h3 class="h5 mb-0">Migration Script Rerun Behavior</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3">The migration script is carefully designed to be idempotent and respects previous migrations during reruns. It:</p>
+                        <ul class="mb-4">
+                            <li>Tracks migration state in the database through status flags</li>
+                            <li>Checks status before each migration step and skips already processed items</li>
+                            <li>Updates status flags only after successful migrations</li>
+                            <li>Logs when items are skipped due to previous migration</li>
+                        </ul>
+
+                        <div class="alert alert-success">
+                            <h5 class="alert-heading">Safety Features</h5>
+                            <p>This design ensures that:</p>
+                            <ul class="mb-0">
+                                <li>No balances or NFTs are migrated twice</li>
+                                <li>Failed migrations can be retried without issue</li>
+                                <li>The process can be safely rerun at any time</li>
+                            </ul>
+                        </div>
+
+                        <div class="card bg-light mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Example Log Entries</h5>
+                                <pre class="bg-dark text-light p-3 rounded"><code>[2025-04-10 14:22:33] INFO: User ID 1234 already migrated, skipping
+[2025-04-10 14:22:34] INFO: Token balance for address 0x123... already processed
+[2025-04-10 14:22:36] INFO: Reputation migration for User ID 5678 already completed</code></pre>
+                                <p class="card-text mt-2">The migration log files would show entries like "already migrated" or "already processed" when the script is rerun, confirming this behavior in practice.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-light text-center text-lg-start mt-5">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2025 DCP Migration Testing Dashboard
