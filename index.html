@@ -60,7 +60,7 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item"><i class="bi bi-currency-exchange me-2 text-primary"></i> Token balances (internal, external, and locked)</li>
                                         <li class="list-group-item"><i class="bi bi-graph-up-arrow me-2 text-success"></i> Reputation scores</li>
-                                        <li class="list-group-item"><i class="bi bi-person-badge me-2 text-warning"></i> Authentication status</li>
+                                        <li class="list-group-item"><i class="bi bi-person-badge me-2 text-warning"></i> NFT ownership</li>
                                     </ul>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><i class="bi bi-shield-check me-2 text-info"></i> Verification status</li>
+                                        <li class="list-group-item"><i class="bi bi-shield-check me-2 text-info"></i> Verification and authentication status</li>
                                         <li class="list-group-item"><i class="bi bi-bug me-2 text-danger"></i> Bug reports and platform feedback</li>
                                         <li class="list-group-item"><i class="bi bi-wallet me-2 text-secondary"></i> Wallet connection capabilities</li>
                                     </ul>
@@ -120,6 +120,7 @@
                                     <th>App Balance</th>
                                     <th>Locked Balance</th>
                                     <th>Reputation</th>
+                                    <th>NFT</th>
                                     <th>Verification</th>
                                 </tr>
                             </thead>
@@ -133,6 +134,7 @@
                                     <td>684.61</td>
                                     <td>0</td>
                                     <td>40.4</td>
+                                    <td>1</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
                                 <tr id="account-herner">
@@ -142,6 +144,7 @@
                                     <td><span class="badge bg-info">Google Auth</span></td>
                                     <td>0.98</td>
                                     <td>6.06</td>
+                                    <td>0</td>
                                     <td>0</td>
                                     <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
@@ -155,6 +158,7 @@
                                     <td>1</td>
                                     <td>0</td>
                                     <td>0</td>
+                                    <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
                                 <tr id="account-keith">
@@ -164,6 +168,7 @@
                                     <td><span class="badge bg-success">Sentinel Wallet</span></td>
                                     <td>3080.69</td>
                                     <td>194.9</td>
+                                    <td>0</td>
                                     <td>0</td>
                                     <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
@@ -362,9 +367,6 @@
                             <div class="alert alert-info">
                                 <strong>Key Testing Areas:</strong> Authentication methods, signature validation, gas optimization, error handling/recovery, and cross-browser/device compatibility.
                             </div>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tokenClaimModal">
-                                <i class="bi bi-diagram-3 me-2"></i>View Detailed Process
-                            </button>
                         </div>
                     </div>
                 </div>
