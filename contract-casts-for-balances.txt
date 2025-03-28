@@ -1,0 +1,62 @@
+getBalance ------
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getBalance(address)(uint256)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+686259341000000000000 [6.862e20]
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getBalance(address)(uint256)" 0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3 --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+6056467000000000000 [6.056e18]
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getBalance(address)(uint256)" 0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+1000000000000000000 [1e18]
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getBalance(address)(uint256)" 0x95d8eee141DFf4961233B12e140b771f798fEBeB --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+194897439000000000000 [1.948e20]
+
+getUserReputation ----------
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getUserReputation(address)(uint256)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+40450000000000000000 
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getUserReputation(address)(uint256)" 0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3 --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getUserReputation(address)(uint256)" 0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getUserReputation(address)(uint256)" 0x95d8eee141DFf4961233B12e140b771f798fEBeB --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+
+getLockedBalance ---------------
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getLockedBalance(address)(uint256)" 0x476bB9fADF338B7cB58D9775ab6E635faA042B47 --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getLockedBalance(address)(uint256)" 0x3cb71e6Cacc83cb41FF3Ac7f45f4E5FF849891D3 --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getLockedBalance(address)(uint256)" 0x59fbc3f8c13E5199482Fe2142d713aC3D11a30Ed --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+
+cast call 0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d "getLockedBalance(address)(uint256)" 0x95d8eee141DFf4961233B12e140b771f798fEBeB --rpc-url "http
+s://talntnet-auth-rpc-testnet.appchain.base.org/9nc0Apdn7t9DpsgQfglk3Go2"
+
+
+Tezos Address: tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33
+  External Balance: 55883250000000000000 [5.588e19]
+
+
+Tezos Address: tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN
+  External Balance: 981500000000000000 [9.815e17]
+
+
+Tezos Address: tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog
+  External Balance: 1373652000000000000 [1.373e18]
+
+Tezos Address: tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9
+  External Balance: 3085893436000000000000 [3.085e21]
+
