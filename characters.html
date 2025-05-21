@@ -241,7 +241,7 @@
                 <div class="card h-100 border-left-success">
                     <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Sandra Blockchain</h5>
-                        <span class="badge bg-success">FIL Credits User</span>
+                        <span class="badge bg-success">TALNT Net Holder</span>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -254,17 +254,18 @@
                             <div class="col-md-8">
                                 <p><strong>Phone:</strong> 778-555-2134 (VOIP)</p>
                                 <p><strong>Email:</strong> sandra.blockchain@filmcredits.io</p>
-                                <p><strong>Auth:</strong> FIL Wallet (2FA enabled)</p>
+                                <p><strong>Auth:</strong> Sentinel Wallet (Ledger Nano S)</p>
                                 <p><strong>Internal Balance:</strong> 350.75</p>
+                                <p><strong>Film Ledger Balance:</strong> 5 <small>(bitmap)</small></p>
                                 <p><strong>External Balance:</strong> 120.45</p>
-                                <p><strong>Reputation:</strong> 750</p>
+                                <p><strong>Reputation:</strong> 0</p>
                                 <p><strong>NFT:</strong> <span class="text-success">3</span> <i class="bi bi-images text-success"></i></p>
                             </div>
                         </div>
                         <hr>
                         <p class="text-muted mb-0">
                             <i class="bi bi-quote me-2"></i>
-                            <strong>The FIL Credits Power User:</strong> A dedicated digital rights collector who actively invests in film projects. With multiple NFTs, substantial token holdings, and high reputation, Sandra represents investors who use the platform primarily for its blockchain capabilities and digital asset management.
+                            <strong>The TALNT Net Holder:</strong> A blockchain enthusiast who holds TALNT tokens but doesn't actively use the DCP platform. Sandra represents users who are invested in the token economy but have no platform activity or reputation, testing pure token migration without platform engagement.
                         </p>
                     </div>
                     <div class="card-footer bg-light">
@@ -350,7 +351,23 @@
                                         <td>Posts queries, files bug reports, tests integrations</td>
                                         <td>Connect DCP to outside audiences</td>
                                     </tr>
-                                                                        <tr>                                        <td><strong>Keith Fellini</strong></td>                                        <td>Technical Validator</td>                                        <td>Runs node, validates blocks, supports protocol</td>                                        <td>Keep platform decentralized and secure</td>                                    </tr>                                    <tr>                                        <td><strong>Sandra Blockchain</strong></td>                                        <td>FIL Credits Power User</td>                                        <td>Collects NFTs, invests in film projects, high reputation</td>                                        <td>Digital rights collection and blockchain asset management</td>                                    </tr>                                    <tr>                                        <td><strong>New User</strong></td>                                        <td>Post-Migration Newcomer</td>                                        <td>Fresh registration, onboarding post-migration</td>                                        <td>Test new user flows in migrated environment</td>                                    </tr>                                </tbody>                            </table>
+                                    <tr>
+                                        <td><strong>Keith Fellini</strong></td>
+                                        <td>Technical Validator</td>
+                                        <td>Runs node, validates blocks, supports protocol</td>
+                                        <td>Keep platform decentralized and secure</td>
+                                    </tr>
+                                    <tr>
+                                                                                <td><strong>Sandra Blockchain</strong></td>                                        <td>TALNT Net Holder</td>                                        <td>Holds tokens across wallets and contracts, owns NFTs</td>                                        <td>Token investment and blockchain participation</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>New User</strong></td>
+                                        <td>Post-Migration Newcomer</td>
+                                        <td>Fresh registration, onboarding post-migration</td>
+                                        <td>Test new user flows in migrated environment</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         
                         <div class="alert alert-info mt-4">
@@ -408,7 +425,29 @@
                                         <td>2.39</td>
                                         <td>Social auth, no email, phone-only</td>
                                     </tr>
-                                                                        <tr>                                        <td>Keith Fellini</td>                                        <td><code>tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9</code></td>                                        <td><em>To be assigned</em></td>                                        <td>3275.59</td>                                        <td>Baker, wallet auth, mixed 2FA</td>                                    </tr>                                    <tr>                                        <td>Sandra Blockchain</td>                                        <td><code>tz1MK7JeYGK4YPwns9KvAG9erLwLxBXBwLh8</code></td>                                        <td><code>0x8B3d70d628Ebd30D4A2ea82DB95bA2B9F68AE814</code></td>                                        <td>471.20</td>                                        <td>3 NFTs, 750 reputation, FIL wallet</td>                                    </tr>                                    <tr class="table-danger">                                        <td>New User</td>                                        <td><code>N/A</code></td>                                        <td><em>To be created</em></td>                                        <td>0</td>                                        <td>Post-migration registration, no history</td>                                    </tr>                                </tbody>                            </table>
+                                    <tr>
+                                        <td>Keith Fellini</td>
+                                        <td><code>tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9</code></td>
+                                        <td><em>To be assigned</em></td>
+                                        <td>3275.59</td>
+                                        <td>Baker, wallet auth, mixed 2FA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sandra Blockchain</td>
+                                        <td><code>tz1e42w8ZaGAbM3gucbBy8iRypdbnqUj7oWY</code></td>
+                                        <td><code>0x8B3d70d628Ebd30D4A2ea82DB95bA2B9F68AE814</code></td>
+                                        <td>476.20</td>
+                                        <td>3 NFTs, 0 reputation, Sentinel wallet (Ledger Nano S), 5 TALNT bitmap</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td>New User</td>
+                                        <td><code>N/A</code></td>
+                                        <td><em>To be created</em></td>
+                                        <td>0</td>
+                                        <td>Post-migration registration, no history</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         
                         <p class="mt-3">To run automated migration tests for these characters, use:</p>
