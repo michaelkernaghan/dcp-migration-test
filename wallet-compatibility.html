@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Compatibility & DEX Integration - DCP Migration Testing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .compatibility-table td, .compatibility-table th {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .status-success { background-color: #d4edda !important; }
+        .status-warning { background-color: #fff3cd !important; }
+        .status-danger { background-color: #f8d7da !important; }
+        .status-info { background-color: #d1ecf1 !important; }
+        .status-secondary { background-color: #e2e3e5 !important; }
+        
+        .wallet-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+        
+        .browser-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Authentication Overlay -->
+    <div id="auth-overlay">
+        <div id="auth-box">
+            <h3 class="mb-4">Authentication Required</h3>
+            <p>Please enter the password to access the DCP Migration Testing Dashboard.</p>
+            <div class="mb-3">
+                <input type="password" id="password-input" class="form-control" placeholder="Enter password">
+            </div>
+            <button id="login-button" class="btn btn-primary w-100">Login</button>
+            <div id="auth-error">Incorrect password. Please try again.</div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-arrow-repeat me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#wallet-compatibility">Wallet Compatibility</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="bg-light py-4 mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-5 mb-3">Wallet Compatibility & DEX Integration</h1>
+                    <p class="lead">
+                        Comprehensive testing matrix for wallet and browser combinations, mobile wallet support, 
+                        and DEX integration capabilities for TALNT token trading.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Desktop Wallet Compatibility Matrix -->
+        <section id="desktop-wallets" class="mb-5">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-laptop me-2"></i>
+                        Desktop Wallet & Browser Compatibility Matrix
+                    </h3>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 compatibility-table">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Wallet</th>
+                                    <th>
+                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/googlechrome.svg" class="browser-icon" alt="Chrome">
+                                        Chrome
+                                    </th>
+                                    <th>
+                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/firefox.svg" class="browser-icon" alt="Firefox">
+                                        Firefox
+                                    </th>
+                                    <th>
+                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/microsoftedge.svg" class="browser-icon" alt="Edge">
+                                        Edge
+                                    </th>
+                                    <th>
+                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/brave.svg" class="browser-icon" alt="Brave">
+                                        Brave
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-start">
+                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/metamask.svg" class="wallet-icon" alt="MetaMask">
+                                        <strong>MetaMask</strong>
+                                    </td>
+                                    <td class="status-success">
+                                        <span class="badge bg-success">✓ Tested</span>
+                                        <small class="d-block">Full Support</small>
+                                    </td>
+                                    <td class="status-success">
+                                        <span class="badge bg-success">✓ Tested</span>
+                                        <small class="d-block">Full Support</small>
+                                    </td>
+                                    <td class="status-warning">
+                                        <span class="badge bg-warning">⚠ Pending</span>
+                                        <small class="d-block">Not Tested</small>
+                                    </td>
+                                    <td class="status-success">
+                                        <span class="badge bg-success">✓ Tested</span>
+                                        <small class="d-block">Full Support</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">
+                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/coinbase.svg" class="wallet-icon" alt="Coinbase">
+                                        <strong>Coinbase Wallet</strong>
+                                    </td>
+                                    <td class="status-success">
+                                        <span class="badge bg-success">✓ Tested</span>
+                                        <small class="d-block">Extension + Smart Wallet</small>
+                                    </td>
+                                    <td class="status-info">
+                                        <span class="badge bg-info">ℹ Smart Wallet Only</span>
+                                        <small class="d-block">No Extension Available</small>
+                                    </td>
+                                    <td class="status-warning">
+                                        <span class="badge bg-warning">⚠ Pending</span>
+                                        <small class="d-block">Not Tested</small>
+                                    </td>
+                                    <td class="status-warning">
+                                        <span class="badge bg-warning">⚠ Pending</span>
+                                        <small class="d-block">Not Tested</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">
+                                        <i class="bi bi-wallet wallet-icon"></i>
+                                        <strong>WalletConnect</strong>
+                                    </td>
+                                    <td class="status-success">
+                                        <span class="badge bg-success">✓ Tested</span>
+                                        <small class="d-block">QR + Deep Link</small>
+                                    </td>
+                                    <td class="status-success">
+                                        <span class="badge bg-success">✓ Tested</span>
+                                        <small class="d-block">QR + Deep Link</small>
+                                    </td>
+                                    <td class="status-warning">
+                                        <span class="badge bg-warning">⚠ Pending</span>
+                                        <small class="d-block">Not Tested</small>
+                                    </td>
+                                    <td class="status-warning">
+                                        <span class="badge bg-warning">⚠ Pending</span>
+                                        <small class="d-block">Not Tested</small>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <small class="text-muted">
+                                <strong>Note:</strong> Coinbase Wallet extension is not available for Firefox. 
+                                Users can still connect via Coinbase Smart Wallet through WalletConnect integration.
+                            </small>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <small class="text-muted">Last Updated: January 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ledger Nano S Hardware Wallet Integration -->        <section id="ledger-integration" class="mb-5">            <div class="card">                <div class="card-header bg-light">                    <h3 class="h5 mb-0">                        <i class="bi bi-shield-check me-2"></i>                        Ledger Nano S Hardware Wallet Integration                    </h3>                </div>                <div class="card-body">                    <div class="alert alert-info mb-4">                        <h6 class="alert-heading">                            <i class="bi bi-info-circle me-2"></i>                            Hardware Wallet Requirements                        </h6>                        <p class="mb-0">                            Ledger Nano S requires specific apps and configurations for Ethereum-based networks.                             Base Appchain compatibility depends on the Ethereum app being installed and updated on the device.                        </p>                    </div>                    <!-- Ledger + Software Wallet Compatibility Matrix -->                    <div class="row mb-4">                        <div class="col-12">                            <div class="card">                                <div class="card-header bg-primary text-white">                                    <h6 class="mb-0">Ledger Nano S + Software Wallet Compatibility</h6>                                </div>                                <div class="card-body p-0">                                    <div class="table-responsive">                                        <table class="table table-hover mb-0 compatibility-table">                                            <thead class="bg-light">                                                <tr>                                                    <th>Software Wallet</th>                                                    <th>Chrome</th>                                                    <th>Firefox</th>                                                    <th>Edge</th>                                                    <th>Brave</th>                                                    <th>Connection Method</th>                                                </tr>                                            </thead>                                            <tbody>                                                <tr>                                                    <td class="text-start">                                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/metamask.svg" class="wallet-icon" alt="MetaMask">                                                        <strong>MetaMask + Ledger</strong>                                                    </td>                                                    <td class="status-success">                                                        <span class="badge bg-success">✓ Tested</span>                                                        <small class="d-block">WebHID</small>                                                    </td>                                                    <td class="status-warning">                                                        <span class="badge bg-warning">⚠ Limited</span>                                                        <small class="d-block">WebUSB Required</small>                                                    </td>                                                    <td class="status-warning">                                                        <span class="badge bg-warning">⚠ Pending</span>                                                        <small class="d-block">Not Tested</small>                                                    </td>                                                    <td class="status-success">                                                        <span class="badge bg-success">✓ Tested</span>                                                        <small class="d-block">WebHID</small>                                                    </td>                                                    <td class="text-start">Hardware Connect</td>                                                </tr>                                                <tr>                                                    <td class="text-start">                                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/coinbase.svg" class="wallet-icon" alt="Coinbase">                                                        <strong>Coinbase + Ledger</strong>                                                    </td>                                                    <td class="status-info">                                                        <span class="badge bg-info">ℹ Via MetaMask</span>                                                        <small class="d-block">Indirect Support</small>                                                    </td>                                                    <td class="status-info">                                                        <span class="badge bg-info">ℹ Via MetaMask</span>                                                        <small class="d-block">Indirect Support</small>                                                    </td>                                                    <td class="status-warning">                                                        <span class="badge bg-warning">⚠ Pending</span>                                                        <small class="d-block">Not Tested</small>                                                    </td>                                                    <td class="status-warning">                                                        <span class="badge bg-warning">⚠ Pending</span>                                                        <small class="d-block">Not Tested</small>                                                    </td>                                                    <td class="text-start">WalletConnect Bridge</td>                                                </tr>                                                <tr>                                                    <td class="text-start">                                                        <i class="bi bi-laptop me-2"></i>                                                        <strong>Ledger Live + WalletConnect</strong>                                                    </td>                                                    <td class="status-success">                                                        <span class="badge bg-success">✓ Tested</span>                                                        <small class="d-block">Desktop App</small>                                                    </td>                                                    <td class="status-success">                                                        <span class="badge bg-success">✓ Tested</span>                                                        <small class="d-block">Desktop App</small>                                                    </td>                                                    <td class="status-warning">                                                        <span class="badge bg-warning">⚠ Pending</span>                                                        <small class="d-block">Not Tested</small>                                                    </td>                                                    <td class="status-warning">                                                        <span class="badge bg-warning">⚠ Pending</span>                                                        <small class="d-block">Not Tested</small>                                                    </td>                                                    <td class="text-start">QR Code + Desktop App</td>                                                </tr>                                                <tr>                                                    <td class="text-start">                                                        <i class="bi bi-shield me-2"></i>                                                        <strong>Direct Ledger Integration</strong>                                                    </td>                                                    <td class="status-secondary">                                                        <span class="badge bg-secondary">N/A</span>                                                        <small class="d-block">Requires Custom Implementation</small>                                                    </td>                                                    <td class="status-secondary">                                                        <span class="badge bg-secondary">N/A</span>                                                        <small class="d-block">Requires Custom Implementation</small>                                                    </td>                                                    <td class="status-secondary">                                                        <span class="badge bg-secondary">N/A</span>                                                        <small class="d-block">Requires Custom Implementation</small>                                                    </td>                                                    <td class="status-secondary">                                                        <span class="badge bg-secondary">N/A</span>                                                        <small class="d-block">Requires Custom Implementation</small>                                                    </td>                                                    <td class="text-start">Web3 Library Integration</td>                                                </tr>                                            </tbody>                                        </table>                                    </div>                                </div>                            </div>                        </div>                    </div>                    <!-- Ledger Specific Testing Scenarios -->                    <div class="row">                        <div class="col-md-6 mb-4">                            <div class="card h-100">                                <div class="card-header bg-warning text-dark">                                    <h6 class="mb-0">Ledger Device Requirements</h6>                                </div>                                <div class="card-body">                                    <ul class="list-group list-group-flush">                                        <li class="list-group-item d-flex justify-content-between align-items-center">                                            <div>                                                <i class="bi bi-app me-2"></i>                                                Ethereum App Installed                                            </div>                                            <span class="badge bg-success">✓ Required</span>                                        </li>                                        <li class="list-group-item d-flex justify-content-between align-items-center">                                            <div>                                                <i class="bi bi-unlock me-2"></i>                                                Device Unlocked                                            </div>                                            <span class="badge bg-success">✓ Required</span>                                        </li>                                        <li class="list-group-item d-flex justify-content-between align-items-center">                                            <div>                                                <i class="bi bi-usb-drive me-2"></i>                                                USB Connection                                            </div>                                            <span class="badge bg-success">✓ Required</span>                                        </li>                                        <li class="list-group-item d-flex justify-content-between align-items-center">                                            <div>                                                <i class="bi bi-shield-check me-2"></i>                                                Contract Data Enabled                                            </div>                                            <span class="badge bg-warning">⚠ For Smart Contracts</span>                                        </li>                                        <li class="list-group-item d-flex justify-content-between align-items-center">                                            <div>                                                <i class="bi bi-gear me-2"></i>                                                Blind Signing Enabled                                            </div>                                            <span class="badge bg-danger">⚠ Security Risk</span>                                        </li>                                    </ul>                                </div>                            </div>                        </div>                        <div class="col-md-6 mb-4">                            <div class="card h-100">                                <div class="card-header bg-danger text-white">                                    <h6 class="mb-0">Known Limitations & Issues</h6>                                </div>                                <div class="card-body">                                    <ul class="list-group list-group-flush">                                        <li class="list-group-item">                                            <i class="bi bi-exclamation-triangle me-2 text-warning"></i>                                            <strong>Firefox:</strong> Limited WebHID support, may require WebUSB flag                                        </li>                                        <li class="list-group-item">                                            <i class="bi bi-clock me-2 text-info"></i>                                            <strong>Timeout:</strong> Device auto-locks after inactivity                                        </li>                                        <li class="list-group-item">                                            <i class="bi bi-eye-slash me-2 text-danger"></i>                                            <strong>Blind Signing:</strong> Required for custom smart contracts                                        </li>                                        <li class="list-group-item">                                            <i class="bi bi-network-wired me-2 text-secondary"></i>                                            <strong>Network:</strong> Manual Base Appchain addition required                                        </li>                                        <li class="list-group-item">                                            <i class="bi bi-cpu me-2 text-warning"></i>                                            <strong>Performance:</strong> Slower transaction confirmation                                        </li>                                    </ul>                                </div>                            </div>                        </div>                    </div>                    <!-- Ledger Testing Flow -->                    <div class="row">                        <div class="col-12">                            <div class="card">                                <div class="card-header bg-success text-white">                                    <h6 class="mb-0">Ledger Testing Flow for TALNT Migration</h6>                                </div>                                <div class="card-body">                                    <div class="row">                                        <div class="col-md-6">                                            <h6 class="text-primary mb-3">Pre-Migration Setup</h6>                                            <ol class="list-group list-group-numbered">                                                <li class="list-group-item">Connect Ledger Nano S via USB</li>                                                <li class="list-group-item">Unlock device with PIN</li>                                                <li class="list-group-item">Open Ethereum app on device</li>                                                <li class="list-group-item">Enable "Contract Data" in app settings</li>                                                <li class="list-group-item">Connect to MetaMask or Ledger Live</li>                                                <li class="list-group-item">Add Base Appchain network manually</li>                                            </ol>                                        </div>                                        <div class="col-md-6">                                            <h6 class="text-success mb-3">Migration Process</h6>                                            <ol class="list-group list-group-numbered">                                                <li class="list-group-item">Authenticate with Google/X (if applicable)</li>                                                <li class="list-group-item">Connect hardware wallet to DCP platform</li>                                                <li class="list-group-item">Verify Tezos address matches Ledger</li>                                                <li class="list-group-item">Review migration summary</li>                                                <li class="list-group-item">Confirm transaction on Ledger device</li>                                                <li class="list-group-item">Verify TALNT tokens in Base Appchain wallet</li>                                            </ol>                                        </div>                                    </div>                                    <div class="alert alert-warning mt-3">                                        <strong>Critical Test Points:</strong>                                        <ul class="mb-0 mt-2">                                            <li>Device connection stability during long processes</li>                                            <li>Transaction approval with custom contract data</li>                                            <li>Network switching between Tezos and Base Appchain</li>                                            <li>Error handling when device disconnects</li>                                            <li>Recovery flow if transaction fails mid-process</li>                                        </ul>                                    </div>                                </div>                            </div>                        </div>                    </div>                </div>            </div>        </section>        <!-- Mobile Wallet Support -->        <section id="mobile-wallets" class="mb-5">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-phone me-2"></i>
+                        Mobile Wallet Support
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">iOS Wallets</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/metamask.svg" class="wallet-icon" alt="MetaMask">
+                                                MetaMask Mobile
+                                            </div>
+                                            <span class="badge bg-success">✓ Tested</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/coinbase.svg" class="wallet-icon" alt="Coinbase">
+                                                Coinbase Wallet
+                                            </div>
+                                            <span class="badge bg-success">✓ Tested</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-wallet wallet-icon"></i>
+                                                Trust Wallet
+                                            </div>
+                                            <span class="badge bg-warning">⚠ Pending</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-wallet wallet-icon"></i>
+                                                Rainbow Wallet
+                                            </div>
+                                            <span class="badge bg-warning">⚠ Pending</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0">Android Wallets</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/metamask.svg" class="wallet-icon" alt="MetaMask">
+                                                MetaMask Mobile
+                                            </div>
+                                            <span class="badge bg-success">✓ Tested</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/coinbase.svg" class="wallet-icon" alt="Coinbase">
+                                                Coinbase Wallet
+                                            </div>
+                                            <span class="badge bg-success">✓ Tested</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-wallet wallet-icon"></i>
+                                                Trust Wallet
+                                            </div>
+                                            <span class="badge bg-warning">⚠ Pending</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-wallet wallet-icon"></i>
+                                                1inch Wallet
+                                            </div>
+                                            <span class="badge bg-warning">⚠ Pending</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">Mobile Testing Notes</h6>
+                        <ul class="mb-0">
+                            <li>WalletConnect integration enables support for 300+ mobile wallets</li>
+                            <li>In-app browsers may have limited functionality compared to dedicated browser apps</li>
+                            <li>Deep linking and QR code scanning are primary connection methods</li>
+                            <li>Some wallets require manual network addition for Base Appchain</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEX Integration & Trading -->
+        <section id="dex-integration" class="mb-5">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-arrow-left-right me-2"></i>
+                        DEX Integration & TALNT Trading
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="alert alert-warning">
+                                <h6 class="alert-heading">
+                                    <i class="bi bi-exclamation-triangle me-2"></i>
+                                    Important Network Information
+                                </h6>
+                                <p class="mb-0">
+                                    TALNT tokens are deployed on <strong>Base Appchain</strong>, which requires users to add a custom network to their wallets. 
+                                    Most DEXes are not natively integrated with Base Appchain yet.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0">Base Appchain DEXes</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>DEX Platform</th>
+                                                    <th>Status</th>
+                                                    <th>Wallet Support</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>BaseSwap</strong></td>
+                                                    <td><span class="badge bg-warning">Pending</span></td>
+                                                    <td>MetaMask, WalletConnect</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>SushiSwap</strong></td>
+                                                    <td><span class="badge bg-secondary">Not Available</span></td>
+                                                    <td>N/A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Uniswap</strong></td>
+                                                    <td><span class="badge bg-secondary">Not Available</span></td>
+                                                    <td>N/A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Custom DEX</strong></td>
+                                                    <td><span class="badge bg-info">Planned</span></td>
+                                                    <td>All Supported Wallets</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Bridge Solutions</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Bridge Platform</th>
+                                                    <th>From → To</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>Base Bridge</strong></td>
+                                                    <td>Base Appchain → Base</td>
+                                                    <td><span class="badge bg-warning">Pending</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>LayerZero</strong></td>
+                                                    <td>Base Appchain → Ethereum</td>
+                                                    <td><span class="badge bg-info">Planned</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Stargate</strong></td>
+                                                    <td>Multi-chain</td>
+                                                    <td><span class="badge bg-secondary">Not Available</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="alert alert-info mt-3 mb-0">
+                                        <small>
+                                            <strong>Note:</strong> Bridging to Base mainnet would enable access to major DEXes like Uniswap V3, Aerodrome, and others.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">Wallet Support for DEX Trading</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table compatibility-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wallet</th>
+                                                    <th>Base Appchain Network</th>
+                                                    <th>DEX Integration</th>
+                                                    <th>Bridge Support</th>
+                                                    <th>Gas Optimization</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/metamask.svg" class="wallet-icon" alt="MetaMask">
+                                                        <strong>MetaMask</strong>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Supported</span>
+                                                        <small class="d-block">Manual Network Add</small>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Compatible</span>
+                                                        <small class="d-block">Web3 Standard</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Limited</span>
+                                                        <small class="d-block">Manual Bridging</small>
+                                                    </td>
+                                                    <td class="status-info">
+                                                        <span class="badge bg-info">ℹ Standard</span>
+                                                        <small class="d-block">User Controlled</small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/coinbase.svg" class="wallet-icon" alt="Coinbase">
+                                                        <strong>Coinbase Wallet</strong>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Supported</span>
+                                                        <small class="d-block">Smart Wallet + Extension</small>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Compatible</span>
+                                                        <small class="d-block">Native Integration</small>
+                                                    </td>
+                                                    <td class="status-info">
+                                                        <span class="badge bg-info">ℹ Integrated</span>
+                                                        <small class="d-block">Coinbase Bridge</small>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Optimized</span>
+                                                        <small class="d-block">Smart Wallet Benefits</small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <i class="bi bi-wallet wallet-icon"></i>
+                                                        <strong>WalletConnect</strong>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Variable</span>
+                                                        <small class="d-block">Depends on Wallet</small>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Compatible</span>
+                                                        <small class="d-block">Protocol Standard</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Variable</span>
+                                                        <small class="d-block">Wallet Dependent</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Variable</span>
+                                                        <small class="d-block">Wallet Dependent</small>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Network Configuration -->
+        <section id="network-config" class="mb-5">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-gear me-2"></i>
+                        Base Appchain Network Configuration
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0">Network Details</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-sm mb-0">
+                                        <tr>
+                                            <td><strong>Network Name:</strong></td>
+                                            <td>Base Appchain Testnet</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>RPC URL:</strong></td>
+                                            <td><code>https://rpc.base-appchain.testnet</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Chain ID:</strong></td>
+                                            <td><code>84532</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Currency Symbol:</strong></td>
+                                            <td>ETH</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Explorer URL:</strong></td>
+                                            <td><code>https://sepolia.basescan.org</code></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">Manual Configuration Steps</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ol class="mb-0">
+                                        <li>Open wallet settings</li>
+                                        <li>Navigate to "Networks" or "Add Network"</li>
+                                        <li>Select "Add Custom Network"</li>
+                                        <li>Enter network details from the left panel</li>
+                                        <li>Save and switch to the new network</li>
+                                        <li>Add TALNT token contract address</li>
+                                    </ol>
+                                    <div class="alert alert-info mt-3 mb-0">
+                                        <small>
+                                            <strong>TALNT Contract:</strong><br>
+                                            <code>0xf31b1860d20Bc1CaBCB16B9F08F8783B0eb4a59d</code>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testing Checklist -->
+        <section id="testing-checklist" class="mb-5">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-check2-square me-2"></i>
+                        Testing Checklist
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0">Wallet Integration Tests</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="test1" checked>
+                                        <label class="form-check-label" for="test1">
+                                            MetaMask connection and transaction signing
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="test2" checked>
+                                        <label class="form-check-label" for="test2">
+                                            Coinbase Wallet extension functionality
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="test3">
+                                        <label class="form-check-label" for="test3">
+                                            Coinbase Smart Wallet on Firefox
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="test4" checked>
+                                        <label class="form-check-label" for="test4">
+                                            WalletConnect QR code flow
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="test5">
+                                        <label class="form-check-label" for="test5">
+                                            Mobile wallet deep linking
+                                        </label>
+                                    </div>
+                                                                        <div class="form-check">                                        <input class="form-check-input" type="checkbox" id="test6">                                        <label class="form-check-label" for="test6">                                            Cross-browser compatibility testing                                        </label>                                    </div>                                    <div class="form-check">                                        <input class="form-check-input" type="checkbox" id="ledger1">                                        <label class="form-check-label" for="ledger1">                                            Ledger Nano S + MetaMask integration                                        </label>                                    </div>                                    <div class="form-check">                                        <input class="form-check-input" type="checkbox" id="ledger2">                                        <label class="form-check-label" for="ledger2">                                            Ledger Live + WalletConnect flow                                        </label>                                    </div>                                    <div class="form-check">                                        <input class="form-check-input" type="checkbox" id="ledger3">                                        <label class="form-check-label" for="ledger3">                                            Hardware wallet timeout handling                                        </label>                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">DEX Integration Tests</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dex1">
+                                        <label class="form-check-label" for="dex1">
+                                            Base Appchain network addition
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dex2">
+                                        <label class="form-check-label" for="dex2">
+                                            TALNT token visibility in wallets
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dex3">
+                                        <label class="form-check-label" for="dex3">
+                                            DEX platform connectivity
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dex4">
+                                        <label class="form-check-label" for="dex4">
+                                            Token swap functionality
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dex5">
+                                        <label class="form-check-label" for="dex5">
+                                            Bridge integration testing
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dex6">
+                                        <label class="form-check-label" for="dex6">
+                                            Gas optimization verification
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Authentication script (same as index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const authOverlay = document.getElementById('auth-overlay');
+            const passwordInput = document.getElementById('password-input');
+            const loginButton = document.getElementById('login-button');
+            const authError = document.getElementById('auth-error');
+            
+            // Check if already authenticated
+            if (localStorage.getItem('dcp_authenticated') === 'true') {
+                authOverlay.style.display = 'none';
+            }
+            
+            // Authentication function
+            function authenticate() {
+                const password = passwordInput.value;
+                if (password === 'ecadlabs') {
+                    localStorage.setItem('dcp_authenticated', 'true');
+                    authOverlay.style.display = 'none';
+                } else {
+                    authError.style.display = 'block';
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            }
+            
+            // Event listeners
+            loginButton.addEventListener('click', authenticate);
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    authenticate();
+                }
+            });
+
+            // Save checklist state
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                // Load saved state
+                const saved = localStorage.getItem(checkbox.id);
+                if (saved === 'true') {
+                    checkbox.checked = true;
+                }
+                
+                // Save state on change
+                checkbox.addEventListener('change', function() {
+                    localStorage.setItem(this.id, this.checked);
+                });
+            });
+        });
+    </script>
+
+    <style>
+        /* Authentication overlay styles (matching index.html) */
+        #auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #auth-box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #auth-error {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</body>
+</html> 
