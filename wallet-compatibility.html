@@ -202,6 +202,279 @@
             </div>
         </section>
 
+        <!-- Ledger Nano S Hardware Wallet Integration -->
+        <section id="ledger-integration" class="mb-5">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-shield-check me-2"></i>
+                        Ledger Nano S Hardware Wallet Integration
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-4">
+                        <h6 class="alert-heading">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Hardware Wallet Requirements
+                        </h6>
+                        <p class="mb-0">
+                            Ledger Nano S requires specific apps and configurations for Ethereum-based networks. 
+                            Base Appchain compatibility depends on the Ethereum app being installed and updated on the device.
+                        </p>
+                    </div>
+
+                    <!-- Ledger + Software Wallet Compatibility Matrix -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0">Ledger Nano S + Software Wallet Compatibility</h6>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover mb-0 compatibility-table">
+                                            <thead class="bg-light">
+                                                <tr>
+                                                    <th>Software Wallet</th>
+                                                    <th>Chrome</th>
+                                                    <th>Firefox</th>
+                                                    <th>Edge</th>
+                                                    <th>Brave</th>
+                                                    <th>Connection Method</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <span class="metamask-icon">MM</span>
+                                                        <strong>MetaMask + Ledger</strong>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Tested</span>
+                                                        <small class="d-block">WebHID</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Limited</span>
+                                                        <small class="d-block">WebUSB Required</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Pending</span>
+                                                        <small class="d-block">Not Tested</small>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Tested</span>
+                                                        <small class="d-block">WebHID</small>
+                                                    </td>
+                                                    <td class="text-start">Hardware Connect</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/coinbase.svg" class="wallet-icon" alt="Coinbase">
+                                                        <strong>Coinbase + Ledger</strong>
+                                                    </td>
+                                                    <td class="status-info">
+                                                        <span class="badge bg-info">ℹ Via MetaMask</span>
+                                                        <small class="d-block">Indirect Support</small>
+                                                    </td>
+                                                    <td class="status-info">
+                                                        <span class="badge bg-info">ℹ Via MetaMask</span>
+                                                        <small class="d-block">Indirect Support</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Pending</span>
+                                                        <small class="d-block">Not Tested</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Pending</span>
+                                                        <small class="d-block">Not Tested</small>
+                                                    </td>
+                                                    <td class="text-start">WalletConnect Bridge</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <i class="bi bi-laptop me-2"></i>
+                                                        <strong>Ledger Live + WalletConnect</strong>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Tested</span>
+                                                        <small class="d-block">Desktop App</small>
+                                                    </td>
+                                                    <td class="status-success">
+                                                        <span class="badge bg-success">✓ Tested</span>
+                                                        <small class="d-block">Desktop App</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Pending</span>
+                                                        <small class="d-block">Not Tested</small>
+                                                    </td>
+                                                    <td class="status-warning">
+                                                        <span class="badge bg-warning">⚠ Pending</span>
+                                                        <small class="d-block">Not Tested</small>
+                                                    </td>
+                                                    <td class="text-start">QR Code + Desktop App</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <i class="bi bi-shield me-2"></i>
+                                                        <strong>Direct Ledger Integration</strong>
+                                                    </td>
+                                                    <td class="status-secondary">
+                                                        <span class="badge bg-secondary">N/A</span>
+                                                        <small class="d-block">Requires Custom Implementation</small>
+                                                    </td>
+                                                    <td class="status-secondary">
+                                                        <span class="badge bg-secondary">N/A</span>
+                                                        <small class="d-block">Requires Custom Implementation</small>
+                                                    </td>
+                                                    <td class="status-secondary">
+                                                        <span class="badge bg-secondary">N/A</span>
+                                                        <small class="d-block">Requires Custom Implementation</small>
+                                                    </td>
+                                                    <td class="status-secondary">
+                                                        <span class="badge bg-secondary">N/A</span>
+                                                        <small class="d-block">Requires Custom Implementation</small>
+                                                    </td>
+                                                    <td class="text-start">Web3 Library Integration</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ledger Specific Testing Scenarios -->
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">Ledger Device Requirements</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-app me-2"></i>
+                                                Ethereum App Installed
+                                            </div>
+                                            <span class="badge bg-success">✓ Required</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-unlock me-2"></i>
+                                                Device Unlocked
+                                            </div>
+                                            <span class="badge bg-success">✓ Required</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-usb-drive me-2"></i>
+                                                USB Connection
+                                            </div>
+                                            <span class="badge bg-success">✓ Required</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-shield-check me-2"></i>
+                                                Contract Data Enabled
+                                            </div>
+                                            <span class="badge bg-warning">⚠ For Smart Contracts</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-gear me-2"></i>
+                                                Blind Signing Enabled
+                                            </div>
+                                            <span class="badge bg-danger">⚠ Security Risk</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-danger text-white">
+                                    <h6 class="mb-0">Known Limitations & Issues</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                                            <strong>Firefox:</strong> Limited WebHID support, may require WebUSB flag
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="bi bi-clock me-2 text-info"></i>
+                                            <strong>Timeout:</strong> Device auto-locks after inactivity
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="bi bi-eye-slash me-2 text-danger"></i>
+                                            <strong>Blind Signing:</strong> Required for custom smart contracts
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="bi bi-network-wired me-2 text-secondary"></i>
+                                            <strong>Network:</strong> Manual Base Appchain addition required
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="bi bi-cpu me-2 text-warning"></i>
+                                            <strong>Performance:</strong> Slower transaction confirmation
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ledger Testing Flow -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Ledger Testing Flow for TALNT Migration</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-primary mb-3">Pre-Migration Setup</h6>
+                                            <ol class="list-group list-group-numbered">
+                                                <li class="list-group-item">Connect Ledger Nano S via USB</li>
+                                                <li class="list-group-item">Unlock device with PIN</li>
+                                                <li class="list-group-item">Open Ethereum app on device</li>
+                                                <li class="list-group-item">Enable "Contract Data" in app settings</li>
+                                                <li class="list-group-item">Connect to MetaMask or Ledger Live</li>
+                                                <li class="list-group-item">Add Base Appchain network manually</li>
+                                            </ol>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-success mb-3">Migration Process</h6>
+                                            <ol class="list-group list-group-numbered">
+                                                <li class="list-group-item">Authenticate with Google/X (if applicable)</li>
+                                                <li class="list-group-item">Connect hardware wallet to DCP platform</li>
+                                                <li class="list-group-item">Verify Tezos address matches Ledger</li>
+                                                <li class="list-group-item">Review migration summary</li>
+                                                <li class="list-group-item">Confirm transaction on Ledger device</li>
+                                                <li class="list-group-item">Verify TALNT tokens in Base Appchain wallet</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning mt-3">
+                                        <strong>Critical Test Points:</strong>
+                                        <ul class="mb-0 mt-2">
+                                            <li>Device connection stability during long processes</li>
+                                            <li>Transaction approval with custom contract data</li>
+                                            <li>Network switching between Tezos and Base Appchain</li>
+                                            <li>Error handling when device disconnects</li>
+                                            <li>Recovery flow if transaction fails mid-process</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Mobile Wallet Support -->
         <section id="mobile-wallets" class="mb-5">
             <div class="card">
@@ -594,7 +867,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-header bg-primary text-white">
                                     <h6 class="mb-0">Wallet Integration Tests</h6>
@@ -639,7 +912,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-header bg-success text-white">
                                     <h6 class="mb-0">DEX Integration Tests</h6>
@@ -679,6 +952,51 @@
                                         <input class="form-check-input" type="checkbox" id="dex6">
                                         <label class="form-check-label" for="dex6">
                                             Gas optimization verification
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">Ledger Hardware Wallet Tests</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ledger1">
+                                        <label class="form-check-label" for="ledger1">
+                                            Ledger Nano S device connection
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ledger2">
+                                        <label class="form-check-label" for="ledger2">
+                                            MetaMask + Ledger integration
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ledger3">
+                                        <label class="form-check-label" for="ledger3">
+                                            Ledger Live + WalletConnect flow
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ledger4">
+                                        <label class="form-check-label" for="ledger4">
+                                            Contract data approval on device
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ledger5">
+                                        <label class="form-check-label" for="ledger5">
+                                            Blind signing for custom contracts
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ledger6">
+                                        <label class="form-check-label" for="ledger6">
+                                            Transaction timeout handling
                                         </label>
                                     </div>
                                 </div>
