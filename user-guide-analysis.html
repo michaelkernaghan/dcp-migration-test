@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide Analysis - DCP Migration Testing Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Authentication overlay styles */
+        #auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #auth-box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #auth-error {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .role-card {
+            border-left: 4px solid #007bff;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-header {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .confusion-section {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin: 0.75rem 0;
+        }
+
+        .pdf-response-section {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin: 0.75rem 0;
+        }
+
+        .gap-highlight {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            margin: 0.25rem 0;
+            font-style: italic;
+        }
+
+        .summary-gaps {
+            background: linear-gradient(135deg, #dc3545 0%, #bd2130 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Authentication Overlay -->
+    <div id="auth-overlay">
+        <div id="auth-box">
+            <h3 class="mb-4">Authentication Required</h3>
+            <p>Please enter the password to access the DCP Migration Testing Dashboard.</p>
+            <div class="mb-3">
+                <input type="password" id="password-input" class="form-control" placeholder="Enter password">
+            </div>
+            <button id="login-button" class="btn btn-primary w-100">Login</button>
+            <div id="auth-error">Incorrect password. Please try again.</div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-arrow-repeat me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#test-accounts">Test Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet-compatibility.html">Wallet Compatibility</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="user-guide-analysis.html">User Guide Analysis</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-light py-4 mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-5 mb-3">
+                        <i class="bi bi-file-text-fill me-3"></i>
+                        User Guide Cross-Check Analysis
+                    </h1>
+                    <p class="lead">
+                        Role-by-role analysis comparing Character Profiles from the migration test site with the TALNT Token Migration User Guide PDF.
+                    </p>
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        This analysis identifies potential user confusions and evaluates how well the PDF documentation addresses each test persona's concerns.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Kanley Stubrick -->
+        <div class="card role-card">
+            <div class="card-header role-header">
+                <h4 class="mb-0">
+                    <i class="bi bi-person-badge-fill me-2"></i>
+                    Kanley Stubrick – Visionary Founder
+                </h4>
+                <p class="mb-0 mt-2">
+                    <span class="badge bg-light text-dark me-2">Google sign-in</span>
+                    <span class="badge bg-warning text-dark me-2">Moderator</span>
+                    <span class="badge bg-success">High Reputation (40.4)</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="confusion-section">
+                    <h6><i class="bi bi-question-circle-fill me-2"></i>Likely User Confusions</h6>
+                    <ul class="mb-0">
+                        <li>Does a social-login moderator need to install a wallet?</li>
+                        <li>Will moderator rights, reputation 40.4 and NFT #4454 survive?</li>
+                        <li>Will FILM→TALNT keep the same value?</li>
+                    </ul>
+                </div>
+                <div class="pdf-response-section">
+                    <h6><i class="bi bi-file-text me-2"></i>How PDF Addresses These Concerns</h6>
+                    <p><strong>Social-login track:</strong> "The app handles all the wallet management automatically – no MetaMask installation or wallet connections required."</p>
+                    <p><strong>Reputation & NFT preservation:</strong> Explicitly promised in Account Migration ("preserve your reputation scores and history") and NFT Migration bullets.</p>
+                    <div class="gap-highlight">
+                        <strong>Gap:</strong> Role privileges (e.g. moderator) are not mentioned, so Kanley's concern about losing special permissions is not yet covered.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Herner Werzog -->
+        <div class="card role-card">
+            <div class="card-header role-header">
+                <h4 class="mb-0">
+                    <i class="bi bi-shield-check-fill me-2"></i>
+                    Herner Werzog – Security-minded Submitter
+                </h4>
+                <p class="mb-0 mt-2">
+                    <span class="badge bg-light text-dark me-2">Google sign-in</span>
+                    <span class="badge bg-danger">2FA Enabled</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="confusion-section">
+                    <h6><i class="bi bi-question-circle-fill me-2"></i>Likely User Confusions</h6>
+                    <ul class="mb-0">
+                        <li>Will 2FA interfere with the one-click social flow?</li>
+                        <li>ID-verification flagged "Failed" – does that block migration?</li>
+                    </ul>
+                </div>
+                <div class="pdf-response-section">
+                    <h6><i class="bi bi-file-text me-2"></i>How PDF Addresses These Concerns</h6>
+                    <p>The Social-login path reassures that the same Google account is enough and shows a four-step guided claim with "no wallet setup required."</p>
+                    <div class="gap-highlight">
+                        <strong>Gap:</strong> 2FA itself is never discussed, and the FAQ doesn't cover failed ID-verification, so these edge-case worries remain open.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TwitterProd -->
+        <div class="card role-card">
+            <div class="card-header role-header">
+                <h4 class="mb-0">
+                    <i class="bi bi-twitter me-2"></i>
+                    TwitterProd – Social Media User
+                </h4>
+                <p class="mb-0 mt-2">
+                    <span class="badge bg-primary">X (Twitter) sign-in</span>
+                    <span class="badge bg-warning text-dark">No email on file</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="confusion-section">
+                    <h6><i class="bi bi-question-circle-fill me-2"></i>Likely User Confusions</h6>
+                    <ul class="mb-0">
+                        <li>If notifications go by email, will a user with no email learn the claim window is open?</li>
+                        <li>Does an X-only account need anything beyond the X OAuth flow?</li>
+                    </ul>
+                </div>
+                <div class="pdf-response-section">
+                    <h6><i class="bi bi-file-text me-2"></i>How PDF Addresses These Concerns</h6>
+                    <p>The PDF assumes notifications can reach the user ("you'll receive notification…") but doesn't state the channel; it relies on the banner that appears after log-in.</p>
+                    <p>Since TwitterProd can still log in with X, the in-app banner covers the process.</p>
+                    <div class="gap-highlight">
+                        <strong>Gap:</strong> Email-specific reminders are not addressed for users without email addresses.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keith Fellini -->
+        <div class="card role-card">
+            <div class="card-header role-header">
+                <h4 class="mb-0">
+                    <i class="bi bi-wallet2 me-2"></i>
+                    Keith Fellini – Baker / Validator
+                </h4>
+                <p class="mb-0 mt-2">
+                    <span class="badge bg-success me-2">Sentinel wallet (Tezos)</span>
+                    <span class="badge bg-info me-2">EVM wallet</span>
+                    <span class="badge bg-warning text-dark">High Balance (3,275 TALNT)</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="confusion-section">
+                    <h6><i class="bi bi-question-circle-fill me-2"></i>Likely User Confusions</h6>
+                    <ul class="mb-0">
+                        <li>Must I connect two wallets?</li>
+                        <li>Are my 3,275 TALNT safe?</li>
+                        <li>Mixed 2FA — will hardware signing pop-ups work?</li>
+                    </ul>
+                </div>
+                <div class="pdf-response-section">
+                    <h6><i class="bi bi-file-text me-2"></i>How PDF Addresses These Concerns</h6>
+                    <p><strong>Dual-wallet flow:</strong> External-wallet user track spells out the dual-wallet flow (connect Tezos + EVM), shows the progressive claim dialog.</p>
+                    <p><strong>Token safety:</strong> Confirms 1:1 FILM→TALNT conversion. Gas-fee and "What if something goes wrong?" sections give comfort about large balances and retries.</p>
+                    <div class="gap-highlight">
+                        <strong>Gap:</strong> 2FA specifics are not covered but normal wallet signing is assumed.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sandra Blockchain -->
+        <div class="card role-card">
+            <div class="card-header role-header">
+                <h4 class="mb-0">
+                    <i class="bi bi-hardware me-2"></i>
+                    Sandra Blockchain – Hardware Wallet User
+                </h4>
+                <p class="mb-0 mt-2">
+                    <span class="badge bg-warning text-dark me-2">Ledger Nano S</span>
+                    <span class="badge bg-secondary me-2">No DCP account</span>
+                    <span class="badge bg-info me-2">3 NFTs</span>
+                    <span class="badge bg-danger">Locked balance (100)</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="confusion-section">
+                    <h6><i class="bi bi-question-circle-fill me-2"></i>Likely User Confusions</h6>
+                    <ul class="mb-0">
+                        <li>Where does a wallet-only holder (no platform login) start?</li>
+                        <li>Will multiple NFTs and a 100-token lock migrate?</li>
+                        <li>Does the Ledger hardware wallet work with Base?</li>
+                    </ul>
+                </div>
+                <div class="pdf-response-section">
+                    <h6><i class="bi bi-file-text me-2"></i>How PDF Addresses These Concerns</h6>
+                    <p><strong>Wallet-only users:</strong> "For Wallet-Only Token Holders" section tells such users to use a dedicated migration portal and mirrors the same four-step claiming flow.</p>
+                    <p><strong>NFT preservation:</strong> The NFT bullet promises metadata and ownership preservation.</p>
+                    <div class="gap-highlight">
+                        <strong>Gap:</strong> Locked-token mechanics and Ledger compatibility are not spelled out, so Sandra may still need a FAQ entry.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New User -->
+        <div class="card role-card">
+            <div class="card-header role-header">
+                <h4 class="mb-0">
+                    <i class="bi bi-person-plus-fill me-2"></i>
+                    New User – Post-migration Sign-up
+                </h4>
+                <p class="mb-0 mt-2">
+                    <span class="badge bg-dark">No existing account</span>
+                    <span class="badge bg-light text-dark">First-time user</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="confusion-section">
+                    <h6><i class="bi bi-question-circle-fill me-2"></i>Likely User Confusions</h6>
+                    <ul class="mb-0">
+                        <li>How do I register on the new chain?</li>
+                        <li>Do I still get welcome tokens?</li>
+                    </ul>
+                </div>
+                <div class="pdf-response-section">
+                    <h6><i class="bi bi-file-text me-2"></i>How PDF Addresses These Concerns</h6>
+                    <p>The guide focuses on migration cohorts. It hints at "new opportunities for filmmakers" but offers no dedicated onboarding steps for first-time users.</p>
+                    <div class="gap-highlight">
+                        <strong>Gap:</strong> This persona is completely uncovered in the current PDF.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Gaps -->
+        <div class="card mt-4">
+            <div class="card-header summary-gaps">
+                <h4 class="mb-0">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    Summary of Documentation Gaps
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-warning">
+                            <div class="card-header bg-warning text-dark">
+                                <h6 class="mb-0">Role-based Privileges</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">Moderator/baker status and special permissions migration is not addressed in the PDF.</p>
+                                <p class="small"><strong>Affects:</strong> Kanley Stubrick, Keith Fellini</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-danger">
+                            <div class="card-header bg-danger text-white">
+                                <h6 class="mb-0">2FA Edge Cases</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">Two-factor authentication interactions with migration flow are not documented.</p>
+                                <p class="small"><strong>Affects:</strong> Herner Werzog, Keith Fellini</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-info">
+                            <div class="card-header bg-info text-white">
+                                <h6 class="mb-0">Hardware Wallet Compatibility</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">Ledger compatibility with Base chain and locked token mechanics need clarification.</p>
+                                <p class="small"><strong>Affects:</strong> Sandra Blockchain</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-header bg-secondary text-white">
+                                <h6 class="mb-0">Email-less Users</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">Users without email addresses may miss important migration notifications.</p>
+                                <p class="small"><strong>Affects:</strong> TwitterProd</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-dark">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0">New User Onboarding</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">Post-migration onboarding process for first-time users is completely missing.</p>
+                                <p class="small"><strong>Affects:</strong> New User persona</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning mt-4">
+                    <h6 class="alert-heading">Recommended Actions</h6>
+                    <ul class="mb-0">
+                        <li>Add an explicit "New to DCP after June 17?" onboarding section</li>
+                        <li>Include 2FA interaction guidelines for both social and wallet authentication</li>
+                        <li>Clarify role/privilege preservation during migration</li>
+                        <li>Add hardware wallet compatibility matrix for Base chain</li>
+                        <li>Address notification delivery for users without email addresses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Authentication script
+        document.addEventListener('DOMContentLoaded', function() {
+            const authOverlay = document.getElementById('auth-overlay');
+            const passwordInput = document.getElementById('password-input');
+            const loginButton = document.getElementById('login-button');
+            const authError = document.getElementById('auth-error');
+            
+            // Check if already authenticated
+            if (localStorage.getItem('dcp_authenticated') === 'true') {
+                authOverlay.style.display = 'none';
+            }
+            
+            // Authentication function
+            function authenticate() {
+                const password = passwordInput.value;
+                if (password === 'ecadlabs') {
+                    localStorage.setItem('dcp_authenticated', 'true');
+                    authOverlay.style.display = 'none';
+                } else {
+                    authError.style.display = 'block';
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            }
+            
+            // Event listeners
+            loginButton.addEventListener('click', authenticate);
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    authenticate();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
