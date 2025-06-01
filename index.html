@@ -310,35 +310,30 @@
                                         <div class="fw-bold">Tezos Snapshot</div>
                                         Take snapshot of account balances and reputation on Tezos
                                     </div>
-                                    <span class="badge bg-primary rounded-pill">Complete</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">Base Smart Contract Assignment</div>
                                         Assign cutover address in Base Appchain smart contract
                                     </div>
-                                    <span class="badge bg-primary rounded-pill">Complete</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">User Authentication</div>
                                         Verify user can sign in and activate their account
                                     </div>
-                                    <span class="badge bg-secondary rounded-pill">Incomplete</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">Token Transfer</div>
                                         Verify tokens are sent to wallet after user interaction
                                     </div>
-                                    <span class="badge bg-secondary rounded-pill">Incomplete</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">Data Verification</div>
                                         Verify balances and reputation are preserved
                                     </div>
-                                    <span class="badge bg-secondary rounded-pill">Incomplete</span>
                                 </li>
                             </ol>
                         </div>
@@ -399,160 +394,6 @@
                 </div>
             </div>
         </section>
-    </div>
-
-    <!-- Token Claiming Process Modal -->
-    <div class="modal fade" id="tokenClaimModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Token Claiming Process Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h6 class="text-primary mb-3">User Experience Flow</h6>
-                    
-                    <div class="mb-4">
-                        <h6>1. Pre-Migration Communication</h6>
-                        <ul>
-                            <li>Users receive email/notification about upcoming migration</li>
-                            <li>Information provided about what to expect and timeline</li>
-                            <li>Documentation shared on how to prepare for migration</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6>2. Initial Visit Post-Migration</h6>
-                        <ul>
-                            <li>User visits DCP application after migration announcement</li>
-                            <li>Migration banner displayed with clear call-to-action</li>
-                            <li>Login options display supported authentication methods</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6>3. Authentication Process</h6>
-                        <ul>
-                            <li><strong>Google Auth Users:</strong> Standard OAuth flow with consent screen</li>
-                            <li><strong>X (Twitter) Users:</strong> Twitter authentication flow</li>
-                            <li><strong>Sentinel Wallet Users:</strong> Wallet connection modal with QR code and browser options</li>
-                            <li>Additional 2FA where applicable</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6>4. Account Migration Status</h6>
-                        <ul>
-                            <li>User shown personalized migration dashboard</li>
-                            <li>Status cards show: Wallet Balance, App Balance, Reputation</li>
-                            <li>Clear indication of tokens available to claim</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6>5. Token Claiming</h6>
-                        <ul>
-                            <li>User clicks "Claim Tokens" button</li>
-                            <li>Wallet connection prompt if not already connected</li>
-                            <li>Transaction details shown with gas estimation</li>
-                            <li>Signature request with clear explanation of what they're signing</li>
-                            <li>Progress indicator during transaction processing</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6>6. Confirmation & Onboarding</h6>
-                        <ul>
-                            <li>Success confirmation with transaction details</li>
-                            <li>Updated balance displayed</li>
-                            <li>Guided tour of new Base Appchain features</li>
-                            <li>Option to download transaction receipt</li>
-                        </ul>
-                    </div>
-                    
-                    <h6 class="text-primary mb-3">Edge Cases & Error Handling</h6>
-                    
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">Potential Issues</h6>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Failed Authentication</li>
-                                        <li>Account Not Found in Migration Contract</li>
-                                        <li>Insufficient Gas</li>
-                                        <li>Network Connectivity Issues</li>
-                                        <li>Transaction Failure</li>
-                                        <li>Wallet Connection Problems</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">Resolution Strategies</h6>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Clear error messages with recovery instructions</li>
-                                        <li>Support ticket submission flow</li>
-                                        <li>Manual claim process fallback</li>
-                                        <li>Transaction retry mechanism</li>
-                                        <li>Step-by-step wallet connection guide</li>
-                                        <li>FAQ section for common issues</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h6 class="text-primary mb-3">Testing Checklist</h6>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">Functional Testing</h6>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Authentication with all supported methods</li>
-                                        <li>Wallet connection across browsers</li>
-                                        <li>Smart contract interaction validation</li>
-                                        <li>Transaction signing and broadcasting</li>
-                                        <li>Token balance verification post-claim</li>
-                                        <li>Receipt generation and download</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">UX Testing</h6>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Process completion time measurement</li>
-                                        <li>Error message clarity assessment</li>
-                                        <li>Mobile vs. desktop experience</li>
-                                        <li>Accessibility compliance</li>
-                                        <li>Progressive enhancement for older browsers</li>
-                                        <li>User satisfaction ratings</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <section class="container mb-5">
