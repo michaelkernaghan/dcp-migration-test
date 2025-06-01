@@ -140,7 +140,7 @@
         <section id="test-accounts" class="mb-5">
             <div class="card">
                 <div class="card-header bg-light">
-                    <h3 class="h5 mb-0">DCP users pre-migration status</h3>
+                    <h3 class="h5 mb-0">DCP users token claiming journeys</h3>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -148,88 +148,60 @@
                             <thead class="bg-light">
                                 <tr>
                                     <th>Account Name</th>
-                                    <th>Tezos Address</th>
+                                    <th>User Role</th>
                                     <th>Authentication</th>
-                                    <th>Wallet Balance</th>
-                                    <th>App Balance</th>
-                                    <th>Locked Balance</th>
-                                    <th>Reputation</th>
+                                    <th>User Experience Video</th>
                                     <th>Moderator</th>
-                                    <th>NFT</th>
                                     <th>Verification</th>
                                 </tr>
                             </thead>
                             <tbody id="test-accounts-body">
                                 <tr id="account-kanley">
                                     <td>Kanley Stubrick</td>
-                                    <td><span class="text-monospace small">tz2XTbJRMrCCY4cNH9ji3DT2nVuFXm6YmP33</span></td>
+                                    <td><span class="badge bg-primary">Visionary Founder</span></td>
                                     <td><span class="badge bg-info">Google Auth</span></td>
-                                    <td>55.88</td>
-                                    <td>684.61</td>
-                                    <td>500</td>
-                                    <td>2500</td>
+                                    <td><a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
                                     <td><span class="text-success">Yes</span></td>
-                                    <td>1</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
                                 <tr id="account-herner">
                                     <td>Herner werzog</td>
-                                    <td><span class="text-monospace small">tz2HYEvNZ8yhzfCdExtcCkrgwCzSwS9mQDSN</span></td>
+                                    <td><span class="badge bg-warning text-dark">Security-minded Submitter</span></td>
                                     <td><span class="badge bg-info">Google Auth</span></td>
-                                    <td>0.98</td>
-                                    <td>6.06</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                    <td><a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
                                 <tr id="account-twitter">
                                     <td>TwitterProd</td>
-                                    <td><span class="text-monospace small">tz2GYLLxLJQyceXu1aqVALbpxKjfKf4q9Zog</span></td>
+                                    <td><span class="badge bg-info">Social Media User</span></td>
                                     <td><span class="badge bg-primary">X (Twitter)</span></td>
-                                    <td>1.37</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                    <td><a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
                                 <tr id="account-keith">
                                     <td>Keith Fellini</td>
-                                    <td><span class="text-monospace small">tz1VX9pnQepjrza4vVpyE9ddM8cJJL4iAWq9</span></td>
+                                    <td><span class="badge bg-success">Baker / Validator</span></td>
                                     <td><span class="badge bg-success">Sentinel Wallet</span></td>
-                                    <td>3080.69</td>
-                                    <td>194.9</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                    <td><a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td>0</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
                                 <tr id="account-sandra">
                                     <td>Sandra Blockchain</td>
-                                    <td><span class="text-monospace small">tz1e42w8ZaGAbM3gucbBy8iRypdbnqUj7oWY</span></td>
+                                    <td><span class="badge bg-warning text-dark">Hardware Wallet User</span></td>
                                     <td><span class="badge bg-warning">FIL Wallet (Ledger Nano S)</span></td>
-                                    <td>120.45</td>
-                                    <td>350.75</td>
-                                    <td>100</td>
-                                    <td>750</td>
+                                    <td><a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td>3</td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
                                 <tr id="account-new-user" class="table-secondary">
                                     <td>New User</td>
-                                    <td><span class="text-monospace small">N/A</span></td>
+                                    <td><span class="badge bg-dark">First-time User</span></td>
                                     <td><span class="badge bg-dark">None</span></td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                    <td><a href="#" class="btn btn-sm btn-outline-secondary disabled"><i class="bi bi-x-circle me-1"></i>No Journey</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td>0</td>
                                     <td><span class="badge bg-danger">Not Migrated</span></td>
                                 </tr>
                             </tbody>
