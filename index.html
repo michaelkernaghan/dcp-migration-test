@@ -249,16 +249,16 @@
                                     <td><span class="badge bg-primary">Experienced Frequent User</span></td>
                                     <td><span class="badge bg-info">Google Auth</span></td>
                                     <td><span class="text-muted">-</span></td>
-                                    <td><a href="journey-videos/kanley-stubrick-claiming-journey.mp4" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
+                                    <td><a href="https://www.loom.com/share/8254f9a22ab946b39a8efa34a961d8d5?sid=826a1a10-d7dd-4b7a-b85a-34412627e97c" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey (Loom)</a></td>
                                     <td><span class="text-success">Yes</span></td>
-                                    <td><span class="badge bg-secondary">Not Complete</span></td>
+                                    <td><span class="badge bg-success">Complete</span></td>
                                 </tr>
                                 <tr id="account-herner">
                                     <td>Herner werzog</td>
                                     <td><span class="badge bg-warning text-dark">Casual User</span></td>
                                     <td><span class="badge bg-info">Google Auth</span></td>
                                     <td><span class="text-muted">-</span></td>
-                                    <td><button class="btn btn-sm btn-outline-secondary" disabled><i class="bi bi-clock me-1"></i>No video yet</button></td>
+                                    <td><button class="btn btn-sm btn-outline-secondary" disabled><i class="bi bi-clock me-1"></i>Journey pending upload to Loom</button></td>
                                     <td><span class="text-danger">No</span></td>
                                     <td><span class="badge bg-secondary">Not Complete</span></td>
                                 </tr>
@@ -267,27 +267,27 @@
                                     <td><span class="badge bg-info">Social Media User</span></td>
                                     <td><span class="badge bg-primary">X (Twitter)</span></td>
                                     <td><span class="text-muted">-</span></td>
-                                    <td><a href="journey-videos/twitter-user-claiming-journey.mp4" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
+                                    <td><a href="https://www.loom.com/share/02a5b9e74499476282ab57cb6a0919b0?sid=38b47c6b-1808-4ff4-bf53-55d4fb3b6a85" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey (Loom)</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td><span class="badge bg-secondary">Not Complete</span></td>
+                                    <td><span class="badge bg-success">Complete</span></td>
                                 </tr>
                                 <tr id="account-keith">
                                     <td>Keith Fellini</td>
                                     <td><span class="badge bg-success">Baker / Validator</span></td>
                                     <td><span class="badge bg-success">Sentinel Wallet</span></td>
                                     <td><span class="badge bg-info">Receives delegations</span></td>
-                                    <td><a href="journey-videos/keith-fellini-claiming-journey.mp4" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
+                                    <td><a href="https://www.loom.com/share/62efcafd9ff447dbb0229b934ea30749?sid=4aca998b-223d-41e9-bd63-ff937b7d7cb3" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey (Loom)</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td><span class="badge bg-secondary">Not Complete</span></td>
+                                    <td><span class="badge bg-success">Complete</span></td>
                                 </tr>
                                 <tr id="account-sandra">
                                     <td>Sandra Blockchain</td>
                                     <td><span class="badge bg-warning text-dark">T4L3NT Mainnet Hodler</span></td>
                                     <td><span class="badge bg-warning">Ledger Nano S</span><br><small class="text-muted">+ Temple Wallet</small></td>
                                     <td><span class="badge bg-success">FILM → Keith Fellini</span><br><small class="text-muted">T4L3NT Mainnet</small></td>
-                                    <td><a href="journey-videos/sandra-blockchain-claiming-journey.mp4" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey</a></td>
+                                    <td><a href="https://www.loom.com/share/a84c3e596d95486f91605819a77f6e26?sid=05a09714-0997-4d53-b941-d9fed5907629" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-play-circle me-1"></i>View Journey (Loom)</a></td>
                                     <td><span class="text-danger">No</span></td>
-                                    <td><span class="badge bg-secondary">Not Complete</span></td>
+                                    <td><span class="badge bg-success">Complete</span></td>
                                 </tr>
                                 <tr id="account-new-user" class="table-secondary">
                                     <td>New User</td>
@@ -361,8 +361,25 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
+                                        <div class="fw-bold">DCP Account Declaration (Required for ALL logins)</div>
+                                        <small class="d-block text-muted mt-1">After Web3auth migration: User explicitly declares if they have an existing DCP account</small>
+                                        <div class="alert alert-warning p-2 mt-2 mb-0">
+                                            <small><strong>Critical Change:</strong> Email-based automatic detection was discontinued due to reliability issues. All users now see this dialog.</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">New Account Confirmation Warning</div>
+                                        If user selects "No" (new account), system shows orange warning requiring confirmation
+                                        <small class="d-block text-muted mt-1">Prevents accidental new account creation</small>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
                                         <div class="fw-bold">Eligibility Check</div>
-                                        System verifies user's account exists in the mongo database
+                                        For existing accounts: System verifies user's account exists in the mongo database
+                                        <small class="d-block text-muted mt-1">No longer uses email lookup due to reliability issues</small>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -393,8 +410,11 @@
                                     </div>
                                 </li>
                             </ol>
+                            <div class="alert alert-danger">
+                                <strong>Web3auth Migration Impact:</strong> The switch from Torus to Web3auth eliminated automatic user detection via Tezos address derivation. All users now must explicitly declare their account status to prevent migration errors.
+                            </div>
                             <div class="alert alert-info">
-                                <strong>Key Testing Areas:</strong> Authentication methods, signature validation, gas optimization, error handling/recovery, and cross-browser/device compatibility.
+                                <strong>Key Testing Areas:</strong> DCP Account Declaration dialog workflow, confirmation warnings for new accounts, authentication methods, signature validation, gas optimization, error handling/recovery, and cross-browser/device compatibility.
                             </div>
                         </div>
                     </div>
@@ -436,6 +456,153 @@
 [2025-04-10 14:22:34] INFO: Token balance for address 0x123... already processed
 [2025-04-10 14:22:36] INFO: Reputation migration for User ID 5678 already completed</code></pre>
                                 <p class="card-text mt-2">The migration log files would show entries like "already migrated" or "already processed" when the script is rerun, confirming this behavior in practice.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-left-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            Critical Migration Update: Torus → Web3auth Transition
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-danger mb-4">
+                            <h5 class="alert-heading">Breaking Change Identified</h5>
+                            <p>During the migration from Torus to Web3auth, we discovered critical issues with user identification that required immediate process changes.</p>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0">Previous Behavior (Torus)</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">
+                                                <i class="bi bi-check-circle text-success me-2"></i>
+                                                Could derive Tezos addresses from user wallets
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="bi bi-check-circle text-success me-2"></i>
+                                                Automatic user detection via wallet address lookup
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="bi bi-check-circle text-success me-2"></i>
+                                                Seamless authentication without user input
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0">Current Behavior (Web3auth)</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">
+                                                <i class="bi bi-x-circle text-danger me-2"></i>
+                                                Cannot derive Tezos keys from Web3auth wallets
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="bi bi-x-circle text-danger me-2"></i>
+                                                Email-based lookup proved unreliable
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="bi bi-check-circle text-success me-2"></i>
+                                                Manual DCP Account Declaration required
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">
+                                    <i class="bi bi-bug-fill me-2"></i>
+                                    Specific Issue Example: Bryan's Apple Account
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-3">This real-world example illustrates why email-based detection failed:</p>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Database Entry</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Auth Method</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-success">
+                                                <td>Entry 1</td>
+                                                <td><code>bryan</code></td>
+                                                <td>bryan.conway33@gmail.com</td>
+                                                <td>Google Auth</td>
+                                            </tr>
+                                            <tr class="table-warning">
+                                                <td>Entry 2</td>
+                                                <td><code>melsonnandela</code></td>
+                                                <td>bryan+prodapple@decentralized.pictures</td>
+                                                <td>Apple ID (correct account)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="alert alert-warning mt-3">
+                                    <p class="mb-0">
+                                        <strong>Problem:</strong> When Bryan logs in with Apple ID, he uses email <code>bryan.conway33@gmail.com</code>. 
+                                        The system finds the <code>bryan</code> account (wrong account) instead of <code>melsonnandela</code> (correct account).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h6 class="mb-0">
+                                    <i class="bi bi-shield-check me-2"></i>
+                                    Solution Implemented
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="text-primary mb-3">Mandatory DCP Account Declaration Dialog</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-success">For All Login Types:</h6>
+                                        <ul>
+                                            <li>Google Authentication</li>
+                                            <li>X (Twitter) Authentication</li>
+                                            <li>Apple ID Authentication</li>
+                                            <li>Wallet-based logins</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="text-info">Dialog Options:</h6>
+                                        <ul>
+                                            <li><strong>"Yes"</strong> - I have an existing DCP account</li>
+                                            <li><strong>"No"</strong> - I'm a new user (with confirmation warning)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info mt-3 mb-0">
+                                    <strong>Orange Warning for "No" Selection:</strong> When users select "No" (new account), the system displays an orange warning requiring confirmation to prevent accidental new account creation.
+                                </div>
                             </div>
                         </div>
                     </div>
