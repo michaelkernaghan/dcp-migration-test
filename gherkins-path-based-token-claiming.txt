@@ -1,0 +1,127 @@
+Feature: Social‑Login Migration 
+    Background:
+        Given the DCP → Base migration has finished
+        And Web3auth has replaced Torus authentication
+
+    Scenario: Google user completes migration
+        Given the user logs in with Google
+        When the DCP Account Declaration dialog appears
+        And the user selects "Yes" (I have an existing account)
+        When the migration confirmation dialog appears
+        Then it lists the preservation of reputation, FILMCredits → TALNT, and NFT migration
+        When the user clicks "OK"
+        Then asset discovery starts and all claimable assets are listed
+        And each status transitions from ISSUING → ISSUED in real time
+        When all assets are ISSUED the user clicks "OK"
+        Then they land on their DCP dashboard with updated balances
+
+    Scenario: Google user creates new account (with confirmation)
+        Given the user logs in with Google
+        When the DCP Account Declaration dialog appears
+        And the user selects "No" (I'm a new user)
+        Then an orange warning appears asking for confirmation
+        When the user confirms they want to create a new account
+        Then a new DCP account is created and linked to their Google identity
+        And they proceed through the new user onboarding flow
+
+    Scenario: Twitter user links an existing account
+        Given the user logs in with Twitter
+        When the DCP Account Declaration dialog appears
+        And the user selects "Yes"
+        Then a signing request is sent to their legacy wallet
+        When the signature succeeds the Base‑Appchain dialog appears
+        And the user proceeds as in *Google user completes migration*
+
+    Scenario: Apple user with multiple email addresses
+        Given the user logs in with Apple ID
+        When the DCP Account Declaration dialog appears
+        And the user selects "Yes" (I have an existing account)
+        Then the system prompts for manual account identification
+        # Note: This prevents the Bryan account mix-up scenario
+        When the user provides their DCP username or wallet address
+        Then the system verifies their identity via signature
+        And the migration proceeds normally
+
+Feature: External‑Wallet Migration 
+    Background:
+        Given the DCP → Base migration has finished
+        And the user opens the DCP app
+
+    Scenario: Sentinel/Temple user migrates with EVM wallet
+        Given the user connects a Tezos wallet (Sentinel or Temple)
+        When the DCP Account Declaration dialog appears and the user selects "Yes"
+        Then a legacy‑wallet signature is requested and confirmed
+        And the Base‑Appchain dialog shows the EVM address
+        When the user clicks "OK" the Issuing screen appears
+        Then DCP Ledger = ISSUING, External = UNISSUED
+        When the user verifies address and authorises TALNT transfer (2 signatures)
+        Then both sections become ISSUED and a completion dialog appears
+        And selecting "OK" redirects to the main DCP application
+        
+Feature: Wallet‑Only Migration – Sentinel 
+    Scenario: Sentinel user claims TALNT without a DCP account
+        Given the user visits /migration/
+        And connects a Sentinel T4L3NT wallet
+        And connects an EVM wallet (Coinbase / MetaMask)
+        When the DCP Account Declaration dialog appears
+        And the user selects "Yes" (I have tokens to claim)
+        When the Issuing dialog appears asset statuses start at ISSUING / UNISSUED
+        When the user signs "Verify T4L3NT Net Address" and "Authorise TALNT Transfer"
+        Then both assets move to ISSUED and the "You're all set!" page shows balances
+        
+Feature: Wallet‑Only Migration – Ledger 
+    Scenario: Ledger user claims TALNT via advanced flow
+        Given the user selects the **Ledger** tab on /migration/
+        When the DCP Account Declaration dialog appears
+        And the user selects "Yes" (I have tokens to claim)
+        When the user connects the Ledger device and selects an account
+        And connects an EVM wallet
+        Then the flow mirrors **Sentinel user claims TALNT** with two signatures and final confirmation
+        
+Feature: Account Declaration Dialog Testing
+    Scenario: User accidentally selects "No" but has existing account
+        Given any user logs in with any method
+        When the DCP Account Declaration dialog appears
+        And the user mistakenly selects "No"
+        Then an orange warning appears with text "Are you sure you want to create a new account?"
+        When the user realizes their mistake and cancels
+        Then they can select "Yes" to access their existing account
+        
+    Scenario: New user confirms account creation
+        Given a genuine new user logs in
+        When the DCP Account Declaration dialog appears
+        And the user selects "No" (I'm a new user)
+        And the orange warning appears
+        When the user confirms they want to create a new account
+        Then a new account is created successfully
+        And they receive appropriate onboarding
+
+Feature: Asset Status Engine 
+    Scenario Outline: Status transitions per asset type
+        Given the Issuing dialog shows <Asset> status <StartStatus>
+        When the blockchain operation for <Asset> completes
+        Then the status changes to ISSUED
+    Examples:
+        | Asset            | StartStatus |
+        | DCP Ledger       | ISSUING     |
+        | External Account | UNISSUED    |
+        | FilmCrew NFTs    | UNISSUED    |
+        
+Feature: Failure & Retry Handling 
+    Scenario: Transaction failure triggers automatic retry
+        Given the user is claiming assets
+        And the External Account transfer fails with a timeout
+        Then the UI marks the transfer as FAILED and starts a retry
+        When the retry succeeds the status becomes ISSUED and the flow continues
+
+Feature: Web3auth Migration Issues Prevention
+    Scenario: Bryan's Apple account scenario - Prevented
+        Given Bryan has two accounts in the database:
+        | Username      | Email                               | Auth Method |
+        | bryan         | bryan.conway33@gmail.com           | Google      |
+        | melsonnandela | bryan+prodapple@decentralized.pictures | Apple   |
+        When Bryan logs in with Apple ID using email bryan.conway33@gmail.com
+        Then the DCP Account Declaration dialog appears (no automatic email lookup)
+        When Bryan selects "Yes" and manually identifies as "melsonnandela"
+        Then the system correctly links to the melsonnandela account
+        And migration proceeds with the correct account data
