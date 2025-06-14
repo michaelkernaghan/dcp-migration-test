@@ -32,7 +32,7 @@ Feature: Social‑Login Migration
         When the signature succeeds the Base‑Appchain dialog appears
         And the user proceeds as in *Google user completes migration*
 
-    Scenario: Apple user with multiple email addresses
+    Scenario: Skipper Macintosh with multiple email addresses
         Given the user logs in with Apple ID
         When the DCP Account Declaration dialog appears
         And the user selects "Yes" (I have an existing account)
