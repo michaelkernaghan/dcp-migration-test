@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCP Migration - Gherkin Test Scenarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .gherkin-scenario {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 4px 4px 0;
+        }
+        .gherkin-scenario pre {
+            background-color: #f1f3f5;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .character-concerns {
+            background-color: #e9ecef;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .character-concerns ul {
+            margin-bottom: 0;
+        }
+        .character-concerns li {
+            margin-bottom: 0.5rem;
+        }
+        .character-concerns li:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-hdd-network me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gherkin-scenarios.html">Test Scenarios</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Gherkin Test Scenarios</h1>
+                        <p class="lead">
+                            This page documents our behavior-driven development (BDD) test scenarios using Gherkin syntax, 
+                            mapped to our character-based testing approach.
+                        </p>
+                        
+                        <div class="alert alert-info">
+                            <h4 class="alert-heading">Why Gherkin?</h4>
+                            <p>
+                                Gherkin scenarios provide several key benefits for our migration testing:
+                            </p>
+                            <ul>
+                                <li><strong>Clear Communication:</strong> Bridges the gap between technical and non-technical team members</li>
+                                <li><strong>Behavior Focus:</strong> Describes system behavior from the user's perspective</li>
+                                <li><strong>Test Automation:</strong> Can be directly converted into automated tests</li>
+                                <li><strong>Documentation:</strong> Serves as living documentation of expected system behavior</li>
+                                <li><strong>Requirements Validation:</strong> Ensures all requirements are testable and verified</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <h4 class="alert-heading">Character-Based Testing</h4>
+                            <p>
+                                Our Gherkin scenarios are organized around character roles because:
+                            </p>
+                            <ul>
+                                <li><strong>Real-World Testing:</strong> Each character represents a real user type with specific needs and behaviors</li>
+                                <li><strong>Comprehensive Coverage:</strong> Different characters test different aspects of the system</li>
+                                <li><strong>Edge Cases:</strong> Characters like Herner Werzog (whitehat tester) help identify potential issues</li>
+                                <li><strong>User Journey Validation:</strong> Each character's scenarios map to their complete user journey</li>
+                                <li><strong>Security Focus:</strong> Different authentication methods and security requirements are tested per character</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kanley Stubrick Scenarios -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="h5 mb-0">🧑‍🎬 Kanley Stubrick – The Visionary Founder</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="character-concerns">
+                            <h5>Key Concerns:</h5>
+                            <ul>
+                                <li>Preservation of moderator privileges and high reputation (40.4)</li>
+                                <li>Exact internal (55.88) vs. external (684.61) balance migration</li>
+                                <li>NFT "Focus Puller – Jack of Spades – Deck 80 – #4454" transfer</li>
+                                <li>Seamless migration of FILMCredits → TALNT and project submissions</li>
+                                <li>ID-verification status (Not Verified) must remain unchanged</li>
+                            </ul>
+                        </div>
+
+                        <div class="gherkin-scenario">
+                            <h5>Feature: Migration for High-Value Moderators</h5>
+                            <pre><code>Scenario: Kanley Stubrick completes migration preserving assets and privileges
+    Given the DCP → Base migration has finished
+    And the user logs in with Google (2FA disabled)
+    When the migration confirmation dialog appears
+    Then it lists the preservation of reputation, moderator role, FILMCredits → TALNT, and NFT transfer
+    When the user clicks "OK"
+    Then asset discovery starts and all claimable assets are listed
+    And each status transitions from ISSUING → ISSUED in real time
+    When all assets are ISSUED the user clicks "OK"
+    Then they land on their DCP dashboard with updated balances:
+        | Internal | External | Rep |
+        | 55.88    | 684.61   | 40.4 |
+    And their NFT "Focus Puller – Jack of Spades – Deck 80 – #4454" is present
+    And their moderator permissions remain active
+    And their ID-verification status is still "Not Verified"
+
+Scenario: Verify moderator actions during migration
+    When the user attempts moderator actions during migration
+    Then the system temporarily disables moderator functions
+    And displays appropriate status message
+    And restores moderator capabilities after migration
+    And logs all attempted actions during migration</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Herner Werzog Scenarios -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h2 class="h5 mb-0">🧑‍💻 Herner Werzog – The Whitehat Tester</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="character-concerns">
+                            <h5>Key Concerns:</h5>
+                            <ul>
+                                <li>System security and error handling during migration</li>
+                                <li>Edge case detection and reporting</li>
+                                <li>Validation of security measures</li>
+                                <li>Testing of recovery procedures</li>
+                                <li>Verification of audit logging</li>
+                            </ul>
+                        </div>
+
+                        <div class="gherkin-scenario">
+                            <h5>Feature: Migration for Whitehat Security Testing</h5>
+                            <pre><code>Scenario: Herner Werzog tests migration edge cases and error handling
+    Given the DCP → Base migration has finished
+    And the user logs in with Google (2FA enabled)
+
+Scenario: Attempt migration with invalid wallet connection
+    When the user attempts to connect an invalid wallet address
+    Then the system displays a clear error message
+    And logs the attempt for security review
+    And prevents any asset transfer
+
+Scenario: Test migration with expired session
+    When the user's session expires during migration
+    Then the system safely terminates the migration
+    And preserves all original balances
+    And requires re-authentication
+    And maintains the original migration state
+
+Scenario: Test concurrent migration attempts
+    When the user initiates migration from multiple browser tabs
+    Then only one migration process is allowed
+    And other attempts are blocked with appropriate messaging
+    And the active migration continues safely
+
+Scenario: Test migration with network interruption
+    When the network connection drops during asset transfer
+    Then the system detects the interruption
+    And rolls back any partial transfers
+    And provides clear recovery instructions
+    And maintains accurate balance records
+
+Scenario: Verify error logging and reporting
+    When any migration error occurs
+    Then the system logs detailed error information
+    And provides a unique error reference
+    And allows error reporting via Discord
+    And maintains audit trail of all attempts</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TwitterProd Scenarios -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h2 class="h5 mb-0">🤖 TwitterProd – The Social Proxy</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="character-concerns">
+                            <h5>Key Concerns:</h5>
+                            <ul>
+                                <li>Continuity of X (Twitter) social-auth integration</li>
+                                <li>Preservation of DCP Discord-portal access</li>
+                                <li>Handling of missing email data during migration</li>
+                                <li>Security of social authentication</li>
+                            </ul>
+                        </div>
+
+                        <div class="gherkin-scenario">
+                            <h5>Feature: Migration for Social-Integration Bots</h5>
+                            <pre><code>Scenario: TwitterProd migrates with missing email and retains social functionalities
+    Given the DCP → Base migration has finished
+    And the user logs in with Twitter
+    When the migration confirmation dialog appears
+    Then it lists the preservation of social-media integrations and Discord-portal access
+    When the user clicks "OK"
+    Then asset discovery starts and all claimable assets are listed
+    And each status transitions from ISSUING → ISSUED in real time
+    When all assets are ISSUED the user clicks "OK"
+    Then they land on their DCP dashboard with updated balances
+    And the system prompts for missing email information
+    When the user provides a valid email address
+    Then the social-media and Discord-portal integrations are fully operational
+
+Scenario: Verify social auth security during migration
+    When using social authentication
+    Then the system verifies the social token validity
+    And prevents token reuse
+    And requires fresh social authentication
+    And maintains secure session handling
+    And provides clear social auth status</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keith Fellini Scenarios -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h2 class="h5 mb-0">🧑‍🔧 Keith Fellini – The Blockchain Baker</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="character-concerns">
+                            <h5>Key Concerns:</h5>
+                            <ul>
+                                <li>Migration of large external balances (3080.69 TALNT)</li>
+                                <li>Preservation of validator status and Sentinel-wallet connection</li>
+                                <li>Mixed 2FA configuration & ID-verification "In Review" state</li>
+                                <li>Validator security during migration</li>
+                            </ul>
+                        </div>
+
+                        <div class="gherkin-scenario">
+                            <h5>Feature: Migration for Technical Validators</h5>
+                            <pre><code>Scenario: Keith Fellini migrates account preserving validator status and balances
+    Given the DCP → Base migration has finished
+    And the user connects a Sentinel wallet
+    When the migration confirmation dialog appears
+    Then it lists the preservation of validator status, external balances, 2FA configuration, and ID-verification state
+    When the user clicks "OK"
+    Then asset discovery starts and all claimable assets are listed
+    And each status transitions from ISSUING → ISSUED in real time
+    When all assets are ISSUED the user clicks "OK"
+    Then they land on their DCP dashboard with updated balances showing 3080.69 TALNT external
+    And their validator status remains active
+    And their ID-verification status shows "In Review"
+
+Scenario: Verify validator security during migration
+    When the user is a validator
+    Then the system requires additional security confirmations
+    And validates the current block height
+    And ensures no validator operations are in progress
+    And maintains delegation relationships
+    And provides clear status of validator operations</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sandra Blockchain Scenarios -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="h5 mb-0">🧑‍🎨 Sandra Blockchain – The TALNT Net Holder</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="character-concerns">
+                            <h5>Key Concerns:</h5>
+                            <ul>
+                                <li>Migration of TALNT tokens, 100 locked tokens, and 3 NFTs</li>
+                                <li>Preservation of Ledger Nano S (Sentinel) hardware-wallet authentication</li>
+                                <li>Zero-reputation state to remain unchanged</li>
+                                <li>Hardware wallet security</li>
+                            </ul>
+                        </div>
+
+                        <div class="gherkin-scenario">
+                            <h5>Feature: Migration for Passive Token Holders</h5>
+                            <pre><code>Scenario: Sandra Blockchain migrates TALNT tokens, locked balance, and NFTs via Ledger
+    Given the user selects the **Ledger** tab on /migration/
+    When the user connects the Ledger device and selects an account
+    And connects an EVM wallet
+    Then the Issuing dialog appears with asset statuses starting at ISSUING / UNISSUED
+    When the user signs "Verify T4L3NT Net Address", "Authorize TALNT Transfer", and "Authorize Locked-Token Transfer"
+    Then all assets move to ISSUED
+    And the "You're all set!" page shows updated balances, including 100 locked TALNT
+    And all three NFTs are present in the new wallet
+
+Scenario: Test hardware wallet security measures
+    When using a Ledger device
+    Then the system verifies the device is genuine
+    And requires physical confirmation for each transaction
+    And prevents automated signing attempts
+    And provides clear device connection status
+    And maintains secure communication channel</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New User Scenarios -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h2 class="h5 mb-0">🆕 New User – Post-Migration Newcomer</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="character-concerns">
+                            <h5>Key Concerns:</h5>
+                            <ul>
+                                <li>Seamless registration & onboarding with zero pre-existing data</li>
+                                <li>Successful email verification and welcome-token receipt</li>
+                                <li>Security of new account creation</li>
+                                <li>Rate limiting and abuse prevention</li>
+                            </ul>
+                        </div>
+
+                        <div class="gherkin-scenario">
+                            <h5>Feature: Onboarding for New Users Post-Migration</h5>
+                            <pre><code>Scenario: New user registers and accesses platform features post-migration
+    Given the DCP → Base migration has finished
+    And the user visits /signup/
+    When the user completes the registration form and verifies their email
+    Then their account is created with zero balances
+    And they can configure any authentication method (Google, X, Wallet)
+    And they receive a welcome-token grant if applicable
+    And they can access the DCP dashboard and all platform features
+
+Scenario: Verify new user security measures
+    When a new user registers
+    Then the system implements rate limiting
+    And validates email domain reputation
+    And checks for known malicious patterns
+    And requires strong password policies
+    And implements progressive security measures</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
