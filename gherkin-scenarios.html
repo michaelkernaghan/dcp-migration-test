@@ -442,6 +442,59 @@ Scenario: Verify new user security measures
                 </div>
             </div>
         </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Why Gherkin?</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>
+                                    Gherkin scenarios provide a structured, human-readable format for describing 
+                                    software behaviors. They bridge the gap between technical and non-technical 
+                                    stakeholders, making test cases accessible to everyone involved in the migration.
+                                </p>
+                                <p class="mb-0">
+                                    By using Given/When/Then syntax, we create clear, executable specifications 
+                                    that serve as both documentation and automated tests.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="character-images/gherkin.png" alt="Gherkin Syntax Example" 
+                                    class="img-fluid rounded" style="max-height: 200px;">
+                                <small class="text-muted d-block text-center mt-2">Gherkin syntax structure</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Why Role-Based Testing Works for Migration</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Role-based Gherkin scenarios are particularly effective for migration testing because:
+                        </p>
+                        <ul class="mb-3">
+                            <li><strong>User-Centric Validation:</strong> Each character represents a distinct user journey, ensuring we test real-world migration paths</li>
+                            <li><strong>State Preservation:</strong> By following specific user roles, we verify that critical state (balances, permissions, etc.) is correctly preserved</li>
+                            <li><strong>Edge Case Coverage:</strong> Different roles naturally surface different edge cases (e.g., Herner's security testing vs. Keith's validator role)</li>
+                            <li><strong>Cross-Service Testing:</strong> User journeys span multiple services, helping identify integration issues</li>
+                        </ul>
+                        <div class="alert alert-info mb-0">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Learn More:</strong> 
+                            <a href="migration-testing-challenges.html" class="alert-link">See how role-based testing fits into our overall migration testing strategy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="bg-light text-center text-lg-start mt-5">

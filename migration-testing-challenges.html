@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migration Testing Challenges - DCP Migration Testing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-arrow-repeat me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gherkin-scenarios.html">Test Scenarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="migration-testing-challenges.html">Testing Challenges</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="h3 mb-0">Testing Challenges in One-Shot Migration Cycles</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">
+                            Migrating a live system while guaranteeing data integrity, service continuity, and user journey preservation 
+                            introduces unique testing challenges in a "one-shot" migration model. This page documents these challenges 
+                            and our mitigation strategies.
+                        </p>
+
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>
+                            The DCP migration from Tezos to Base represents a complex, irreversible process that requires careful 
+                            planning and robust testing strategies to ensure success.
+                        </div>
+
+                        <h2 class="h4 mt-4 mb-3">Core Testing Challenges</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 25%">Constraint</th>
+                                        <th style="width: 35%">Why It's Hard</th>
+                                        <th style="width: 40%">Practical Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Full-stack reset required</strong></td>
+                                        <td>Each test must start from a pristine VM/container image, clean database snapshot, and cold services.</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Setup & teardown dwarf execution time</li>
+                                                <li>A single mis-step means scrapping the run and burning a full day</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Irreversible flow</strong></td>
+                                        <td>Steps such as schema upgrades or data transforms can't be rolled back inside a run.</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>No mid-flow re-tries; defects surface late</li>
+                                                <li>Debugging is post-mortem rather than interactive</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Long turnover (≈ 24h)</strong></td>
+                                        <td>Provisioning infra, ingesting TB-scale data, and allowing caches to warm adds clock time that can't be parallelised.</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Daily cadence at best</li>
+                                                <li>Defects discovered today push fixes to tomorrow</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>State explosion</strong></td>
+                                        <td>Dozens of services must land in a coherent state after reboot. Small ordering errors ripple across the cluster.</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Test matrix grows combinatorially (versions × regions × feature flags)</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Limited observability during migration window</strong></td>
+                                        <td>Logging buffers may flush late, and by the time alerts fire, the system has already progressed.</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Root-cause clues vanish unless proactively captured</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2 class="h4 mt-5 mb-3">Mitigation Tactics</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 30%">Strategy</th>
+                                        <th style="width: 70%">Implementation Benefits</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>BDD "character-role" scenarios</strong><br>
+                                            <small class="text-muted">Given/When/Then framed around Actor, Action, Outcome</small>
+                                        </td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Expresses complex cross-service flows in human-readable form</li>
+                                                <li>Lets devs, QA, and infra share the same acceptance criteria</li>
+                                                <li>Easier to spot missing edges (e.g., "Given a throttled API consumer...")</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Video capture of every run</strong>
+                                        </td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Single source of truth when logs are incomplete</li>
+                                                <li>Annotate timestamps when breaking events occur</li>
+                                                <li>Facilitates asynchronous triage by wider team without re-running</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Incremental snapshots inside the day-long cycle</strong>
+                                        </td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Take storage-level checkpoints at key milestones (post-import, pre-reboot)</li>
+                                                <li>Permits partial restores to shorten reruns when only the tail failed</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Parallel dry-runs on lightweight data</strong>
+                                        </td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Shift API-contract checks and smoke tests to "thin" environments</li>
+                                                <li>Catches obvious regressions before burning a full production-sized cycle</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Deterministic seeding & idempotent scripts</strong>
+                                        </td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Resets are predictable; fewer "works on my machine" anomalies</li>
+                                                <li>Makes video + log comparison across days meaningful</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Strict time-boxing & defect gating</strong>
+                                        </td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Auto-abort runs exceeding T+18h or failing P0 checks</li>
+                                                <li>Protects the one-day rhythm</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2 class="h4 mt-5 mb-3">Migration Testing Workflow</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-primary">T-0</div>
+                                        <div class="timeline-content">
+                                            <h5>Kick-off</h5>
+                                            <p>Spin new machines from golden images; seed baseline data</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-info">T+1</div>
+                                        <div class="timeline-content">
+                                            <h5>Migration Phase</h5>
+                                            <p>Run upgrade scripts once — no manual tweaks allowed</p>
+                                            <small class="text-muted">Videos roll continuously; BDD steps log checkpoints</small>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-info">T+2</div>
+                                        <div class="timeline-content">
+                                            <h5>Service Restart</h5>
+                                            <p>Bring the full mesh back up, verify health probes</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-info">T+3</div>
+                                        <div class="timeline-content">
+                                            <h5>BDD Verification Pass</h5>
+                                            <p>Execute role-based scenarios covering CRUD, auth, reporting, and rollback paths</p>
+                                            <small class="text-muted">Testing performed on sandbox endpoints</small>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-info">T+4</div>
+                                        <div class="timeline-content">
+                                            <h5>Artifact Harvest</h5>
+                                            <p>Collect logs, metrics, and 1–2 annotated video highlights</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-success">T+24</div>
+                                        <div class="timeline-content">
+                                            <h5>Decision Gate</h5>
+                                            <p>Green-light release, or analyze faults and restart cycle next day</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-4">
+                            <h5 class="alert-heading">Key Takeaway</h5>
+                            <p class="mb-0">
+                                This disciplined, observability-heavy workflow accepts the one-day overhead as a fixed cost, 
+                                then squeezes maximum learning out of each irreplaceable run. The combination of character-based 
+                                testing, comprehensive video capture, and strict process controls helps mitigate the inherent 
+                                challenges of one-shot migration testing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+        .timeline-badge {
+            position: absolute;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            font-weight: bold;
+        }
+        .timeline-content {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #0d6efd;
+        }
+        .timeline-content h5 {
+            margin-bottom: 10px;
+            color: #0d6efd;
+        }
+        .timeline-content p {
+            margin-bottom: 5px;
+        }
+        .timeline-content small {
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
