@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Gaps - DCP Migration Testing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-arrow-repeat me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gherkin-scenarios.html">Test Scenarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="migration-testing-challenges.html">Testing Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="test-gaps.html">Test Gaps</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header bg-danger text-white">
+                        <h1 class="h3 mb-0">Critical Test Gaps</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <strong>Target Date: June 17th</strong> - These gaps must be addressed before the migration deadline.
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 10%">Priority</th>
+                                        <th style="width: 45%">Gap</th>
+                                        <th style="width: 45%">Impact & Context</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-danger">
+                                        <td><strong>1</strong></td>
+                                        <td>
+                                            <strong>Staking Contract Flows Missing</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Deposit/withdraw scenarios</li>
+                                                <li>Variable-rate reward calculations</li>
+                                                <li>"Leave dust" rule implementation</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Staking is on the critical path; compounding algorithm still in refinement.
+                                            Risks untested UI & smart-contract edge cases.
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>2</strong></td>
+                                        <td>
+                                            <strong>Base-EOA Onboarding/Off-boarding</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Import existing DCP to Base EOA</li>
+                                                <li>Off-board back to mainnet</li>
+                                                <li>Failure mode handling</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Engineering chose Base EOA to simplify the hop; needs comprehensive testing
+                                            of both directions and error recovery.
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>3</strong></td>
+                                        <td>
+                                            <strong>Gas-Fee UX & Insufficient ETH Cases</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Zero ETH wallet scenarios</li>
+                                                <li>User warning systems</li>
+                                                <li>Dust balance handling</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            ETH on Base L2 identified as user pain-point; need scenarios that handle
+                                            insufficient gas and provide clear user guidance.
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>4</strong></td>
+                                        <td>
+                                            <strong>Exchange Integration Testing</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>BitMart integration</li>
+                                                <li>Bitrue integration</li>
+                                                <li>Token deposit/withdrawal endpoints</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Partners need block height for integration; requires sanity tests for
+                                            token deposit/withdrawal endpoints post-cutover.
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>5</strong></td>
+                                        <td>
+                                            <strong>Load & Concurrency Testing</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Multi-user scenarios</li>
+                                                <li>Rate limiting</li>
+                                                <li>Database locking</li>
+                                                <li>Base RPC throttling</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Launch day will see thousands of accounts hitting claim endpoint;
+                                            risk of system overload or throttling.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2 class="h4 mt-5 mb-3">High Priority Gaps</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 10%">Priority</th>
+                                        <th style="width: 45%">Gap</th>
+                                        <th style="width: 45%">Impact & Context</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>6</strong></td>
+                                        <td>
+                                            <strong>Chainlink Oracle & APR Logic</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Variable APR calculations</li>
+                                                <li>Rate change simulations</li>
+                                                <li>Out-of-bounds handling</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Prime-rate + 1% reward model requires testing of rate changes
+                                            and oracle data edge cases.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>7</strong></td>
+                                        <td>
+                                            <strong>Staking Contract Security</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Re-entrancy protection</li>
+                                                <li>Authorization checks</li>
+                                                <li>Race conditions</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Security review needed for staking-specific threats,
+                                            separate from migration testing.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>8</strong></td>
+                                        <td>
+                                            <strong>Bridging Flows</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Base App-chain ↔ Base mainnet</li>
+                                                <li>Base mainnet ↔ L1 Ethereum</li>
+                                                <li>Asset stranding prevention</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Users may bridge to access DEX liquidity;
+                                            bridge failure could strand assets.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>9</strong></td>
+                                        <td>
+                                            <strong>Mobile & Safari Coverage</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Safari desktop testing</li>
+                                                <li>iOS WalletConnect</li>
+                                                <li>In-app browser scenarios</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Matrix lacks explicit test results for Safari
+                                            and mobile browser edge cases.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>10</strong></td>
+                                        <td>
+                                            <strong>Accessibility & Localization</strong>
+                                            <ul class="mb-0 mt-2">
+                                                <li>Screen reader compatibility</li>
+                                                <li>Keyboard navigation</li>
+                                                <li>Internationalization</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            Public comms plan targets broad audience;
+                                            basic a11y and i18n checks needed.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2 class="h4 mt-5 mb-3">Action Items & Verification</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 5%">#</th>
+                                        <th style="width: 35%">Action</th>
+                                        <th style="width: 30%">Owner</th>
+                                        <th style="width: 30%">Verification Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-danger">
+                                        <td>1</td>
+                                        <td>
+                                            Add BDD "Staking" feature file covering:
+                                            <ul class="mb-0 mt-2">
+                                                <li>Stake/unstake flows</li>
+                                                <li>Reward accrual & claims</li>
+                                                <li>Gas-fail rollback</li>
+                                            </ul>
+                                        </td>
+                                        <td>Smart Contract Team + QA</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Unit-test contract</li>
+                                                <li>Cypress E2E recording</li>
+                                                <li>Dashboard update</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td>2</td>
+                                        <td>
+                                            Write onboarding/off-boarding Gherkin scenarios:
+                                            <ul class="mb-0 mt-2">
+                                                <li>Social-login flows</li>
+                                                <li>Wallet-only paths</li>
+                                                <li>Wrong EOA recovery</li>
+                                            </ul>
+                                        </td>
+                                        <td>Frontend Team</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Demo video</li>
+                                                <li>Pass/fail table</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td>3</td>
+                                        <td>
+                                            Create gas-fee edge-case harness:
+                                            <ul class="mb-0 mt-2">
+                                                <li>ETH balance simulation</li>
+                                                <li>Flow re-runs</li>
+                                            </ul>
+                                        </td>
+                                        <td>QA Automation</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Add "Gas-fail" badge</li>
+                                                <li>Dashboard tracking</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td>4</td>
+                                        <td>
+                                            Exchange integration testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>Sandbox coordination</li>
+                                                <li>Smoke tests</li>
+                                            </ul>
+                                        </td>
+                                        <td>DevOps + Exchange Team</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>API receipts</li>
+                                                <li>Dashboard updates</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td>5</td>
+                                        <td>
+                                            Load testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>200 req/s for 5 min</li>
+                                                <li>Claim & staking endpoints</li>
+                                            </ul>
+                                        </td>
+                                        <td>DevOps</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>95th percentile latency</li>
+                                                <li>Baseline comparison</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>
+                                            Chainlink oracle testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>Rate feed stubs</li>
+                                                <li>APR cap logic</li>
+                                            </ul>
+                                        </td>
+                                        <td>Smart Contract Team</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Coverage report</li>
+                                                <li>Test results</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>
+                                            Security testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>Re-entrancy probes</li>
+                                                <li>Signature replay</li>
+                                                <li>Race conditions</li>
+                                            </ul>
+                                        </td>
+                                        <td>Security Team</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>New feature file</li>
+                                                <li>Test results</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>
+                                            Bridge testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>LayerZero integration</li>
+                                                <li>Base bridge UI</li>
+                                            </ul>
+                                        </td>
+                                        <td>Frontend + Infra</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Bridge round-trip video</li>
+                                                <li>Test results</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>
+                                            Safari testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>macOS + iOS</li>
+                                                <li>TrustWallet integration</li>
+                                            </ul>
+                                        </td>
+                                        <td>QA Team</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Compatibility matrix</li>
+                                                <li>Test results</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>
+                                            Accessibility testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>axe-core audit</li>
+                                                <li>i18n testing</li>
+                                            </ul>
+                                        </td>
+                                        <td>Frontend Team</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Audit score</li>
+                                                <li>Violation list</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>
+                                            Role preservation testing:
+                                            <ul class="mb-0 mt-2">
+                                                <li>Moderator flags</li>
+                                                <li>Validator status</li>
+                                            </ul>
+                                        </td>
+                                        <td>Backend Team</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Assertion script</li>
+                                                <li>Dashboard table</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>
+                                            Support documentation:
+                                            <ul class="mb-0 mt-2">
+                                                <li>Error code catalog</li>
+                                                <li>Discord integration</li>
+                                            </ul>
+                                        </td>
+                                        <td>Comms + QA</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Published catalog</li>
+                                                <li>Support team review</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <h5 class="alert-heading">Next Steps</h5>
+                            <p class="mb-0">
+                                Critical gaps (1-5) must be addressed before June 17th. High priority items (6-12) should be 
+                                completed as soon as possible after the critical path items. All test results and verification 
+                                artifacts should be documented on the dashboard.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
