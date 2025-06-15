@@ -465,6 +465,301 @@
                                 artifacts should be documented on the dashboard.
                             </p>
                         </div>
+
+                        <div class="card mt-5">
+                            <div class="card-header bg-success text-white">
+                                <h2 class="h4 mb-0">Gherkin Scenarios Addressing Test Gaps</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-success">
+                                    <h5 class="alert-heading">Implementation Progress</h5>
+                                    <p class="mb-0">
+                                        The following Gherkin scenarios have been developed to address the identified test gaps.
+                                        Each feature file targets specific gaps and includes comprehensive test coverage.
+                                    </p>
+                                </div>
+
+                                <div class="accordion" id="gherkinAccordion">
+                                    <!-- Staking Feature -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#stakingFeature">
+                                                <strong>Staking Contract Flows</strong> - Addresses Gap #1
+                                            </button>
+                                        </h2>
+                                        <div id="stakingFeature" class="accordion-collapse collapse show" data-bs-parent="#gherkinAccordion">
+                                            <div class="accordion-body">
+                                                <p class="text-muted mb-3">Covers critical staking operations including deposit/withdraw, variable-rate rewards, and dust handling.</p>
+                                                <pre class="bg-light p-3 rounded"><code># features/staking.feature
+@critical @staking @mainnetReady
+Feature: Staking Talent on the new Base app‑chain
+
+  Background:
+    Given the migration snapshot has executed successfully
+    And "Kanley" has 1 000 TALNT in her Base EOA
+    And "Kanley" is connected to the DCP web app via Web3Auth
+
+  @happyPath
+  Scenario: Stake full balance minus required "dust" for fees
+    When Kanley clicks "Stake" and enters "1000" TALNT
+    Then the UI warns that at least 5 TALNT must remain for fees
+    When Kanley adjusts the amount to "995" TALNT and confirms
+    Then a staking transaction is broadcast to the Base app‑chain
+    And Kanley's staked balance is "995" TALNT
+    And her unstaked balance is "5" TALNT
+    And the activity log shows "Stake successful"
+
+  @rewardAccrual
+  Scenario: Accrue variable‑rate rewards for one epoch
+    Given Kanley has staked 500 TALNT
+    And the Chainlink oracle reports a prime inflation rate of 2.5 %
+    When one staking epoch elapses
+    Then Kanley's pending rewards equal 500 × (0.025 + 0.01) = 17.5 TALNT ±0.01
+
+  @partialUnstake
+  Scenario: Partially unstake during lock‑up
+    Given Kanley has 500 TALNT staked for at least one full epoch
+    When she requests to unstake "200" TALNT
+    Then the contract queues an exit transaction
+    And the UI shows an estimated unlock time ≤ 24 h
+    When the unlock period passes
+    And Kanley claims the 200 TALNT
+    Then her unstaked balance increases by 200 TALNT
+    And her staked balance decreases accordingly
+
+  @fullUnstake
+  Scenario: Attempt to unstake entire balance leaving zero for gas
+    Given Kanley has 5 TALNT unstaked and 995 TALNT staked
+    When she selects "Unstake max"
+    Then the UI blocks the action with error "INSUFFICIENT_DUST"
+    And suggests leaving at least 5 TALNT unstaked</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Onboarding/Offboarding Feature -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#onboardingFeature">
+                                                <strong>Base EOA Onboarding/Offboarding</strong> - Addresses Gap #2
+                                            </button>
+                                        </h2>
+                                        <div id="onboardingFeature" class="accordion-collapse collapse" data-bs-parent="#gherkinAccordion">
+                                            <div class="accordion-body">
+                                                <p class="text-muted mb-3">Focuses on offboarding to mainnet, as onboarding paths are already implemented.</p>
+                                                <pre class="bg-light p-3 rounded"><code># features/onboarding_offboarding_base_eoa.feature
+@critical @onboarding
+Feature: Seamless onboarding and off‑boarding using Base EOAs
+
+  Background:
+    Given the DCP migration banner is visible
+    And "Skipper" is a legacy DCP user with a social‑login wallet
+
+  @offBoard
+  Scenario: User off‑boards to Ethereum L1
+    Given "Keith" has an existing Base EOA with 2 000 TALNT
+    When Keith clicks "Off‑board → Mainnet"
+    Then the bridge modal explains fees in ETH and ETA
+    And Keith accepts the cost summary
+    When the bridging transaction confirms
+    Then Etherscan shows 2 000 TALNT in Keith's L1 wallet</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Gas Fee Edge Cases -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gasFeature">
+                                                <strong>Gas Fee Edge Cases</strong> - Addresses Gap #3
+                                            </button>
+                                        </h2>
+                                        <div id="gasFeature" class="accordion-collapse collapse" data-bs-parent="#gherkinAccordion">
+                                            <div class="accordion-body">
+                                                <p class="text-muted mb-3">Tests gas-fee handling and insufficient ETH scenarios.</p>
+                                                <pre class="bg-light p-3 rounded"><code># features/gas_fee_edge_cases.feature
+@critical @gasFees
+Feature: Gas‑fee guard‑rails during staking and bridging
+
+  Background:
+    Given "Herner" holds exactly 0.00009 ETH in his Base EOA
+    And the minimum gas required for an L2 transaction is 0.0001 ETH
+
+  @bridgeBlock
+  Scenario: Bridge attempt fails gracefully when ETH is insufficient
+    When Herner clicks "Bridge TALNT to L1"
+    Then the frontend displays error "NOT_ENOUGH_ETH"
+    And the action button is disabled
+
+  @stakeBlock
+  Scenario: Staking blocked with zero ETH balance
+    Given Herner has 0.00000 ETH in his Base EOA
+    When he tries to stake 10 TALNT
+    Then the UI shows error "GAS_BALANCE_ZERO"
+    And links to "Get ETH on Base" help article</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Security Testing -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#securityFeature">
+                                                <strong>Security Testing</strong> - Addresses Gap #7
+                                            </button>
+                                        </h2>
+                                        <div id="securityFeature" class="accordion-collapse collapse" data-bs-parent="#gherkinAccordion">
+                                            <div class="accordion-body">
+                                                <p class="text-muted mb-3">White-hat testing scenarios for staking contract security.</p>
+                                                <pre class="bg-light p-3 rounded"><code># features/herner_staking_security.feature
+@security @staking
+Feature: White‑hat exploits targeting the staking contract
+
+  Background:
+    Given the staking contract is deployed at address "<addr>"
+    And "Herner" controls a malicious contract "EvilStake"
+
+  @reentrancy
+  Scenario: Re‑entrancy attack during unstake
+    When Herner deposits 100 TALNT via EvilStake
+    And EvilStake triggers a recursive unstake call
+    Then the transaction is reverted with "REENTRANCY_GUARD"
+    And Herner's staked balance remains 100 TALNT
+
+  @oracleManipulation
+  Scenario: Oracle returns extreme APR value
+    Given the Chainlink oracle stub returns 999 % APR
+    When reward calculation runs
+    Then the contract caps APR at 15 %
+    And emits event "APR_CAPPED"
+
+  @sigReplay
+  Scenario: Off‑chain signed unstake replayed twice
+    Given Kanley signs an unstake permit for 300 TALNT
+    When Herner submits the permit
+    Then it executes successfully
+    When Herner submits the same permit again
+    Then the transaction reverts with "NONCE_ALREADY_USED"</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bridge Testing -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bridgeFeature">
+                                                <strong>Bridge Testing</strong> - Addresses Gap #8
+                                            </button>
+                                        </h2>
+                                        <div id="bridgeFeature" class="accordion-collapse collapse" data-bs-parent="#gherkinAccordion">
+                                            <div class="accordion-body">
+                                                <p class="text-muted mb-3">LayerZero bridge testing between Base L2 and app-chain.</p>
+                                                <pre class="bg-light p-3 rounded"><code># features/bridge_layerzero_base.feature
+@high @bridging
+Feature: Bridging TALNT via LayerZero between Base L2 and Base app‑chain
+
+  Background:
+    Given "Sandra" has 1 000 TALNT on Base L2
+    And the bridge UI is reachable at "/bridge"
+
+  @roundTrip
+  Scenario: Round‑trip bridge of 100 TALNT
+    When Sandra bridges 100 TALNT to the DCP app‑chain
+    Then the L2 txn hash is recorded
+    And the DCP app‑chain wallet shows +100 TALNT within 2 minutes
+    When Sandra sends 100 TALNT back to Base L2
+    Then her final app‑chain balance returns to the initial value
+
+  @slowRelayer
+  Scenario: Delayed relayer triggers status polling
+    Given the relayer is artificially delayed by 30 minutes
+    When Sandra bridges 50 TALNT
+    Then the UI shows "Pending (relayer queue)" status
+    And auto‑refreshes every 10 seconds until completion</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Safari Compatibility -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#safariFeature">
+                                                <strong>Safari Compatibility</strong> - Addresses Gap #9
+                                            </button>
+                                        </h2>
+                                        <div id="safariFeature" class="accordion-collapse collapse" data-bs-parent="#gherkinAccordion">
+                                            <div class="accordion-body">
+                                                <p class="text-muted mb-3">Safari and Trust Wallet integration testing.</p>
+                                                <pre class="bg-light p-3 rounded"><code># features/compat_safari_walletconnect.feature
+@high @crossBrowser
+Feature: Safari (iOS/macOS) + Trust Wallet compatibility
+
+  Background:
+    Given "Skipper" is on Safari version "17.0" on macOS
+    And "Skipper" uses Trust Wallet via WalletConnect
+
+  @tokenClaim
+  Scenario: Claiming TALNT in Safari with Trust Wallet
+    When Skipper scans the QR code
+    Then Trust Wallet shows the claim transaction
+    When Skipper confirms
+    Then the claim succeeds
+    And the DCP app displays "Success" without UI breakage</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Chainlink Oracle -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#oracleFeature">
+                                                <strong>Chainlink Oracle</strong> - Addresses Gap #6
+                                            </button>
+                                        </h2>
+                                        <div id="oracleFeature" class="accordion-collapse collapse" data-bs-parent="#gherkinAccordion">
+                                            <div class="accordion-body">
+                                                <p class="text-muted mb-3">APR calculation and oracle integration testing.</p>
+                                                <pre class="bg-light p-3 rounded"><code># features/chainlink_apr_oracle.feature
+@high @oracle
+Feature: APR calculation with Chainlink prime‑rate oracle
+
+  Background:
+    Given the oracle adaptor fetches `primeRate` once per epoch
+
+  @normal
+  Scenario: Normal prime rate input
+    Given primeRate = 2.75 %
+    When the epoch ends
+    Then the contract sets APR = 3.75 % (prime + 1)
+
+  @zeroRate
+  Scenario: Oracle returns zero
+    Given primeRate = 0.00 %
+    When the epoch ends
+    Then APR = 1.00 % (minimum)
+
+  @outlier
+  Scenario: Oracle spike filtered
+    Given primeRate = 47.00 %
+    When the epoch ends
+    Then APR is capped at 15.00 %
+    And event "APR_CAPPED" is emitted</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-info mt-4">
+                                    <h5 class="alert-heading">Implementation Status</h5>
+                                    <p class="mb-0">
+                                        These Gherkin scenarios directly address 7 of the 12 identified gaps. The remaining gaps
+                                        (4, 5, 10, 11, and 12) require different types of testing approaches (load testing,
+                                        accessibility testing, and support documentation) that are better suited to other
+                                        testing frameworks and tools.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
