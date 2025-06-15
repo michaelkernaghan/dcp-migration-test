@@ -674,6 +674,77 @@
         </div>
     </section>
 
+    <section class="container mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-images me-2"></i>
+                            Google Social Login Claiming Flow
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead mb-4">
+                            The following sequence shows the main claiming flow for users authenticating via Google social login.
+                            This represents the most common migration path, demonstrating the key steps from authentication
+                            through token claiming.
+                        </p>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <img src="claiming-flow-images/kubrik-one.png" class="card-img-top" alt="Step 1: Google Authentication">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Step 1: Google Authentication</h5>
+                                        <p class="card-text">User initiates the migration process by signing in with their Google account.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <img src="claiming-flow-images/kubrik-two.png" class="card-img-top" alt="Step 2: Account Declaration">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Step 2: Account Declaration</h5>
+                                        <p class="card-text">User confirms they have an existing DCP account, triggering the migration process.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <img src="claiming-flow-images/kubrik-three.png" class="card-img-top" alt="Step 3: Balance Verification">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Step 3: Balance Verification</h5>
+                                        <p class="card-text">System verifies and displays the user's available token balance for claiming.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <img src="claiming-flow-images/kubrik-four.png" class="card-img-top" alt="Step 4: Claim Confirmation">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Step 4: Claim Confirmation</h5>
+                                        <p class="card-text">User reviews and confirms the token claim, completing the migration process.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <h5 class="alert-heading">Flow Notes</h5>
+                            <ul class="mb-0">
+                                <li>This flow represents the standard path for Google-authenticated users</li>
+                                <li>Each step includes appropriate error handling and user feedback</li>
+                                <li>The process is designed to be idempotent - safe to retry if interrupted</li>
+                                <li>Users can view their migration status at any time from their profile</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-light text-center text-lg-start mt-5">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2025 DCP Migration Testing Dashboard
