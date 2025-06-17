@@ -546,7 +546,21 @@ Feature: Staking Talent on the new Base app‑chain
                                         </h2>
                                         <div id="onboardingFeature" class="accordion-collapse collapse" data-bs-parent="#gherkinAccordion">
                                             <div class="accordion-body">
-                                                <p class="text-muted mb-3">Focuses on offboarding to mainnet, as onboarding paths are already implemented.</p>
+                                                <div class="alert alert-success mb-3">
+                                                    <h6 class="alert-heading">Current Implementation Status</h6>
+                                                    <p class="mb-0">
+                                                        <i class="bi bi-check-circle-fill me-2"></i>
+                                                        <strong>EOA Claiming Flow:</strong> The current implementation successfully handles Base EOA creation and token claiming for all authentication methods (Google, X, Apple ID).
+                                                    </p>
+                                                </div>
+                                                <div class="alert alert-warning mb-3">
+                                                    <h6 class="alert-heading">Remaining Gap</h6>
+                                                    <p class="mb-0">
+                                                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                                        <strong>Offboarding to Mainnet:</strong> The offboarding flow from Base EOA back to Ethereum L1 is not yet implemented. This is the critical missing piece that needs to be addressed.
+                                                    </p>
+                                                </div>
+                                                <p class="text-muted mb-3">The following scenario focuses on the missing offboarding functionality:</p>
                                                 <pre class="bg-light p-3 rounded"><code># features/onboarding_offboarding_base_eoa.feature
 @critical @onboarding
 Feature: Seamless onboarding and off‑boarding using Base EOAs
@@ -563,6 +577,12 @@ Feature: Seamless onboarding and off‑boarding using Base EOAs
     And Keith accepts the cost summary
     When the bridging transaction confirms
     Then Etherscan shows 2 000 TALNT in Keith's L1 wallet</code></pre>
+                                                <div class="alert alert-info mt-3">
+                                                    <h6 class="alert-heading">Implementation Priority</h6>
+                                                    <p class="mb-0">
+                                                        While the EOA claiming flow is working well, the offboarding functionality is critical for users who need to move their tokens back to Ethereum L1. This should be implemented before the June 17th deadline.
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
