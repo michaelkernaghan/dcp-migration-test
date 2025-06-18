@@ -81,17 +81,321 @@
         </div>
     </div>
 
-    <!-- Bug Discovery Celebration -->
+    <!-- Jira Issue Reports - Wallet Integration Problems -->
     <div class="container mb-4">
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <img src="character-images/Bug Discovery Celebration.png" alt="Bug Discovery Celebration" class="img-fluid rounded" style="max-height: 300px;">
-                        <h4 class="mt-3 text-primary">Bug Discovery Celebration!</h4>
-                        <p class="text-muted">
-                            Our testing process continues to identify important issues that help improve the migration experience.
-                        </p>
+                <div class="card border-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Jira Issue Reports - Wallet Integration Problems
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning mb-4">
+                            <h6 class="alert-heading">
+                                <i class="bi bi-bug me-2"></i>
+                                Critical Wallet Integration Issues Identified
+                            </h6>
+                            <p class="mb-0">
+                                The following issues have been documented in Jira and are being actively investigated. 
+                                These problems affect the migration process and user experience for specific wallet combinations.
+                            </p>
+                        </div>
+
+                        <!-- MIG-60: Coinbase Wallet Integration Issue -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card border-danger">
+                                    <div class="card-header bg-danger text-white">
+                                        <h5 class="mb-0">
+                                            <i class="bi bi-ticket-detailed me-2"></i>
+                                            MIG-60: Coinbase Wallet Integration Problem
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h6 class="text-danger">Issue Description</h6>
+                                                <p>
+                                                    Coinbase Wallet integration is experiencing critical failures during the migration process. 
+                                                    Users attempting to connect Coinbase Wallet are encountering connection errors and 
+                                                    transaction signing failures that prevent successful token claiming.
+                                                </p>
+                                                
+                                                <h6 class="text-warning">Technical Details</h6>
+                                                <ul>
+                                                    <li><strong>Error Type:</strong> Wallet connection timeout and transaction signing failures</li>
+                                                    <li><strong>Affected Platforms:</strong> Chrome, Firefox, Edge, Brave</li>
+                                                    <li><strong>User Impact:</strong> Cannot complete migration process</li>
+                                                    <li><strong>Frequency:</strong> High - affects majority of Coinbase Wallet users</li>
+                                                </ul>
+
+                                                <h6 class="text-info">Current Status</h6>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="badge bg-danger me-2">Critical</span>
+                                                    <span class="badge bg-warning text-dark me-2">In Progress</span>
+                                                    <small class="text-muted">Issue being investigated by development team</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card bg-light">
+                                                    <div class="card-body">
+                                                        <h6 class="text-primary">Issue Metadata</h6>
+                                                        <table class="table table-sm mb-0">
+                                                            <tr>
+                                                                <td><strong>Jira ID:</strong></td>
+                                                                <td><a href="https://jira-dcp.atlassian.net/browse/MIG-60" target="_blank" class="text-decoration-none">MIG-60</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Priority:</strong></td>
+                                                                <td><span class="badge bg-danger">Critical</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Status:</strong></td>
+                                                                <td><span class="badge bg-warning text-dark">In Progress</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Assignee:</strong></td>
+                                                                <td>Development Team</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Created:</strong></td>
+                                                                <td>January 2025</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="alert alert-info mt-3">
+                                            <h6 class="alert-heading">Workaround</h6>
+                                            <p class="mb-2">Until this issue is resolved, users with Coinbase Wallet are advised to:</p>
+                                            <ul class="mb-0">
+                                                <li>Use MetaMask as an alternative wallet for migration</li>
+                                                <li>Try connecting via WalletConnect protocol</li>
+                                                <li>Contact support for manual assistance if needed</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MIG-61: MetaMask Wallet Integration Issue -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card border-warning">
+                                    <div class="card-header bg-warning text-dark">
+                                        <h5 class="mb-0">
+                                            <i class="bi bi-ticket-detailed me-2"></i>
+                                            MIG-61: MetaMask Wallet Integration Problem
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h6 class="text-warning">Issue Description</h6>
+                                                <p>
+                                                    MetaMask wallet integration is experiencing intermittent connection issues and 
+                                                    transaction signing problems. While not as severe as the Coinbase Wallet issue, 
+                                                    this affects the reliability of the migration process for MetaMask users.
+                                                </p>
+                                                
+                                                <h6 class="text-warning">Technical Details</h6>
+                                                <ul>
+                                                    <li><strong>Error Type:</strong> Intermittent connection failures and transaction signing delays</li>
+                                                    <li><strong>Affected Platforms:</strong> Chrome, Firefox, Edge, Brave</li>
+                                                    <li><strong>User Impact:</strong> Delayed or failed migration attempts</li>
+                                                    <li><strong>Frequency:</strong> Medium - affects some MetaMask users</li>
+                                                </ul>
+
+                                                <h6 class="text-info">Current Status</h6>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="badge bg-warning text-dark me-2">Medium</span>
+                                                    <span class="badge bg-info me-2">Under Investigation</span>
+                                                    <small class="text-muted">Issue being analyzed for root cause</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card bg-light">
+                                                    <div class="card-body">
+                                                        <h6 class="text-primary">Issue Metadata</h6>
+                                                        <table class="table table-sm mb-0">
+                                                            <tr>
+                                                                <td><strong>Jira ID:</strong></td>
+                                                                <td><a href="https://jira-dcp.atlassian.net/browse/MIG-61" target="_blank" class="text-decoration-none">MIG-61</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Priority:</strong></td>
+                                                                <td><span class="badge bg-warning text-dark">Medium</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Status:</strong></td>
+                                                                <td><span class="badge bg-info">Under Investigation</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Assignee:</strong></td>
+                                                                <td>Development Team</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Created:</strong></td>
+                                                                <td>January 2025</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="alert alert-warning mt-3">
+                                            <h6 class="alert-heading">Temporary Solution</h6>
+                                            <p class="mb-2">Users experiencing MetaMask issues can try:</p>
+                                            <ul class="mb-0">
+                                                <li>Refreshing the page and reconnecting the wallet</li>
+                                                <li>Clearing browser cache and cookies</li>
+                                                <li>Updating MetaMask to the latest version</li>
+                                                <li>Using a different browser if the issue persists</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Issue Resolution Timeline -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-info text-white">
+                                        <h6 class="mb-0">
+                                            <i class="bi bi-calendar-range me-2"></i>
+                                            Issue Resolution Timeline
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="text-danger">MIG-60 (Coinbase Wallet)</h6>
+                                                <div class="timeline">
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Issue Identified</strong>
+                                                            <small class="text-muted">January 2025</small>
+                                                        </div>
+                                                        <p class="mb-1">Critical connection failures reported</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Root Cause Analysis</strong>
+                                                            <small class="text-muted">In Progress</small>
+                                                        </div>
+                                                        <p class="mb-1">Investigating wallet integration code</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Fix Development</strong>
+                                                            <small class="text-muted">Pending</small>
+                                                        </div>
+                                                        <p class="mb-1">Awaiting root cause identification</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Testing & Deployment</strong>
+                                                            <small class="text-muted">Pending</small>
+                                                        </div>
+                                                        <p class="mb-1">Will be tested thoroughly before release</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="text-warning">MIG-61 (MetaMask)</h6>
+                                                <div class="timeline">
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Issue Identified</strong>
+                                                            <small class="text-muted">January 2025</small>
+                                                        </div>
+                                                        <p class="mb-1">Intermittent connection issues reported</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Root Cause Analysis</strong>
+                                                            <small class="text-muted">In Progress</small>
+                                                        </div>
+                                                        <p class="mb-1">Analyzing connection patterns</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Fix Development</strong>
+                                                            <small class="text-muted">Pending</small>
+                                                        </div>
+                                                        <p class="mb-1">Awaiting analysis completion</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong>Testing & Deployment</strong>
+                                                            <small class="text-muted">Pending</small>
+                                                        </div>
+                                                        <p class="mb-1">Will include regression testing</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Impact Assessment -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-secondary text-white">
+                                        <h6 class="mb-0">
+                                            <i class="bi bi-graph-down me-2"></i>
+                                            Impact Assessment
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="text-center">
+                                                    <h4 class="text-danger">High Impact</h4>
+                                                    <p class="text-muted">Coinbase Wallet Users</p>
+                                                    <div class="progress mb-2">
+                                                        <div class="progress-bar bg-danger" style="width: 85%">85%</div>
+                                                    </div>
+                                                    <small>Cannot complete migration</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-center">
+                                                    <h4 class="text-warning">Medium Impact</h4>
+                                                    <p class="text-muted">MetaMask Users</p>
+                                                    <div class="progress mb-2">
+                                                        <div class="progress-bar bg-warning" style="width: 45%">45%</div>
+                                                    </div>
+                                                    <small>Intermittent issues</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="text-center">
+                                                    <h4 class="text-success">Low Impact</h4>
+                                                    <p class="text-muted">Other Wallets</p>
+                                                    <div class="progress mb-2">
+                                                        <div class="progress-bar bg-success" style="width: 15%">15%</div>
+                                                    </div>
+                                                    <small>Minimal issues reported</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
