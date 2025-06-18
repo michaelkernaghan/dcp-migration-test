@@ -626,6 +626,606 @@
             </div>
         </section>
 
+        <!-- Deep Dive: Technical Artifacts & Source Documents -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-diagram-3 text-info me-2"></i>
+                Deep Dive: Technical Artifacts & Source Documents
+            </h2>
+            
+            <!-- Canonical Diagrams -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-images me-2"></i>
+                                Canonical Diagrams & Visual Architecture
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info mb-4">
+                                <strong>Note:</strong> These diagrams crystallize boundaries and data contracts for newcomers. 
+                                They provide the visual foundation for understanding DCP+ architecture and data flow.
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-diagram-3 display-4 text-primary mb-3"></i>
+                                            <h6 class="text-primary">Context Map</h6>
+                                            <p class="small text-muted">Bounded contexts and service boundaries showing Account Service, Streaming Service, and external integrations</p>
+                                            <div class="alert alert-warning p-2 mt-2">
+                                                <small><strong>Status:</strong> Available in Context Map PDF</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-cloud-arrow-up display-4 text-success mb-3"></i>
+                                            <h6 class="text-success">AWS Media Pipeline</h6>
+                                            <p class="small text-muted">Video transcoding, DRM, and streaming infrastructure showing MediaConvert → S3 → MediaPackage → CloudFront flow</p>
+                                            <div class="alert alert-warning p-2 mt-2">
+                                                <small><strong>Status:</strong> Available in Media Pipeline PDF</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-diagram-2 display-4 text-warning mb-3"></i>
+                                            <h6 class="text-warning">UML Entity Charts</h6>
+                                            <p class="small text-muted">Data model inheritance tree showing Content, SKUs, Wallets, Devices, Bills, and Telemetry entities</p>
+                                            <div class="alert alert-warning p-2 mt-2">
+                                                <small><strong>Status:</strong> Available in Part 1 & 2 PDFs</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed User Stories & Backlog -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-list-task me-2"></i>
+                                Detailed User Stories & MVP Backlog
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-success mb-4">
+                                <strong>Source:</strong> Design Planning & Strategy document (pp. 4-6) - P0-P3 backlog drives sprint planning
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-sm table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Priority</th>
+                                            <th>User Story</th>
+                                            <th>Acceptance Criteria</th>
+                                            <th>Platform</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-danger">
+                                            <td><span class="badge bg-danger">P0</span></td>
+                                            <td><strong>Licensor Content Upload</strong><br><small class="text-muted">As a content creator, I want to upload my film/TV content</small></td>
+                                            <td>Support MP4, MOV, AVI formats up to 4K resolution</td>
+                                            <td>Web</td>
+                                            <td><span class="badge bg-warning">In Progress</span></td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <td><span class="badge bg-danger">P0</span></td>
+                                            <td><strong>Viewer Authentication</strong><br><small class="text-muted">As a viewer, I want to sign in with my preferred method</small></td>
+                                            <td>Google, X, Apple ID, and wallet-based authentication</td>
+                                            <td>All</td>
+                                            <td><span class="badge bg-success">Complete</span></td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <td><span class="badge bg-danger">P0</span></td>
+                                            <td><strong>Content Playback</strong><br><small class="text-muted">As a viewer, I want to stream content in high quality</small></td>
+                                            <td>Adaptive bitrate streaming with DRM protection</td>
+                                            <td>All</td>
+                                            <td><span class="badge bg-warning">In Progress</span></td>
+                                        </tr>
+                                        <tr class="table-warning">
+                                            <td><span class="badge bg-warning text-dark">P1</span></td>
+                                            <td><strong>Subscription Management</strong><br><small class="text-muted">As a viewer, I want to manage my subscription</small></td>
+                                            <td>Subscribe, cancel, upgrade/downgrade plans</td>
+                                            <td>Web, Mobile</td>
+                                            <td><span class="badge bg-secondary">Not Started</span></td>
+                                        </tr>
+                                        <tr class="table-warning">
+                                            <td><span class="badge bg-warning text-dark">P1</span></td>
+                                            <td><strong>TALNT Balance Display</strong><br><small class="text-muted">As a user, I want to see my TALNT token balance</small></td>
+                                            <td>Real-time balance updates and transaction history</td>
+                                            <td>All</td>
+                                            <td><span class="badge bg-secondary">Not Started</span></td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td><span class="badge bg-info">P2</span></td>
+                                            <td><strong>Predictive Search</strong><br><small class="text-muted">As a viewer, I want intelligent content discovery</small></td>
+                                            <td>AI-powered recommendations and search</td>
+                                            <td>All</td>
+                                            <td><span class="badge bg-secondary">Not Started</span></td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td><span class="badge bg-info">P2</span></td>
+                                            <td><strong>Social Features</strong><br><small class="text-muted">As a viewer, I want to share and discuss content</small></td>
+                                            <td>Reviews, ratings, and social sharing</td>
+                                            <td>All</td>
+                                            <td><span class="badge bg-secondary">Not Started</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Concurrency Rules & Device Limits -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0">
+                                <i class="bi bi-device-hdd me-2"></i>
+                                Concurrency Rules & Device Limits
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-warning mb-4">
+                                <strong>Source:</strong> Information Model Part 2 (pp. 24-25) - Player and entitlement service need these numeric caps
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-primary">Device Registration Limits</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>User Type</th>
+                                                    <th>Max Devices</th>
+                                                    <th>Concurrency Limit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Free User</td>
+                                                    <td>3 devices</td>
+                                                    <td>1 concurrent stream</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Basic Subscriber</td>
+                                                    <td>10 devices</td>
+                                                    <td>2 concurrent streams</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Premium Subscriber</td>
+                                                    <td>20 devices</td>
+                                                    <td>4 concurrent streams</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Family Plan</td>
+                                                    <td>20 devices</td>
+                                                    <td>6 concurrent streams</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-success">SKU-Specific Rules</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Content Type</th>
+                                                    <th>Device Limit</th>
+                                                    <th>Special Rules</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Free Content (FVOD)</td>
+                                                    <td>Unlimited</td>
+                                                    <td>Ad-supported, TALNT rewards</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Premium Content (SVOD)</td>
+                                                    <td>Per subscription tier</td>
+                                                    <td>Subscription required</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pay-Per-View (TVOD)</td>
+                                                    <td>5 devices</td>
+                                                    <td>48-hour rental period</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Exclusive Content</td>
+                                                    <td>3 devices</td>
+                                                    <td>Premium subscription + additional fee</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info mt-3">
+                                <h6 class="alert-heading">Edge Cases & Special Handling</h6>
+                                <ul class="mb-0">
+                                    <li><strong>Hotel TVs:</strong> Temporary device registration with 24-hour expiration</li>
+                                    <li><strong>Shared Accounts:</strong> PIN-lock option for family plans</li>
+                                    <li><strong>Secondary Profiles:</strong> Each profile counts toward device limit</li>
+                                    <li><strong>VPN Detection:</strong> Geographic restrictions may affect device limits</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk & Compliance Matrix -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-danger text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-shield-exclamation me-2"></i>
+                                Risk & Compliance Matrix
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-danger mb-4">
+                                <strong>Source:</strong> Information Model Part 1 (ratings), Seeded lists & rules - Mandatory for legal/security review
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-primary">Content Rating Systems</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Region</th>
+                                                    <th>Rating System</th>
+                                                    <th>Implementation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>United States</td>
+                                                    <td>MPAA (G, PG, PG-13, R, NC-17)</td>
+                                                    <td><span class="badge bg-success">Complete</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>United Kingdom</td>
+                                                    <td>BBFC (U, PG, 12, 15, 18)</td>
+                                                    <td><span class="badge bg-warning">In Progress</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>European Union</td>
+                                                    <td>PEGI (3, 7, 12, 16, 18)</td>
+                                                    <td><span class="badge bg-secondary">Not Started</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Canada</td>
+                                                    <td>Canadian Home Video (G, PG, 14A, 18A, R)</td>
+                                                    <td><span class="badge bg-secondary">Not Started</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-warning">Geographic & VPN Restrictions</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Restriction Type</th>
+                                                    <th>Implementation</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Country Blocking</td>
+                                                    <td>IP-based geo-detection</td>
+                                                    <td><span class="badge bg-success">Complete</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>VPN Detection</td>
+                                                    <td>Known VPN IP ranges</td>
+                                                    <td><span class="badge bg-warning">In Progress</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Content Licensing</td>
+                                                    <td>Per-territory rights management</td>
+                                                    <td><span class="badge bg-warning">In Progress</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Data Residency</td>
+                                                    <td>GDPR-compliant data storage</td>
+                                                    <td><span class="badge bg-secondary">Not Started</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-warning mt-3">
+                                <h6 class="alert-heading">Immutability Rules & Audit Requirements</h6>
+                                <ul class="mb-0">
+                                    <li><strong>Never Delete:</strong> User accounts, payment records, content metadata</li>
+                                    <li><strong>Audit Trail:</strong> All financial transactions and content access logs</li>
+                                    <li><strong>Blockchain Immutability:</strong> Smart contract events and token transfers</li>
+                                    <li><strong>Compliance Reporting:</strong> Automated generation of regulatory reports</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Runtime Telemetry & Analytics -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-graph-up me-2"></i>
+                                Runtime Telemetry & Analytics Strategy
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info mb-4">
+                                <strong>Source:</strong> Information Model Part 2 introduces entities but site doesn't mention them
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 class="text-primary">User Behavior Analytics</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-eye text-primary me-2"></i>
+                                            <strong>Viewing Patterns:</strong> Watch time, completion rates, drop-off points
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-search text-primary me-2"></i>
+                                            <strong>Search Behavior:</strong> Query patterns, result clicks, discovery paths
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-heart text-primary me-2"></i>
+                                            <strong>Engagement Metrics:</strong> Reviews, ratings, social sharing
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-wallet2 text-primary me-2"></i>
+                                            <strong>Payment Analytics:</strong> Conversion rates, subscription churn
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-success">Technical Performance</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-speedometer2 text-success me-2"></i>
+                                            <strong>Streaming Quality:</strong> Bitrate adaptation, buffering events
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-globe text-success me-2"></i>
+                                            <strong>CDN Performance:</strong> Latency, throughput, regional metrics
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-check text-success me-2"></i>
+                                            <strong>Security Events:</strong> Failed authentications, DRM violations
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-currency-dollar text-success me-2"></i>
+                                            <strong>Blockchain Metrics:</strong> Gas costs, transaction success rates
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-warning">Business Intelligence</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-graph-up text-warning me-2"></i>
+                                            <strong>Revenue Analytics:</strong> ARPU, LTV, cohort analysis
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-people text-warning me-2"></i>
+                                            <strong>User Segmentation:</strong> Demographics, behavior clusters
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-collection text-warning me-2"></i>
+                                            <strong>Content Performance:</strong> Popularity, licensing costs, ROI
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-geo-alt text-warning me-2"></i>
+                                            <strong>Geographic Insights:</strong> Regional preferences, market penetration
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Source Documents & Links -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-file-earmark-text me-2"></i>
+                                Source Documents & Deep Dive Links
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-secondary mb-4">
+                                <strong>Note:</strong> These links allow readers to drill down without hunting for the underlying specifications
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-primary">Core Specification Documents</h6>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Information Model - Part 1</h6>
+                                                <small class="text-muted">Static catalogue entities and data contracts</small>
+                                            </div>
+                                            <span class="badge bg-primary">PDF</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Information Model - Part 2</h6>
+                                                <small class="text-muted">Viewer-runtime entities and telemetry</small>
+                                            </div>
+                                            <span class="badge bg-primary">PDF</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Context Map</h6>
+                                                <small class="text-muted">Bounded contexts and service boundaries</small>
+                                            </div>
+                                            <span class="badge bg-primary">PDF</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Media Pipeline Design</h6>
+                                                <small class="text-muted">Video transcoding, DRM, and streaming architecture</small>
+                                            </div>
+                                            <span class="badge bg-primary">PDF</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Design Planning & Strategy</h6>
+                                                <small class="text-muted">UX principles, competitor analysis, MVP backlog</small>
+                                            </div>
+                                            <span class="badge bg-primary">PDF</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-success">Implementation Resources</h6>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Smart Contract Repository</h6>
+                                                <small class="text-muted">TALNT Net contracts and deployment scripts</small>
+                                            </div>
+                                            <span class="badge bg-success">GitHub</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">API Documentation</h6>
+                                                <small class="text-muted">REST API specs and integration guides</small>
+                                            </div>
+                                            <span class="badge bg-info">Swagger</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Design System</h6>
+                                                <small class="text-muted">UI components and design tokens</small>
+                                            </div>
+                                            <span class="badge bg-warning">Figma</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Project Management</h6>
+                                                <small class="text-muted">Jira epics, sprints, and issue tracking</small>
+                                            </div>
+                                            <span class="badge bg-secondary">Jira</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Testing Strategy</h6>
+                                                <small class="text-muted">Comprehensive testing approach and test cases</small>
+                                            </div>
+                                            <span class="badge bg-danger">Internal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What's New Changelog -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-clock-history me-2"></i>
+                                What's New - Project Changelog
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-dark mb-4">
+                                <strong>Purpose:</strong> Track status changes from In Progress → Complete so stakeholders can see project evolution
+                            </div>
+                            
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-success">Smart Contract Layer - Complete</h6>
+                                        <small class="text-muted">2025-01-15</small>
+                                    </div>
+                                    <p class="mb-1">TALNT Net contracts deployed to Base L2 testnet with full test coverage</p>
+                                    <small class="text-muted">Status changed from "In Progress" to "Complete"</small>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-warning">Media Pipeline - In Progress</h6>
+                                        <small class="text-muted">2025-01-10</small>
+                                    </div>
+                                    <p class="mb-1">AWS MediaConvert integration completed, DRM implementation in progress</p>
+                                    <small class="text-muted">Expected completion: 2025-02-01</small>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-info">Core Services - In Progress</h6>
+                                        <small class="text-muted">2025-01-05</small>
+                                    </div>
+                                    <p class="mb-1">Account Service API development started, Streaming Service design in review</p>
+                                    <small class="text-muted">Expected completion: 2025-03-01</small>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-secondary">Client Applications - Not Started</h6>
+                                        <small class="text-muted">2025-01-01</small>
+                                    </div>
+                                    <p class="mb-1">Web client design approved, mobile and TV app development pending</p>
+                                    <small class="text-muted">Expected start: 2025-02-15</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Testing Strategy Call-to-Action -->
         <section class="mb-5">
             <div class="row">
