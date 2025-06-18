@@ -87,6 +87,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="test-gaps.html">Test Gaps</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="staking-contract-security-review.html">Security Review</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -757,6 +760,56 @@
                                 and "Wallet Services plugin is not connected" errors. MetaMask works correctly in the same scenario. 
                                 This is not a show-stopper but should be investigated for new user onboarding.
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Error Handling Example: Wallet Address Mismatch -->
+    <section class="container mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-left-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Error Handling Example: Wallet Address Mismatch (Google Auth)
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3">
+                            During migration testing, Google-authenticated users encountered a wallet address mismatch error when attempting to claim assets. The error messaging is clear and user-friendly, but the process cannot proceed until the correct wallet is connected. This issue was observed on multiple Google-auth accounts, while wallet-based users did not encounter the problem.
+                        </p>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <img src="claiming-flow-images/google-auth-migration-error-1.png" class="card-img-top" alt="Migration Error Dialog: DCP is now on Base">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Step 1: Migration Error Dialog</h5>
+                                        <p class="card-text">The user is informed that a previous claim attempt failed, but no data was lost. The process can be retried.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <img src="claiming-flow-images/google-auth-migration-error-2.png" class="card-img-top" alt="Wallet Address Mismatch Error">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Step 2: Wallet Address Mismatch</h5>
+                                        <p class="card-text">After clicking OK, the user receives an error indicating the connected wallet does not match the user account. The user is prompted to connect the correct wallet or contact support.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning mt-4">
+                            <h6 class="alert-heading">Testing Notes</h6>
+                            <ul class="mb-0">
+                                <li>Good error messaging is shown when a claim fails due to wallet mismatch.</li>
+                                <li>This issue was observed on multiple Google-auth accounts.</li>
+                                <li>Wallet-based user accounts did not encounter this problem.</li>
+                                <li>Further investigation is needed to ensure social login users can claim assets successfully.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
