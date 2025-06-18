@@ -491,73 +491,131 @@
             </div>
         </section>
 
-        <!-- Suggested Kickoff Agenda -->
+        <!-- Open Questions -->
         <section class="mb-5">
             <h2 class="mb-4">
-                <i class="bi bi-list-check text-success me-2"></i>
-                Suggested Kickoff Agenda (90 minutes)
+                <i class="bi bi-question-circle text-warning me-2"></i>
+                Open Questions Log (15 Items)
             </h2>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0">
+                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                Known Gaps Requiring Decisions
+                            </h5>
+                        </div>
                         <div class="card-body">
+                            <div class="alert alert-info mb-4">
+                                <strong>Note:</strong> These 15 open questions require decisions in the kickoff meeting to move the project forward effectively.
+                            </div>
+                            
                             <div class="row">
                                 <div class="col-md-6">
-                                    <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">Welcome & Goals</div>
-                                                <small class="text-muted">5 minutes</small>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">Product Narrative Demo</div>
-                                                <small class="text-muted">"From licensor upload to viewer playback" - 10 minutes</small>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">Architecture Walkthrough</div>
-                                                <small class="text-muted">Context-map & AWS media pipeline - 15 minutes</small>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">Data Model Primer</div>
-                                                <small class="text-muted">Highlights from Parts 1 & 2 - 10 minutes</small>
-                                            </div>
-                                        </li>
-                                    </ol>
+                                    <h6 class="text-primary mb-3">Product & UX Questions</h6>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Predictive Search</h6>
+                                            <p class="mb-1 small">How should content discovery and search functionality work?</p>
+                                            <span class="badge bg-warning text-dark">P2 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">TALNT Balance UI</h6>
+                                            <p class="mb-1 small">How should users view and interact with their TALNT token balances?</p>
+                                            <span class="badge bg-info">P1 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Device Registration Limits</h6>
+                                            <p class="mb-1 small">How to handle edge cases like hotel TVs and shared accounts?</p>
+                                            <span class="badge bg-warning text-dark">P0 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">User Onboarding Flow</h6>
+                                            <p class="mb-1 small">What should the new user experience look like?</p>
+                                            <span class="badge bg-info">P1 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Content Rating System</h6>
+                                            <p class="mb-1 small">Which rating systems should be supported (MPAA, TV-MA, etc.)?</p>
+                                            <span class="badge bg-warning text-dark">P0 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Geographic Restrictions</h6>
+                                            <p class="mb-1 small">How to implement and enforce geo-blocking?</p>
+                                            <span class="badge bg-danger">Critical</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">VPN Detection</h6>
+                                            <p class="mb-1 small">Should VPN usage be blocked or allowed?</p>
+                                            <span class="badge bg-warning text-dark">P0 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Content Moderation</h6>
+                                            <p class="mb-1 small">How to handle inappropriate content and user reports?</p>
+                                            <span class="badge bg-info">P1 Priority</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <div class="col-md-6">
-                                    <ol class="list-group list-group-numbered" start="5">
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">MVP Feature Set & Timeline</div>
-                                                <small class="text-muted">P0 stories, key milestones - 15 minutes</small>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">Risk & Compliance Panel</div>
-                                                <small class="text-muted">Ratings, geo, wallets, audit - 10 minutes</small>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">Open Questions & Decisions</div>
-                                                <small class="text-muted">15 minutes</small>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">Team Roles & Next Steps</div>
-                                                <small class="text-muted">Squads, ceremonies, action items - 10 minutes</small>
-                                            </div>
-                                        </li>
-                                    </ol>
+                                    <h6 class="text-primary mb-3">Technical & Business Questions</h6>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Revenue Split Percentages</h6>
+                                            <p class="mb-1 small">Final % splits between licensor / DCP / affiliates</p>
+                                            <span class="badge bg-danger">Critical</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Pricing Tiers</h6>
+                                            <p class="mb-1 small">Launch SKU catalogue and pricing structure</p>
+                                            <span class="badge bg-danger">Critical</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">DRM Key Management</h6>
+                                            <p class="mb-1 small">Who operates DRM key-server and rotation policy?</p>
+                                            <span class="badge bg-warning text-dark">P0 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Data Retention Policy</h6>
+                                            <p class="mb-1 small">Logging schema, retention periods, and PII masking</p>
+                                            <span class="badge bg-info">P1 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Audit Trail Requirements</h6>
+                                            <p class="mb-1 small">What data must be immutable and auditable?</p>
+                                            <span class="badge bg-warning text-dark">P0 Priority</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Team Ownership Matrix</h6>
+                                            <p class="mb-1 small">RACI for each bounded context and single-threaded owners</p>
+                                            <span class="badge bg-danger">Critical</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">MVP Scope Definition</h6>
+                                            <p class="mb-1 small">Which device should be primary for demo day?</p>
+                                            <span class="badge bg-danger">Critical</span>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6 class="mb-1">Sprint Cadence</h6>
+                                            <p class="mb-1 small">P0 acceptance criteria and sprint planning</p>
+                                            <span class="badge bg-warning text-dark">P0 Priority</span>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            
+                            <div class="alert alert-warning mt-4">
+                                <h6 class="alert-heading">
+                                    <i class="bi bi-exclamation-triangle me-2"></i>
+                                    Decision Requirements
+                                </h6>
+                                <p class="mb-2">Each open question needs:</p>
+                                <ul class="mb-0">
+                                    <li><strong>Assigned Owner:</strong> Who is responsible for resolving this question?</li>
+                                    <li><strong>Due Date:</strong> When must this decision be made?</li>
+                                    <li><strong>Decision Path:</strong> How will the final decision be made and communicated?</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
