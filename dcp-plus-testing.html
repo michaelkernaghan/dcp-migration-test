@@ -327,6 +327,31 @@
                                     </ul>
                                 </div>
                             </div>
+                            
+                            <!-- Enhanced Test Scenarios Based on DCP+ Requirements -->
+                            <div class="alert alert-info mt-3">
+                                <h6 class="alert-heading">Enhanced Test Scenarios from DCP+ Deep Dive</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>Monetization Testing:</strong>
+                                        <ul class="mb-0">
+                                            <li>FVOD reward distribution (TALNT tokens)</li>
+                                            <li>SVOD subscription payment processing</li>
+                                            <li>TVOD pay-per-view transactions</li>
+                                            <li>AVOD ad revenue sharing</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Compliance Testing:</strong>
+                                        <ul class="mb-0">
+                                            <li>Immutability rules enforcement</li>
+                                            <li>Audit trail generation</li>
+                                            <li>Regulatory reporting compliance</li>
+                                            <li>Data residency requirements</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -363,6 +388,584 @@
             </div>
         </section>
 
+        <!-- User Story Testing -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-person-check text-primary me-2"></i>
+                User Story Testing & Acceptance Criteria
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-list-task me-2"></i>
+                                P0-P3 User Story Test Scenarios
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-primary mb-4">
+                                <strong>Source:</strong> DCP+ Deep Dive - Detailed User Stories & MVP Backlog
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-sm table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Priority</th>
+                                            <th>User Story</th>
+                                            <th>Test Scenarios</th>
+                                            <th>Acceptance Criteria</th>
+                                            <th>Test Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-danger">
+                                            <td><span class="badge bg-danger">P0</span></td>
+                                            <td><strong>Licensor Content Upload</strong><br><small class="text-muted">As a content creator, I want to upload my film/TV content</small></td>
+                                            <td>
+                                                <ul class="list-unstyled small">
+                                                    <li>• File format validation (MP4, MOV, AVI)</li>
+                                                    <li>• Resolution testing (up to 4K)</li>
+                                                    <li>• Upload progress tracking</li>
+                                                    <li>• Error handling for failed uploads</li>
+                                                </ul>
+                                            </td>
+                                            <td>Support MP4, MOV, AVI formats up to 4K resolution</td>
+                                            <td><span class="badge bg-warning">In Progress</span></td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <td><span class="badge bg-danger">P0</span></td>
+                                            <td><strong>Viewer Authentication</strong><br><small class="text-muted">As a viewer, I want to sign in with my preferred method</small></td>
+                                            <td>
+                                                <ul class="list-unstyled small">
+                                                    <li>• Google OAuth flow</li>
+                                                    <li>• X (Twitter) authentication</li>
+                                                    <li>• Apple ID sign-in</li>
+                                                    <li>• Hardware wallet connection</li>
+                                                </ul>
+                                            </td>
+                                            <td>Google, X, Apple ID, and wallet-based authentication</td>
+                                            <td><span class="badge bg-success">Complete</span></td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <td><span class="badge bg-danger">P0</span></td>
+                                            <td><strong>Content Playback</strong><br><small class="text-muted">As a viewer, I want to stream content in high quality</small></td>
+                                            <td>
+                                                <ul class="list-unstyled small">
+                                                    <li>• Adaptive bitrate streaming</li>
+                                                    <li>• DRM protection validation</li>
+                                                    <li>• Cross-platform compatibility</li>
+                                                    <li>• Offline viewing (if applicable)</li>
+                                                </ul>
+                                            </td>
+                                            <td>Adaptive bitrate streaming with DRM protection</td>
+                                            <td><span class="badge bg-warning">In Progress</span></td>
+                                        </tr>
+                                        <tr class="table-warning">
+                                            <td><span class="badge bg-warning text-dark">P1</span></td>
+                                            <td><strong>Subscription Management</strong><br><small class="text-muted">As a viewer, I want to manage my subscription</small></td>
+                                            <td>
+                                                <ul class="list-unstyled small">
+                                                    <li>• Subscribe to plans</li>
+                                                    <li>• Cancel subscription</li>
+                                                    <li>• Upgrade/downgrade plans</li>
+                                                    <li>• Payment method management</li>
+                                                </ul>
+                                            </td>
+                                            <td>Subscribe, cancel, upgrade/downgrade plans</td>
+                                            <td><span class="badge bg-secondary">Not Started</span></td>
+                                        </tr>
+                                        <tr class="table-warning">
+                                            <td><span class="badge bg-warning text-dark">P1</span></td>
+                                            <td><strong>TALNT Balance Display</strong><br><small class="text-muted">As a user, I want to see my TALNT token balance</small></td>
+                                            <td>
+                                                <ul class="list-unstyled small">
+                                                    <li>• Real-time balance updates</li>
+                                                    <li>• Transaction history</li>
+                                                    <li>• Reward earning display</li>
+                                                    <li>• Token transfer functionality</li>
+                                                </ul>
+                                            </td>
+                                            <td>Real-time balance updates and transaction history</td>
+                                            <td><span class="badge bg-secondary">Not Started</span></td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td><span class="badge bg-info">P2</span></td>
+                                            <td><strong>Predictive Search</strong><br><small class="text-muted">As a viewer, I want intelligent content discovery</small></td>
+                                            <td>
+                                                <ul class="list-unstyled small">
+                                                    <li>• AI-powered recommendations</li>
+                                                    <li>• Search result relevance</li>
+                                                    <li>• Personalization accuracy</li>
+                                                    <li>• Performance under load</li>
+                                                </ul>
+                                            </td>
+                                            <td>AI-powered recommendations and search</td>
+                                            <td><span class="badge bg-secondary">Not Started</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Concurrency & Device Limit Testing -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-device-hdd text-warning me-2"></i>
+                Concurrency & Device Limit Testing
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0">
+                                <i class="bi bi-layers me-2"></i>
+                                Device Registration & Concurrency Validation
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-warning mb-4">
+                                <strong>Source:</strong> DCP+ Deep Dive - Concurrency Rules & Device Limits (Information Model Part 2, pp. 24-25)
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-primary">Device Limit Test Scenarios</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>User Type</th>
+                                                    <th>Max Devices</th>
+                                                    <th>Test Scenarios</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Free User</td>
+                                                    <td>3 devices</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Register 3 devices successfully</li>
+                                                            <li>• Block 4th device registration</li>
+                                                            <li>• Remove device and re-register</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Basic Subscriber</td>
+                                                    <td>10 devices</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Register 10 devices successfully</li>
+                                                            <li>• Block 11th device registration</li>
+                                                            <li>• Upgrade to Premium plan</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Premium Subscriber</td>
+                                                    <td>20 devices</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Register 20 devices successfully</li>
+                                                            <li>• Block 21st device registration</li>
+                                                            <li>• Family plan device sharing</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Family Plan</td>
+                                                    <td>20 devices</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Multiple profiles on same device</li>
+                                                            <li>• PIN-lock functionality</li>
+                                                            <li>• Secondary profile limits</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-success">Concurrency Limit Testing</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>User Type</th>
+                                                    <th>Concurrency Limit</th>
+                                                    <th>Test Scenarios</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Free User</td>
+                                                    <td>1 concurrent stream</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Start 1 stream successfully</li>
+                                                            <li>• Block 2nd concurrent stream</li>
+                                                            <li>• Resume after stream ends</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Basic Subscriber</td>
+                                                    <td>2 concurrent streams</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Start 2 streams simultaneously</li>
+                                                            <li>• Block 3rd concurrent stream</li>
+                                                            <li>• Cross-device streaming</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Premium Subscriber</td>
+                                                    <td>4 concurrent streams</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Start 4 streams simultaneously</li>
+                                                            <li>• Block 5th concurrent stream</li>
+                                                            <li>• Quality adaptation per stream</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Family Plan</td>
+                                                    <td>6 concurrent streams</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Multiple family members streaming</li>
+                                                            <li>• Profile-specific content access</li>
+                                                            <li>• Parental controls validation</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info mt-3">
+                                <h6 class="alert-heading">Edge Case Testing</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>Hotel TV Scenarios:</strong>
+                                        <ul class="mb-0">
+                                            <li>Temporary device registration (24-hour expiration)</li>
+                                            <li>Automatic cleanup after checkout</li>
+                                            <li>Multiple hotel stays handling</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Shared Account Scenarios:</strong>
+                                        <ul class="mb-0">
+                                            <li>PIN-lock functionality for family plans</li>
+                                            <li>Secondary profile device counting</li>
+                                            <li>VPN detection impact on limits</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance & Risk Testing -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-shield-exclamation text-danger me-2"></i>
+                Compliance & Risk Testing
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-danger text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-file-earmark-check me-2"></i>
+                                Regulatory Compliance & Security Validation
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-danger mb-4">
+                                <strong>Source:</strong> DCP+ Deep Dive - Risk & Compliance Matrix (Information Model Part 1)
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-primary">Content Rating System Testing</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Region</th>
+                                                    <th>Rating System</th>
+                                                    <th>Test Scenarios</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>United States</td>
+                                                    <td>MPAA (G, PG, PG-13, R, NC-17)</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Age verification for R/NC-17</li>
+                                                            <li>• Parental controls enforcement</li>
+                                                            <li>• Rating display accuracy</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>United Kingdom</td>
+                                                    <td>BBFC (U, PG, 12, 15, 18)</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• UK-specific age gates</li>
+                                                            <li>• Content filtering by rating</li>
+                                                            <li>• Regional compliance</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>European Union</td>
+                                                    <td>PEGI (3, 7, 12, 16, 18)</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• GDPR compliance validation</li>
+                                                            <li>• EU-specific restrictions</li>
+                                                            <li>• Cross-border content access</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-warning">Geographic & VPN Testing</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Restriction Type</th>
+                                                    <th>Implementation</th>
+                                                    <th>Test Scenarios</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Country Blocking</td>
+                                                    <td>IP-based geo-detection</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Blocked country access denial</li>
+                                                            <li>• Allowed country access</li>
+                                                            <li>• IP spoofing attempts</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>VPN Detection</td>
+                                                    <td>Known VPN IP ranges</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• VPN usage detection</li>
+                                                            <li>• VPN blocking enforcement</li>
+                                                            <li>• False positive handling</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Content Licensing</td>
+                                                    <td>Per-territory rights</td>
+                                                    <td>
+                                                        <ul class="list-unstyled small">
+                                                            <li>• Territory-specific content</li>
+                                                            <li>• Licensing expiration</li>
+                                                            <li>• Rights enforcement</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-warning mt-3">
+                                <h6 class="alert-heading">Immutability & Audit Testing</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>Never Delete Entities:</strong>
+                                        <ul class="mb-0">
+                                            <li>User account deletion prevention</li>
+                                            <li>Payment record preservation</li>
+                                            <li>Content metadata retention</li>
+                                            <li>Audit trail completeness</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Compliance Reporting:</strong>
+                                        <ul class="mb-0">
+                                            <li>Automated report generation</li>
+                                            <li>Regulatory data export</li>
+                                            <li>Audit log accessibility</li>
+                                            <li>Data residency validation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics & Telemetry Testing -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-graph-up text-info me-2"></i>
+                Analytics & Telemetry Testing
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-speedometer2 me-2"></i>
+                                Runtime Telemetry & Analytics Validation
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info mb-4">
+                                <strong>Source:</strong> DCP+ Deep Dive - Runtime Telemetry & Analytics Strategy (Information Model Part 2)
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 class="text-primary">User Behavior Analytics Testing</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-eye text-primary me-2"></i>
+                                            <strong>Viewing Patterns:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Watch time tracking accuracy</li>
+                                                <li>• Completion rate calculation</li>
+                                                <li>• Drop-off point identification</li>
+                                                <li>• Binge-watching detection</li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-search text-primary me-2"></i>
+                                            <strong>Search Behavior:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Query pattern analysis</li>
+                                                <li>• Result click tracking</li>
+                                                <li>• Discovery path mapping</li>
+                                                <li>• Search abandonment rates</li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-heart text-primary me-2"></i>
+                                            <strong>Engagement Metrics:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Review submission testing</li>
+                                                <li>• Rating accuracy validation</li>
+                                                <li>• Social sharing tracking</li>
+                                                <li>• Community interaction metrics</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-success">Technical Performance Testing</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-speedometer2 text-success me-2"></i>
+                                            <strong>Streaming Quality:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Bitrate adaptation accuracy</li>
+                                                <li>• Buffering event detection</li>
+                                                <li>• Quality degradation tracking</li>
+                                                <li>• Network condition correlation</li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-globe text-success me-2"></i>
+                                            <strong>CDN Performance:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Latency measurement accuracy</li>
+                                                <li>• Throughput monitoring</li>
+                                                <li>• Regional performance metrics</li>
+                                                <li>• Failover detection</li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-check text-success me-2"></i>
+                                            <strong>Security Events:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Failed authentication tracking</li>
+                                                <li>• DRM violation detection</li>
+                                                <li>• Suspicious activity monitoring</li>
+                                                <li>• Security incident reporting</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-warning">Business Intelligence Testing</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-graph-up text-warning me-2"></i>
+                                            <strong>Revenue Analytics:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• ARPU calculation accuracy</li>
+                                                <li>• LTV prediction validation</li>
+                                                <li>• Cohort analysis testing</li>
+                                                <li>• Churn prediction accuracy</li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-people text-warning me-2"></i>
+                                            <strong>User Segmentation:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Demographic clustering accuracy</li>
+                                                <li>• Behavior pattern identification</li>
+                                                <li>• Segment overlap detection</li>
+                                                <li>• Targeting effectiveness</li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-collection text-warning me-2"></i>
+                                            <strong>Content Performance:</strong>
+                                            <ul class="small mt-1">
+                                                <li>• Popularity ranking accuracy</li>
+                                                <li>• Licensing cost tracking</li>
+                                                <li>• ROI calculation validation</li>
+                                                <li>• Content recommendation testing</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Media Pipeline Testing -->
         <section class="mb-5">
             <h2 class="mb-4">
@@ -379,6 +982,10 @@
                             </h5>
                         </div>
                         <div class="card-body">
+                            <div class="alert alert-warning mb-4">
+                                <strong>Source:</strong> DCP+ Deep Dive - Media Pipeline Design (Video transcoding, DRM, and streaming architecture)
+                            </div>
+                            
                             <div class="row">
                                 <div class="col-md-4">
                                     <h6 class="text-primary">Encoding Quality Tests</h6>
@@ -386,18 +993,29 @@
                                         <li class="mb-2">
                                             <i class="bi bi-check-circle text-success me-2"></i>
                                             <strong>Multi-bitrate Renditions:</strong> Quality validation across resolutions
-                                        </li>
-                                        <li class="mb-2">
-                                            <i class="bi bi-check-circle text-success me-2"></i>
-                                            <strong>Codec Compatibility:</strong> H.264, H.265, VP9 support testing
+                                            <ul class="small mt-1">
+                                                <li>• 4K, 1080p, 720p, 480p, 360p</li>
+                                                <li>• H.264, H.265, VP9 codec support</li>
+                                                <li>• Adaptive bitrate switching</li>
+                                            </ul>
                                         </li>
                                         <li class="mb-2">
                                             <i class="bi bi-check-circle text-success me-2"></i>
                                             <strong>Audio Quality:</strong> Multi-language and surround sound validation
+                                            <ul class="small mt-1">
+                                                <li>• Stereo and 5.1 surround sound</li>
+                                                <li>• Multiple language tracks</li>
+                                                <li>• Audio sync validation</li>
+                                            </ul>
                                         </li>
                                         <li class="mb-2">
                                             <i class="bi bi-check-circle text-success me-2"></i>
                                             <strong>Processing Time:</strong> SLA compliance for encoding duration
+                                            <ul class="small mt-1">
+                                                <li>• 4K content: < 2 hours</li>
+                                                <li>• 1080p content: < 1 hour</li>
+                                                <li>• Batch processing validation</li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </div>
@@ -407,18 +1025,29 @@
                                         <li class="mb-2">
                                             <i class="bi bi-shield-lock text-warning me-2"></i>
                                             <strong>Key Generation:</strong> DRM key creation and distribution
+                                            <ul class="small mt-1">
+                                                <li>• Widevine, PlayReady, FairPlay</li>
+                                                <li>• Key rotation testing</li>
+                                                <li>• License server integration</li>
+                                            </ul>
                                         </li>
                                         <li class="mb-2">
                                             <i class="bi bi-shield-lock text-warning me-2"></i>
                                             <strong>License Validation:</strong> User entitlement verification
-                                        </li>
-                                        <li class="mb-2">
-                                            <i class="bi bi-shield-lock text-warning me-2"></i>
-                                            <strong>Key Rotation:</strong> Periodic key updates and migration
+                                            <ul class="small mt-1">
+                                                <li>• Subscription status checking</li>
+                                                <li>• Geographic restrictions</li>
+                                                <li>• Device limit enforcement</li>
+                                            </ul>
                                         </li>
                                         <li class="mb-2">
                                             <i class="bi bi-shield-lock text-warning me-2"></i>
                                             <strong>Watermarking:</strong> Content fingerprinting and tracking
+                                            <ul class="small mt-1">
+                                                <li>• Invisible watermarking</li>
+                                                <li>• Piracy detection</li>
+                                                <li>• Forensic analysis support</li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </div>
@@ -428,179 +1057,31 @@
                                         <li class="mb-2">
                                             <i class="bi bi-globe text-info me-2"></i>
                                             <strong>Global Distribution:</strong> Multi-region content delivery
+                                            <ul class="small mt-1">
+                                                <li>• North America, Europe, Asia</li>
+                                                <li>• Edge location testing</li>
+                                                <li>• Regional failover</li>
+                                            </ul>
                                         </li>
                                         <li class="mb-2">
                                             <i class="bi bi-speedometer2 text-info me-2"></i>
                                             <strong>Latency Testing:</strong> Response time across geographic regions
+                                            <ul class="small mt-1">
+                                                <li>• < 100ms for major regions</li>
+                                                <li>• < 200ms for secondary regions</li>
+                                                <li>• Network condition simulation</li>
+                                            </ul>
                                         </li>
                                         <li class="mb-2">
                                             <i class="bi bi-arrow-repeat text-info me-2"></i>
                                             <strong>Failover Testing:</strong> CDN redundancy and recovery
-                                        </li>
-                                        <li class="mb-2">
-                                            <i class="bi bi-graph-up text-info me-2"></i>
-                                            <strong>Load Testing:</strong> Concurrent user capacity validation
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- User Experience Testing -->
-        <section class="mb-5">
-            <h2 class="mb-4">
-                <i class="bi bi-person-check text-primary me-2"></i>
-                User Experience Testing
-            </h2>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">
-                                <i class="bi bi-phone me-2"></i>
-                                Cross-Platform Testing
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <h6 class="text-primary">Web Platforms</h6>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-1">
-                                            <i class="bi bi-browser-chrome text-primary me-2"></i>
-                                            Chrome (Desktop/Mobile)
-                                        </li>
-                                        <li class="mb-1">
-                                            <i class="bi bi-browser-safari text-info me-2"></i>
-                                            Safari (Desktop/Mobile)
-                                        </li>
-                                        <li class="mb-1">
-                                            <i class="bi bi-browser-firefox text-warning me-2"></i>
-                                            Firefox (Desktop/Mobile)
-                                        </li>
-                                        <li class="mb-1">
-                                            <i class="bi bi-browser-edge text-success me-2"></i>
-                                            Edge (Desktop)
+                                            <ul class="small mt-1">
+                                                <li>• Primary CDN failure</li>
+                                                <li>• Automatic failover</li>
+                                                <li>• Recovery time validation</li>
+                                            </ul>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="col-6">
-                                    <h6 class="text-success">TV Platforms</h6>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-1">
-                                            <i class="bi bi-tv text-success me-2"></i>
-                                            Android TV
-                                        </li>
-                                        <li class="mb-1">
-                                            <i class="bi bi-tv text-primary me-2"></i>
-                                            Apple TV
-                                        </li>
-                                        <li class="mb-1">
-                                            <i class="bi bi-tv text-info me-2"></i>
-                                            Smart TVs
-                                        </li>
-                                        <li class="mb-1">
-                                            <i class="bi bi-tv text-warning me-2"></i>
-                                            Gaming Consoles
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header bg-success text-white">
-                            <h5 class="mb-0">
-                                <i class="bi bi-wallet2 me-2"></i>
-                                Authentication & Payment Testing
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="text-primary">Authentication Methods</h6>
-                            <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <i class="bi bi-google text-danger me-2"></i>
-                                    <strong>Google Auth:</strong> OAuth flow and token validation
-                                </li>
-                                <li class="mb-2">
-                                    <i class="bi bi-twitter text-info me-2"></i>
-                                    <strong>X (Twitter):</strong> Social login integration
-                                </li>
-                                <li class="mb-2">
-                                    <i class="bi bi-apple text-dark me-2"></i>
-                                    <strong>Apple ID:</strong> Sign in with Apple validation
-                                </li>
-                                <li class="mb-2">
-                                    <i class="bi bi-wallet2 text-success me-2"></i>
-                                    <strong>Hardware Wallets:</strong> Ledger, MetaMask integration
-                                </li>
-                            </ul>
-                            <h6 class="text-warning mt-3">Payment Scenarios</h6>
-                            <ul class="list-unstyled">
-                                <li class="mb-1">
-                                    <i class="bi bi-credit-card text-primary me-2"></i>
-                                    Subscription payments
-                                </li>
-                                <li class="mb-1">
-                                    <i class="bi bi-cart text-success me-2"></i>
-                                    Pay-per-view transactions
-                                </li>
-                                <li class="mb-1">
-                                    <i class="bi bi-currency-dollar text-warning me-2"></i>
-                                    TALNT token transfers
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Risk Matrix -->
-        <section class="mb-5">
-            <h2 class="mb-4">
-                <i class="bi bi-exclamation-triangle text-warning me-2"></i>
-                Testing Risk Matrix
-            </h2>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5 class="mb-0">Risk Assessment by Component</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="risk-matrix">
-                                <div class="row g-0">
-                                    <div class="col-3">
-                                        <div class="risk-cell risk-high">
-                                            <h6 class="text-danger">High Risk</h6>
-                                            <small>Smart Contracts<br>Payment Processing<br>DRM Security</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="risk-cell risk-medium">
-                                            <h6 class="text-warning">Medium Risk</h6>
-                                            <small>Media Pipeline<br>User Authentication<br>Data Migration</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="risk-cell risk-low">
-                                            <h6 class="text-info">Low Risk</h6>
-                                            <small>UI Components<br>Analytics<br>Documentation</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="risk-cell bg-light">
-                                            <h6 class="text-secondary">Testing Priority</h6>
-                                            <small>P0: High Risk<br>P1: Medium Risk<br>P2: Low Risk</small>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -643,6 +1124,17 @@
                                     <strong>Database:</strong> Local MongoDB instances
                                 </li>
                             </ul>
+                            
+                            <!-- Enhanced from DCP+ Deep Dive -->
+                            <div class="alert alert-success mt-3">
+                                <h6 class="alert-heading">DCP+ Specific Requirements</h6>
+                                <ul class="mb-0 small">
+                                    <li>• TALNT token simulation environment</li>
+                                    <li>• Multi-authentication method testing</li>
+                                    <li>• Device limit simulation</li>
+                                    <li>• Geographic restriction testing</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -673,6 +1165,17 @@
                                     <strong>Performance Testing:</strong> Load and stress tests
                                 </li>
                             </ul>
+                            
+                            <!-- Enhanced from DCP+ Deep Dive -->
+                            <div class="alert alert-warning mt-3">
+                                <h6 class="alert-heading">DCP+ Specific Requirements</h6>
+                                <ul class="mb-0 small">
+                                    <li>• Base L2 testnet integration</li>
+                                    <li>• Full media pipeline validation</li>
+                                    <li>• Cross-platform compatibility testing</li>
+                                    <li>• Compliance rule enforcement</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -703,6 +1206,17 @@
                                     <strong>Rollback Strategy:</strong> Quick recovery procedures
                                 </li>
                             </ul>
+                            
+                            <!-- Enhanced from DCP+ Deep Dive -->
+                            <div class="alert alert-danger mt-3">
+                                <h6 class="alert-heading">DCP+ Specific Requirements</h6>
+                                <ul class="mb-0 small">
+                                    <li>• Smart contract upgrade safety</li>
+                                    <li>• Media pipeline monitoring</li>
+                                    <li>• User experience tracking</li>
+                                    <li>• Compliance audit trails</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -731,6 +1245,7 @@
                                             <li class="small">• Smart contract unit tests</li>
                                             <li class="small">• API integration tests</li>
                                             <li class="small">• Basic UI component tests</li>
+                                            <li class="small">• P0 user story validation</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -745,6 +1260,7 @@
                                             <li class="small">• End-to-end user flows</li>
                                             <li class="small">• Media pipeline validation</li>
                                             <li class="small">• Cross-platform testing</li>
+                                            <li class="small">• Device limit testing</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -759,6 +1275,7 @@
                                             <li class="small">• Load testing</li>
                                             <li class="small">• Security audits</li>
                                             <li class="small">• User acceptance testing</li>
+                                            <li class="small">• Compliance validation</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -773,6 +1290,7 @@
                                             <li class="small">• Production deployment</li>
                                             <li class="small">• Canary testing</li>
                                             <li class="small">• Monitoring setup</li>
+                                            <li class="small">• Analytics validation</li>
                                         </ul>
                                     </div>
                                 </div>
