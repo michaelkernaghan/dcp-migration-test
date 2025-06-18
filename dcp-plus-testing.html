@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCP+ Testing Strategy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .testing-phase {
+            border-left: 4px solid #007bff;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .test-scenario-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 15px;
+        }
+        
+        .test-scenario-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .priority-badge {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+        }
+        
+        .test-type-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .automation-level {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .automation-full { background-color: #28a745; }
+        .automation-partial { background-color: #ffc107; }
+        .automation-manual { background-color: #dc3545; }
+        
+        .risk-matrix {
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .risk-cell {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        
+        .risk-high { background-color: #f8d7da; }
+        .risk-medium { background-color: #fff3cd; }
+        .risk-low { background-color: #d1ecf1; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-arrow-repeat me-2"></i>
+                DCP Migration Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet-compatibility.html">Wallet Compatibility</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user-guide-analysis.html">User Guide Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gherkin-scenarios.html">Test Scenarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="migration-testing-challenges.html">Testing Challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="test-gaps.html">Test Gaps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="staking-contract-security-review.html">Security Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dcp-plus.html">DCP+ Platform</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dcp-plus-testing.html">DCP+ Testing</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold mb-4">
+                        <i class="bi bi-bug text-danger me-3"></i>
+                        DCP+ Testing Strategy
+                    </h1>
+                    <p class="lead mb-4">
+                        Comprehensive testing approach for the blockchain-enabled streaming platform, covering 
+                        smart contracts, media pipeline, user experience, and cross-platform compatibility.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary fs-6">Smart Contract Testing</span>
+                        <span class="badge bg-success fs-6">Media Pipeline QA</span>
+                        <span class="badge bg-warning text-dark fs-6">User Experience Testing</span>
+                        <span class="badge bg-info fs-6">Cross-Platform Validation</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="bi bi-shield-check display-1 text-primary opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container my-5">
+        <!-- Testing Overview -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-clipboard-data text-primary me-2"></i>
+                Testing Strategy Overview
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="text-primary">Testing Philosophy</h5>
+                                    <p class="lead">
+                                        DCP+ requires a multi-layered testing approach that ensures both technical reliability 
+                                        and exceptional user experience across all platforms and monetization models.
+                                    </p>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Continuous Testing:</strong> Integrated into CI/CD pipeline
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>User-Centric:</strong> Focus on real-world usage scenarios
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Blockchain-First:</strong> Smart contract and wallet integration testing
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Performance-Driven:</strong> Media streaming and scalability validation
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-success">Testing Layers</h5>
+                                    <div class="testing-phase">
+                                        <h6 class="text-primary">1. Smart Contract Layer</h6>
+                                        <p>Unit tests, integration tests, and security audits for TALNT Net contracts</p>
+                                    </div>
+                                    <div class="testing-phase">
+                                        <h6 class="text-info">2. Core Services</h6>
+                                        <p>API testing, database integration, and domain event validation</p>
+                                    </div>
+                                    <div class="testing-phase">
+                                        <h6 class="text-warning">3. Media Pipeline</h6>
+                                        <p>Encoding quality, DRM functionality, and CDN performance testing</p>
+                                    </div>
+                                    <div class="testing-phase">
+                                        <h6 class="text-success">4. Client Applications</h6>
+                                        <p>Cross-platform UI/UX testing and device compatibility validation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Types Matrix -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-grid-3x3-gap text-info me-2"></i>
+                Test Types & Automation Strategy
+            </h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card test-scenario-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="bi bi-code-slash test-type-icon text-primary"></i>
+                            <h5 class="card-title">Unit Testing</h5>
+                            <p class="card-text">Individual component testing with mocked dependencies</p>
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <span class="automation-level automation-full"></span>
+                                <small class="text-muted">100% Automated</small>
+                            </div>
+                            <span class="badge bg-primary priority-badge">P0 Priority</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card test-scenario-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="bi bi-arrow-left-right test-type-icon text-success"></i>
+                            <h5 class="card-title">Integration Testing</h5>
+                            <p class="card-text">Service-to-service communication and data flow validation</p>
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <span class="automation-level automation-full"></span>
+                                <small class="text-muted">100% Automated</small>
+                            </div>
+                            <span class="badge bg-success priority-badge">P0 Priority</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card test-scenario-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="bi bi-person test-type-icon text-warning"></i>
+                            <h5 class="card-title">User Acceptance Testing</h5>
+                            <p class="card-text">End-to-end user journey validation across all platforms</p>
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <span class="automation-level automation-partial"></span>
+                                <small class="text-muted">60% Automated</small>
+                            </div>
+                            <span class="badge bg-warning text-dark priority-badge">P1 Priority</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card test-scenario-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="bi bi-speedometer2 test-type-icon text-danger"></i>
+                            <h5 class="card-title">Performance Testing</h5>
+                            <p class="card-text">Load testing, stress testing, and scalability validation</p>
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <span class="automation-level automation-full"></span>
+                                <small class="text-muted">100% Automated</small>
+                            </div>
+                            <span class="badge bg-danger priority-badge">P0 Priority</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Contract Testing -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-shield-check text-success me-2"></i>
+                Smart Contract Testing
+            </h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-wallet2 me-2"></i>
+                                TALNT Net Contract Testing
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-primary">Core Test Scenarios</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Token Transfers:</strong> TALNT distribution and balance updates
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Royalty Payments:</strong> Automated payout calculations and execution
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Review Rewards:</strong> Escrow management and reward distribution
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Access Control:</strong> Permission management and role validation
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-warning">Security Test Cases</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-exclamation text-warning me-2"></i>
+                                            <strong>Reentrancy Attacks:</strong> Prevent recursive function calls
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-exclamation text-warning me-2"></i>
+                                            <strong>Overflow/Underflow:</strong> Safe math operations validation
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-exclamation text-warning me-2"></i>
+                                            <strong>Access Control:</strong> Unauthorized function access prevention
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-exclamation text-warning me-2"></i>
+                                            <strong>Gas Optimization:</strong> Efficient contract execution testing
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-tools me-2"></i>
+                                Testing Tools
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="bi bi-gear text-primary me-2"></i>
+                                    <strong>Hardhat:</strong> Development and testing framework
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-bug text-warning me-2"></i>
+                                    <strong>Slither:</strong> Static analysis for security vulnerabilities
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-shield text-success me-2"></i>
+                                    <strong>Mythril:</strong> Symbolic execution analysis
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-graph-up text-info me-2"></i>
+                                    <strong>Coverage Reports:</strong> Test coverage analysis
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Pipeline Testing -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-film text-warning me-2"></i>
+                Media Pipeline Testing
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0">
+                                <i class="bi bi-cloud-arrow-up me-2"></i>
+                                AWS MediaConvert → S3 → MediaPackage (+DRM) → CloudFront
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 class="text-primary">Encoding Quality Tests</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Multi-bitrate Renditions:</strong> Quality validation across resolutions
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Codec Compatibility:</strong> H.264, H.265, VP9 support testing
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Audio Quality:</strong> Multi-language and surround sound validation
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle text-success me-2"></i>
+                                            <strong>Processing Time:</strong> SLA compliance for encoding duration
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-warning">DRM & Security Tests</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-lock text-warning me-2"></i>
+                                            <strong>Key Generation:</strong> DRM key creation and distribution
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-lock text-warning me-2"></i>
+                                            <strong>License Validation:</strong> User entitlement verification
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-lock text-warning me-2"></i>
+                                            <strong>Key Rotation:</strong> Periodic key updates and migration
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-shield-lock text-warning me-2"></i>
+                                            <strong>Watermarking:</strong> Content fingerprinting and tracking
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-info">CDN & Performance Tests</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-globe text-info me-2"></i>
+                                            <strong>Global Distribution:</strong> Multi-region content delivery
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-speedometer2 text-info me-2"></i>
+                                            <strong>Latency Testing:</strong> Response time across geographic regions
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-arrow-repeat text-info me-2"></i>
+                                            <strong>Failover Testing:</strong> CDN redundancy and recovery
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-graph-up text-info me-2"></i>
+                                            <strong>Load Testing:</strong> Concurrent user capacity validation
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Experience Testing -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-person-check text-primary me-2"></i>
+                User Experience Testing
+            </h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-phone me-2"></i>
+                                Cross-Platform Testing
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h6 class="text-primary">Web Platforms</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-1">
+                                            <i class="bi bi-browser-chrome text-primary me-2"></i>
+                                            Chrome (Desktop/Mobile)
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="bi bi-browser-safari text-info me-2"></i>
+                                            Safari (Desktop/Mobile)
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="bi bi-browser-firefox text-warning me-2"></i>
+                                            Firefox (Desktop/Mobile)
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="bi bi-browser-edge text-success me-2"></i>
+                                            Edge (Desktop)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="text-success">TV Platforms</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-1">
+                                            <i class="bi bi-tv text-success me-2"></i>
+                                            Android TV
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="bi bi-tv text-primary me-2"></i>
+                                            Apple TV
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="bi bi-tv text-info me-2"></i>
+                                            Smart TVs
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="bi bi-tv text-warning me-2"></i>
+                                            Gaming Consoles
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-wallet2 me-2"></i>
+                                Authentication & Payment Testing
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="text-primary">Authentication Methods</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="bi bi-google text-danger me-2"></i>
+                                    <strong>Google Auth:</strong> OAuth flow and token validation
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-twitter text-info me-2"></i>
+                                    <strong>X (Twitter):</strong> Social login integration
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-apple text-dark me-2"></i>
+                                    <strong>Apple ID:</strong> Sign in with Apple validation
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-wallet2 text-success me-2"></i>
+                                    <strong>Hardware Wallets:</strong> Ledger, MetaMask integration
+                                </li>
+                            </ul>
+                            <h6 class="text-warning mt-3">Payment Scenarios</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-1">
+                                    <i class="bi bi-credit-card text-primary me-2"></i>
+                                    Subscription payments
+                                </li>
+                                <li class="mb-1">
+                                    <i class="bi bi-cart text-success me-2"></i>
+                                    Pay-per-view transactions
+                                </li>
+                                <li class="mb-1">
+                                    <i class="bi bi-currency-dollar text-warning me-2"></i>
+                                    TALNT token transfers
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Matrix -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-exclamation-triangle text-warning me-2"></i>
+                Testing Risk Matrix
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Risk Assessment by Component</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="risk-matrix">
+                                <div class="row g-0">
+                                    <div class="col-3">
+                                        <div class="risk-cell risk-high">
+                                            <h6 class="text-danger">High Risk</h6>
+                                            <small>Smart Contracts<br>Payment Processing<br>DRM Security</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="risk-cell risk-medium">
+                                            <h6 class="text-warning">Medium Risk</h6>
+                                            <small>Media Pipeline<br>User Authentication<br>Data Migration</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="risk-cell risk-low">
+                                            <h6 class="text-info">Low Risk</h6>
+                                            <small>UI Components<br>Analytics<br>Documentation</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="risk-cell bg-light">
+                                            <h6 class="text-secondary">Testing Priority</h6>
+                                            <small>P0: High Risk<br>P1: Medium Risk<br>P2: Low Risk</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Environment Strategy -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-server text-secondary me-2"></i>
+                Test Environment Strategy
+            </h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-code-slash me-2"></i>
+                                Development Environment
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-success me-2"></i>
+                                    <strong>Local Development:</strong> Docker containers for all services
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-success me-2"></i>
+                                    <strong>Smart Contracts:</strong> Hardhat local network
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-success me-2"></i>
+                                    <strong>Media Pipeline:</strong> AWS MediaConvert test jobs
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-success me-2"></i>
+                                    <strong>Database:</strong> Local MongoDB instances
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0">
+                                <i class="bi bi-gear me-2"></i>
+                                Staging Environment
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-warning me-2"></i>
+                                    <strong>Production-like:</strong> Full AWS infrastructure
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-warning me-2"></i>
+                                    <strong>Test Data:</strong> Anonymized production data
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-warning me-2"></i>
+                                    <strong>Integration Testing:</strong> End-to-end workflows
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-warning me-2"></i>
+                                    <strong>Performance Testing:</strong> Load and stress tests
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-danger text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-shield-check me-2"></i>
+                                Production Testing
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-danger me-2"></i>
+                                    <strong>Canary Deployments:</strong> Gradual rollout to users
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-danger me-2"></i>
+                                    <strong>Feature Flags:</strong> A/B testing capabilities
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-danger me-2"></i>
+                                    <strong>Monitoring:</strong> Real-time performance tracking
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle text-danger me-2"></i>
+                                    <strong>Rollback Strategy:</strong> Quick recovery procedures
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testing Timeline -->
+        <section class="mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-calendar-range text-primary me-2"></i>
+                Testing Timeline & Milestones
+            </h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="text-center mb-4">
+                                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                            <i class="bi bi-1-circle fs-4"></i>
+                                        </div>
+                                        <h6 class="mt-2">Phase 1: Foundation</h6>
+                                        <small class="text-muted">Weeks 1-4</small>
+                                        <ul class="list-unstyled mt-2">
+                                            <li class="small">• Smart contract unit tests</li>
+                                            <li class="small">• API integration tests</li>
+                                            <li class="small">• Basic UI component tests</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-center mb-4">
+                                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                            <i class="bi bi-2-circle fs-4"></i>
+                                        </div>
+                                        <h6 class="mt-2">Phase 2: Integration</h6>
+                                        <small class="text-muted">Weeks 5-8</small>
+                                        <ul class="list-unstyled mt-2">
+                                            <li class="small">• End-to-end user flows</li>
+                                            <li class="small">• Media pipeline validation</li>
+                                            <li class="small">• Cross-platform testing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-center mb-4">
+                                        <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                            <i class="bi bi-3-circle fs-4"></i>
+                                        </div>
+                                        <h6 class="mt-2">Phase 3: Performance</h6>
+                                        <small class="text-muted">Weeks 9-12</small>
+                                        <ul class="list-unstyled mt-2">
+                                            <li class="small">• Load testing</li>
+                                            <li class="small">• Security audits</li>
+                                            <li class="small">• User acceptance testing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-center mb-4">
+                                        <div class="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                            <i class="bi bi-4-circle fs-4"></i>
+                                        </div>
+                                        <h6 class="mt-2">Phase 4: Launch</h6>
+                                        <small class="text-muted">Weeks 13-16</small>
+                                        <ul class="list-unstyled mt-2">
+                                            <li class="small">• Production deployment</li>
+                                            <li class="small">• Canary testing</li>
+                                            <li class="small">• Monitoring setup</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 DCP Migration Testing Dashboard - DCP+ Testing Strategy
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
