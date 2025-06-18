@@ -111,7 +111,7 @@
                                     <div class="card-header bg-danger text-white">
                                         <h5 class="mb-0">
                                             <i class="bi bi-ticket-detailed me-2"></i>
-                                            MIG-60: Coinbase Wallet Integration Problem
+                                            MIG-60: Mobile UI Layout Issue
                                         </h5>
                                     </div>
                                     <div class="card-body">
@@ -119,22 +119,25 @@
                                             <div class="col-md-8">
                                                 <h6 class="text-danger">Issue Description</h6>
                                                 <p>
-                                                    Coinbase Wallet integration is experiencing critical failures during the migration process. 
-                                                    Users attempting to connect Coinbase Wallet are encountering connection errors and 
-                                                    transaction signing failures that prevent successful token claiming.
+                                                    On Android or Apple mobile devices, when users navigate to decentralized.pictures, 
+                                                    the "Submit" button overlaps and partially hides the password input field, 
+                                                    making it difficult for users to see what they're typing.
                                                 </p>
                                                 
                                                 <h6 class="text-warning">Technical Details</h6>
                                                 <ul>
-                                                    <li><strong>Error Type:</strong> Wallet connection timeout and transaction signing failures</li>
-                                                    <li><strong>Affected Platforms:</strong> Chrome, Firefox, Edge, Brave</li>
-                                                    <li><strong>User Impact:</strong> Cannot complete migration process</li>
-                                                    <li><strong>Frequency:</strong> High - affects majority of Coinbase Wallet users</li>
+                                                    <li><strong>Error Type:</strong> UI layout and positioning issue</li>
+                                                    <li><strong>Affected Platforms:</strong> Android mobile, Apple mobile (iOS)</li>
+                                                    <li><strong>User Impact:</strong> Submit button obscures password input field</li>
+                                                    <li><strong>Frequency:</strong> High - affects all mobile users on these platforms</li>
                                                 </ul>
+
+                                                <h6 class="text-info">Expected Behavior</h6>
+                                                <p>The button should be fully visible and positioned below the input field, with appropriate padding.</p>
 
                                                 <h6 class="text-info">Current Status</h6>
                                                 <div class="d-flex align-items-center mb-2">
-                                                    <span class="badge bg-danger me-2">Critical</span>
+                                                    <span class="badge bg-warning text-dark me-2">Medium</span>
                                                     <span class="badge bg-warning text-dark me-2">In Progress</span>
                                                     <small class="text-muted">Issue being investigated by development team</small>
                                                 </div>
@@ -150,7 +153,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td><strong>Priority:</strong></td>
-                                                                <td><span class="badge bg-danger">Critical</span></td>
+                                                                <td><span class="badge bg-warning text-dark">Medium</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td><strong>Status:</strong></td>
@@ -172,11 +175,11 @@
 
                                         <div class="alert alert-info mt-3">
                                             <h6 class="alert-heading">Workaround</h6>
-                                            <p class="mb-2">Until this issue is resolved, users with Coinbase Wallet are advised to:</p>
+                                            <p class="mb-2">Until this issue is resolved, mobile users can try:</p>
                                             <ul class="mb-0">
-                                                <li>Use MetaMask as an alternative wallet for migration</li>
-                                                <li>Try connecting via WalletConnect protocol</li>
-                                                <li>Contact support for manual assistance if needed</li>
+                                                <li>Rotating the device to landscape mode to see more of the interface</li>
+                                                <li>Using the desktop version of the site if available</li>
+                                                <li>Zooming out to see the full form layout</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -191,7 +194,7 @@
                                     <div class="card-header bg-warning text-dark">
                                         <h5 class="mb-0">
                                             <i class="bi bi-ticket-detailed me-2"></i>
-                                            MIG-61: MetaMask Wallet Integration Problem
+                                            MIG-61: Mobile Wallet Connection Error Message
                                         </h5>
                                     </div>
                                     <div class="card-body">
@@ -199,18 +202,24 @@
                                             <div class="col-md-8">
                                                 <h6 class="text-warning">Issue Description</h6>
                                                 <p>
-                                                    MetaMask wallet integration is experiencing intermittent connection issues and 
-                                                    transaction signing problems. While not as severe as the Coinbase Wallet issue, 
-                                                    this affects the reliability of the migration process for MetaMask users.
+                                                    On mobile devices, when users attempt to connect a wallet through the Advanced Login option, 
+                                                    they see a confusing red error message: "You have cancelled the claiming cycle" even when 
+                                                    no actual error occurred or when the user simply didn't complete the wallet connection process.
                                                 </p>
                                                 
-                                                <h6 class="text-warning">Technical Details</h6>
-                                                <ul>
-                                                    <li><strong>Error Type:</strong> Intermittent connection failures and transaction signing delays</li>
-                                                    <li><strong>Affected Platforms:</strong> Chrome, Firefox, Edge, Brave</li>
-                                                    <li><strong>User Impact:</strong> Delayed or failed migration attempts</li>
-                                                    <li><strong>Frequency:</strong> Medium - affects some MetaMask users</li>
-                                                </ul>
+                                                <h6 class="text-warning">Steps to Reproduce</h6>
+                                                <ol>
+                                                    <li>Open the app/site on a mobile device</li>
+                                                    <li>Tap Advanced Login</li>
+                                                    <li>Select a wallet from the list</li>
+                                                    <li>Observe the red error message</li>
+                                                </ol>
+
+                                                <h6 class="text-success">Expected Result</h6>
+                                                <p>A more accurate or user-friendly message (e.g., "Wallet connection was cancelled" or "Login process interrupted") should be shown, or the issue should be prevented if no real error occurred.</p>
+
+                                                <h6 class="text-danger">Actual Result</h6>
+                                                <p>The user sees: "You have cancelled the claiming cycle."</p>
 
                                                 <h6 class="text-info">Current Status</h6>
                                                 <div class="d-flex align-items-center mb-2">
@@ -252,12 +261,12 @@
 
                                         <div class="alert alert-warning mt-3">
                                             <h6 class="alert-heading">Temporary Solution</h6>
-                                            <p class="mb-2">Users experiencing MetaMask issues can try:</p>
+                                            <p class="mb-2">Users experiencing this error message can try:</p>
                                             <ul class="mb-0">
-                                                <li>Refreshing the page and reconnecting the wallet</li>
-                                                <li>Clearing browser cache and cookies</li>
-                                                <li>Updating MetaMask to the latest version</li>
-                                                <li>Using a different browser if the issue persists</li>
+                                                <li>Ignoring the error message and retrying the wallet connection</li>
+                                                <li>Using a different wallet option if available</li>
+                                                <li>Refreshing the page and attempting the connection again</li>
+                                                <li>Using the desktop version of the site if the issue persists</li>
                                             </ul>
                                         </div>
                                     </div>
