@@ -202,6 +202,42 @@
         </div>
 
         <div class="content">
+            <!-- Testpad Script Overview -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>📋 Testpad Script – Generic User Scenarios & Environment Matrix</h2>
+                </div>
+                <div class="section-content">
+                    <p>This table represents how the scenarios can be pasted directly into <strong>Testpad</strong>. Each row is a single Gherkin step; each column beyond the <em>Step</em> column is an environment variable that can vary per test run.</p>
+
+                    <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+                        <thead>
+                            <tr style="background:#f8f9fa;">
+                                <th style="border:1px solid #e1e8ed;padding:8px;">#</th>
+                                <th style="border:1px solid #e1e8ed;padding:8px;">Gherkin Step (Generic User)</th>
+                                <th style="border:1px solid #e1e8ed;padding:8px;">Browser</th>
+                                <th style="border:1px solid #e1e8ed;padding:8px;">OS</th>
+                                <th style="border:1px solid #e1e8ed;padding:8px;">Network</th>
+                                <th style="border:1px solid #e1e8ed;padding:8px;">Wallet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example Scenario : Mobile Login -->
+                            <tr><td style="border:1px solid #e1e8ed;padding:6px;">0001</td><td style="border:1px solid #e1e8ed;padding:6px;">Given the user is on the DCP mobile login page</td><td style="border:1px solid #e1e8ed;padding:6px;">Safari<br/>Chrome</td><td style="border:1px solid #e1e8ed;padding:6px;">iOS 16<br/>Android 13</td><td style="border:1px solid #e1e8ed;padding:6px;">Wi-Fi</td><td style="border:1px solid #e1e8ed;padding:6px;">MetaMask</td></tr>
+                            <tr><td style="border:1px solid #e1e8ed;padding:6px;">0002</td><td style="border:1px solid #e1e8ed;padding:6px;">When the user connects their mobile wallet</td><td style="border:1px solid #e1e8ed;padding:6px;">Safari<br/>Chrome</td><td style="border:1px solid #e1e8ed;padding:6px;">iOS 16<br/>Android 13</td><td style="border:1px solid #e1e8ed;padding:6px;">Wi-Fi</td><td style="border:1px solid #e1e8ed;padding:6px;">MetaMask</td></tr>
+                            <tr><td style="border:1px solid #e1e8ed;padding:6px;">0003</td><td style="border:1px solid #e1e8ed;padding:6px;">Then the user should be logged in successfully</td><td style="border:1px solid #e1e8ed;padding:6px;">Safari<br/>Chrome</td><td style="border:1px solid #e1e8ed;padding:6px;">iOS 16<br/>Android 13</td><td style="border:1px solid #e1e8ed;padding:6px;">Wi-Fi</td><td style="border:1px solid #e1e8ed;padding:6px;">MetaMask</td></tr>
+
+                            <!-- Example Scenario : Token Claim -->
+                            <tr><td style="border:1px solid #e1e8ed;padding:6px;">0004</td><td style="border:1px solid #e1e8ed;padding:6px;">Given the user has connected a wallet and is on the Token Claim page</td><td style="border:1px solid #e1e8ed;padding:6px;">Chrome</td><td style="border:1px solid #e1e8ed;padding:6px;">Windows 11</td><td style="border:1px solid #e1e8ed;padding:6px;">4 G</td><td style="border:1px solid #e1e8ed;padding:6px;">WalletConnect</td></tr>
+                            <tr><td style="border:1px solid #e1e8ed;padding:6px;">0005</td><td style="border:1px solid #e1e8ed;padding:6px;">When the user taps "Claim"</td><td style="border:1px solid #e1e8ed;padding:6px;">Chrome</td><td style="border:1px solid #e1e8ed;padding:6px;">Windows 11</td><td style="border:1px solid #e1e8ed;padding:6px;">4 G</td><td style="border:1px solid #e1e8ed;padding:6px;">WalletConnect</td></tr>
+                            <tr><td style="border:1px solid #e1e8ed;padding:6px;">0006</td><td style="border:1px solid #e1e8ed;padding:6px;">Then the user should see a success confirmation</td><td style="border:1px solid #e1e8ed;padding:6px;">Chrome</td><td style="border:1px solid #e1e8ed;padding:6px;">Windows 11</td><td style="border:1px solid #e1e8ed;padding:6px;">4 G</td><td style="border:1px solid #e1e8ed;padding:6px;">WalletConnect</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p class="mt-3"><em>To add more environment variations, simply append additional columns (e.g., Device Model, Screen Size) and populate the cells with the relevant values or use ✓ / ✗ for pass-fail tracking as in the Testpad UI.</em></p>
+                </div>
+            </div>
+
             <!-- BrowserStack Configuration -->
             <div class="section">
                 <div class="section-header">

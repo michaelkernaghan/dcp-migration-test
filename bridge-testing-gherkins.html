@@ -262,19 +262,18 @@
                             <p><strong>Device:</strong> iPhone 15 Pro Max, Safari, WiFi</p>
                             <div class="gherkin-steps">
 Feature: Token Bridging
-Scenario: Baker bridges tokens from Tezos to Base L3
+Scenario: Baker bridges tokens from Base Mainnet to DCP Appchain
   Given I am Keith Fellini on an iPhone 15 Pro Max
-  And I have 194.9 external tokens on Tezos
+  And I have 194.9 TALNT tokens on Base Mainnet
   And I am connected to WiFi
   When I navigate to the DCP bridge interface
   Then I should see the bridge configuration form
-  And I should see my Tezos balance: 194.9
+  And I should see my Base balance: 194.9
   
-  When I select "Tezos" as the source network
-  Then I should see available tokens on Tezos
-  And I should see my token balances
+  When I select "Base Mainnet" as the source network
+  Then I should see available tokens on Base Mainnet
   
-  When I select "Base L3" as the destination network
+  When I select "DCP Appchain" as the destination network
   Then I should see the bridge route options
   And I should see estimated fees and time
   
@@ -297,7 +296,7 @@ Scenario: Baker bridges tokens from Tezos to Base L3
   When the bridge transaction completes
   Then I should see a success message
   And I should receive a transaction hash
-  And my tokens should be in transit to Base L3
+  And my tokens should be in transit to DCP Appchain
                             </div>
                         </div>
                     </div>
@@ -314,16 +313,16 @@ Scenario: Baker bridges tokens from Tezos to Base L3
 Feature: Maximum Bridging
 Scenario: Moderator bridges maximum available tokens
   Given I am Kanley Stubrick on a Samsung Galaxy S24 Ultra
-  And I have 684.61 external tokens on Tezos
+  And I have 684.61 TALNT tokens on Base Mainnet
   And I am connected to WiFi
   When I navigate to the DCP bridge interface
-  Then I should see my Tezos balance: 684.61
+  Then I should see my Base balance: 684.61
   
   When I tap the "Max" button
   Then the bridge amount field should be filled with 684.61
   And I should see the maximum bridge fees
   
-  When I select "Base L3" as destination
+  When I select "DCP Appchain" as destination
   Then I should see the optimal bridge route
   And I should see the fastest estimated time
   
@@ -337,7 +336,7 @@ Scenario: Moderator bridges maximum available tokens
   
   When the bridge transaction completes
   Then I should see a success confirmation
-  And my Tezos balance should be reduced
+  And my Base balance should be reduced
   And I should see the bridge transaction hash
   And my reputation should remain: 40.4
                             </div>
@@ -356,10 +355,10 @@ Scenario: Moderator bridges maximum available tokens
 Feature: Custom Address Bridging
 Scenario: User bridges tokens to a different address
   Given I am Antonio Verozqi on a Google Pixel 8 Pro
-  And I have 6.06 external tokens on Tezos
+  And I have 6.06 TALNT tokens on Base Mainnet
   And I am connected to 4G network
   When I navigate to the DCP bridge interface
-  Then I should see my Tezos balance: 6.06
+  Then I should see my Base balance: 6.06
   
   When I enter "0x1234567890abcdef..." in the recipient address field
   Then I should see address validation
@@ -420,7 +419,7 @@ Scenario: Social user tracks bridge transaction status
   And I should see the final transaction hash
   And I should see my Twitter handle: @standardtesting
   
-  When I check my Base L3 wallet
+  When I check my DCP Appchain wallet
   Then I should see the bridged tokens received
   And the amount should match the bridge amount
                             </div>
@@ -509,10 +508,10 @@ Scenario: Bridge fails due to network connectivity issues
 Feature: Bridge Fee Calculation
 Scenario: User reviews bridge fees before confirming
   Given I am Keith Fellini on an iPhone 15 Pro Max
-  And I have 194.9 external tokens on Tezos
+  And I have 194.9 TALNT tokens on Base Mainnet
   And I am connected to WiFi
   When I navigate to the DCP bridge interface
-  Then I should see my Tezos balance: 194.9
+  Then I should see my Base balance: 194.9
   
   When I enter "100.00" in the bridge amount field
   Then I should see the bridge fees calculated
