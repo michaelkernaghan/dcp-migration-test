@@ -213,8 +213,8 @@
                 <div class="section-content">
                     <div class="character-profile">
                         <h3>Keith Fellini - Baker/Validator</h3>
-                        <p><strong>Device:</strong> iPhone 15 Pro Max | <strong>Wallet:</strong> MetaMask Mobile + Sentinel Wallet</p>
-                        <p><strong>Balance:</strong> 3080.69 internal, 194.9 external | <strong>Auth:</strong> Sentinel Wallet Login, 2FA mixed</p>
+                        <p><strong>Device:</strong> iPhone 15 Pro Max | <strong>Wallet:</strong> MetaMask Mobile</p>
+                        <p><strong>Balance:</strong> 3080.69 internal, 194.9 external | <strong>Auth:</strong> MetaMask Mobile</p>
                         <p><strong>Use Case:</strong> Professional validator with high-value assets</p>
                     </div>
 
@@ -227,15 +227,15 @@
 
                     <div class="character-profile">
                         <h3>Antonio Verozqi - Standard User</h3>
-                        <p><strong>Device:</strong> Google Pixel 8 Pro | <strong>Wallet:</strong> Trust Wallet + Google Auth</p>
-                        <p><strong>Balance:</strong> 0.98 internal, 6.06 external | <strong>Auth:</strong> Google Auth (Secondary), 2FA enabled</p>
+                        <p><strong>Device:</strong> Google Pixel 8 Pro | <strong>Wallet:</strong> Coinbase Wallet</p>
+                        <p><strong>Balance:</strong> 0.98 internal, 6.06 external | <strong>Auth:</strong> Coinbase Wallet</p>
                         <p><strong>Use Case:</strong> Regular trader with small balances</p>
                     </div>
 
                     <div class="character-profile">
                         <h3>TwitterProd - Social User</h3>
-                        <p><strong>Device:</strong> iPhone 14 | <strong>Wallet:</strong> Rainbow Wallet + Twitter OAuth</p>
-                        <p><strong>Balance:</strong> 2.39 internal, 0 external | <strong>Auth:</strong> X (Twitter) Sign-in, phone-only</p>
+                        <p><strong>Device:</strong> iPhone 14 | <strong>Wallet:</strong> WalletConnect</p>
+                        <p><strong>Balance:</strong> 2.39 internal, 0 external | <strong>Auth:</strong> WalletConnect</p>
                         <p><strong>Use Case:</strong> Social media connected user</p>
                     </div>
                 </div>
@@ -268,9 +268,9 @@ Scenario: Baker stakes tokens for the first time
   
   When I tap on "Connect Wallet"
   Then I should see wallet connection options
-  And Sentinel Wallet should be available
+  And MetaMask Mobile should be available
   
-  When I connect my Sentinel Wallet
+  When I connect my MetaMask Mobile wallet
   Then I should be logged in automatically
   And I should see my account balance: 3080.69 internal, 194.9 external
   
@@ -360,9 +360,9 @@ Scenario: User unstakes tokens before lock period ends
   
   When I tap on "Connect Wallet"
   Then I should see wallet connection options
-  And Trust Wallet should be available
+  And Coinbase Wallet should be available
   
-  When I connect my Trust Wallet
+  When I connect my Coinbase Wallet
   Then I should be logged in automatically
   And I should see my account balance: 0.98 internal, 6.06 external
   
@@ -371,7 +371,7 @@ Scenario: User unstakes tokens before lock period ends
   And I should see early unstaking penalties
   
   When I confirm the unstake action
-  Then I should be prompted to connect Trust Wallet
+  Then I should be prompted to connect Coinbase Wallet
   And the connection should work
   
   When I approve the unstake transaction
@@ -408,9 +408,9 @@ Scenario: Social user claims accumulated staking rewards
   
   When I tap on "Connect Wallet"
   Then I should see wallet connection options
-  And Rainbow Wallet should be available
+  And WalletConnect should be available
   
-  When I connect my Rainbow Wallet
+  When I connect via WalletConnect
   Then I should be logged in automatically
   And I should see my account balance: 2.39 internal, 0 external
   
@@ -419,7 +419,7 @@ Scenario: Social user claims accumulated staking rewards
   And I should see the reward amount to claim
   
   When I confirm the claim action
-  Then I should be prompted to connect Rainbow Wallet
+  Then I should be prompted to connect WalletConnect
   And the connection should work on mobile
   
   When I approve the claim transaction
@@ -454,9 +454,9 @@ Scenario: User attempts to stake more than available balance
   
   When I tap on "Connect Wallet"
   Then I should see wallet connection options
-  And Trust Wallet should be available
+  And Coinbase Wallet should be available
   
-  When I connect my Trust Wallet
+  When I connect my Coinbase Wallet
   Then I should be logged in automatically
   And I should see my account balance: 0.98 internal, 6.06 external
   
