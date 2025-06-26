@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCP Bridge Testing - Gherkin Scenarios</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+            border: 1px solid #e1e8ed;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .section-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        .section-header h2 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+        .section-content {
+            padding: 20px;
+        }
+        .gherkin-scenario {
+            background: #f8f9fa;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .scenario-header {
+            background: #e3f2fd;
+            padding: 15px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        .scenario-header h4 {
+            margin: 0;
+            color: #1976d2;
+            font-size: 1.1em;
+        }
+        .scenario-content {
+            padding: 15px;
+        }
+        .gherkin-steps {
+            font-family: 'Courier New', monospace;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-line;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .character-profile {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .character-profile h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+        }
+        .character-profile p {
+            margin: 3px 0;
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+        .bridge-interface {
+            background: #fff3e0;
+            border: 1px solid #ffb74d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .bridge-interface h3 {
+            margin: 0 0 15px 0;
+            color: #e65100;
+        }
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .interface-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ffb74d;
+        }
+        .interface-item h4 {
+            margin: 0 0 10px 0;
+            color: #e65100;
+        }
+        .interface-item ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .interface-item li {
+            margin-bottom: 3px;
+        }
+        .bridge-image {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .bridge-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DCP Bridge Testing - Gherkin Scenarios</h1>
+            <p>Comprehensive testing scenarios for DCP bridging functionality and interface</p>
+        </div>
+
+        <div class="content">
+            
+            <!-- Bridge Interface Reference -->
+            <div class="bridge-interface">
+                <h3>🌉 Bridge Interface Reference</h3>
+                <div class="bridge-image">
+                    <img src="claiming-flow-images/bridge.png" alt="DCP Bridge Interface" />
+                </div>
+                <div class="interface-grid">
+                    <div class="interface-item">
+                        <h4>Bridge Input Fields</h4>
+                        <ul>
+                            <li>Source network selection</li>
+                            <li>Destination network selection</li>
+                            <li>Token amount input</li>
+                            <li>Token type selection</li>
+                            <li>Recipient address field</li>
+                        </ul>
+                    </div>
+                    <div class="interface-item">
+                        <h4>Action Buttons</h4>
+                        <ul>
+                            <li>Bridge button</li>
+                            <li>Approve button</li>
+                            <li>Max amount button</li>
+                            <li>Switch networks button</li>
+                            <li>Settings/Configuration</li>
+                        </ul>
+                    </div>
+                    <div class="interface-item">
+                        <h4>Display Elements</h4>
+                        <ul>
+                            <li>Current balance</li>
+                            <li>Bridge fees</li>
+                            <li>Estimated time</li>
+                            <li>Transaction status</li>
+                            <li>Network connection status</li>
+                        </ul>
+                    </div>
+                    <div class="interface-item">
+                        <h4>Validation & Errors</h4>
+                        <ul>
+                            <li>Insufficient balance</li>
+                            <li>Network connectivity</li>
+                            <li>Invalid address format</li>
+                            <li>Minimum bridge amount</li>
+                            <li>Gas fee estimation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Profiles -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>👥 Test Character Profiles</h2>
+                </div>
+                <div class="section-content">
+                    <div class="character-profile">
+                        <h3>Keith Fellini - Baker/Validator</h3>
+                        <p><strong>Device:</strong> iPhone 15 Pro Max | <strong>Wallet:</strong> MetaMask Mobile + Sentinel Wallet</p>
+                        <p><strong>Balance:</strong> 3080.69 internal, 194.9 external | <strong>Auth:</strong> Sentinel Wallet Login, 2FA mixed</p>
+                        <p><strong>Use Case:</strong> Professional validator with high-value assets</p>
+                    </div>
+
+                    <div class="character-profile">
+                        <h3>Kanley Stubrick - Moderator</h3>
+                        <p><strong>Device:</strong> Samsung Galaxy S24 Ultra | <strong>Wallet:</strong> WalletConnect + Google Auth</p>
+                        <p><strong>Balance:</strong> 55.88 internal, 684.61 external | <strong>Auth:</strong> Google Auth, 2FA enabled</p>
+                        <p><strong>Use Case:</strong> Community moderator with reputation</p>
+                    </div>
+
+                    <div class="character-profile">
+                        <h3>Antonio Verozqi - Standard User</h3>
+                        <p><strong>Device:</strong> Google Pixel 8 Pro | <strong>Wallet:</strong> Trust Wallet + Google Auth</p>
+                        <p><strong>Balance:</strong> 0.98 internal, 6.06 external | <strong>Auth:</strong> Google Auth (Secondary), 2FA enabled</p>
+                        <p><strong>Use Case:</strong> Regular trader with small balances</p>
+                    </div>
+
+                    <div class="character-profile">
+                        <h3>TwitterProd - Social User</h3>
+                        <p><strong>Device:</strong> iPhone 14 | <strong>Wallet:</strong> Rainbow Wallet + Twitter OAuth</p>
+                        <p><strong>Balance:</strong> 2.39 internal, 0 external | <strong>Auth:</strong> X (Twitter) Sign-in, phone-only</p>
+                        <p><strong>Use Case:</strong> Social media connected user</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gherkin Scenarios -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>🧪 Gherkin Scenarios - Bridge Testing</h2>
+                </div>
+                <div class="section-content">
+                    
+                    <!-- Initial Bridge Setup -->
+                    <div class="gherkin-scenario">
+                        <div class="scenario-header">
+                            <h4>Scenario: Initial Bridge Setup - Keith Fellini</h4>
+                        </div>
+                        <div class="scenario-content">
+                            <p><strong>Character:</strong> Keith Fellini (Baker)</p>
+                            <p><strong>Device:</strong> iPhone 15 Pro Max, Safari, WiFi</p>
+                            <div class="gherkin-steps">
+Feature: Token Bridging
+Scenario: Baker bridges tokens from Tezos to Base L3
+  Given I am Keith Fellini on an iPhone 15 Pro Max
+  And I have 194.9 external tokens on Tezos
+  And I am connected to WiFi
+  When I navigate to the DCP bridge interface
+  Then I should see the bridge configuration form
+  And I should see my Tezos balance: 194.9
+  
+  When I select "Tezos" as the source network
+  Then I should see available tokens on Tezos
+  And I should see my token balances
+  
+  When I select "Base L3" as the destination network
+  Then I should see the bridge route options
+  And I should see estimated fees and time
+  
+  When I enter "50.00" in the bridge amount field
+  Then I should see the bridge fees calculated
+  And I should see the estimated arrival time
+  
+  When I tap the "Bridge" button
+  Then I should be prompted to connect my wallet
+  And Sentinel Wallet should be available
+  
+  When I connect my Sentinel Wallet
+  Then I should see the transaction details
+  And I should be able to approve the transaction
+  
+  When I approve the transaction
+  Then I should see a loading indicator
+  And the bridge transaction should be initiated
+  
+  When the bridge transaction completes
+  Then I should see a success message
+  And I should receive a transaction hash
+  And my tokens should be in transit to Base L3
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bridge Maximum Amount -->
+                    <div class="gherkin-scenario">
+                        <div class="scenario-header">
+                            <h4>Scenario: Bridge Maximum Amount - Kanley Stubrick</h4>
+                        </div>
+                        <div class="scenario-content">
+                            <p><strong>Character:</strong> Kanley Stubrick (Moderator)</p>
+                            <p><strong>Device:</strong> Samsung Galaxy S24 Ultra, Chrome, WiFi</p>
+                            <div class="gherkin-steps">
+Feature: Maximum Bridging
+Scenario: Moderator bridges maximum available tokens
+  Given I am Kanley Stubrick on a Samsung Galaxy S24 Ultra
+  And I have 684.61 external tokens on Tezos
+  And I am connected to WiFi
+  When I navigate to the DCP bridge interface
+  Then I should see my Tezos balance: 684.61
+  
+  When I tap the "Max" button
+  Then the bridge amount field should be filled with 684.61
+  And I should see the maximum bridge fees
+  
+  When I select "Base L3" as destination
+  Then I should see the optimal bridge route
+  And I should see the fastest estimated time
+  
+  When I tap the "Bridge" button
+  Then I should be prompted to connect WalletConnect
+  And the connection should work seamlessly
+  
+  When I approve the bridge transaction
+  Then I should see the transaction processing
+  And I should see progress indicators
+  
+  When the bridge transaction completes
+  Then I should see a success confirmation
+  And my Tezos balance should be reduced
+  And I should see the bridge transaction hash
+  And my reputation should remain: 40.4
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bridge with Custom Address -->
+                    <div class="gherkin-scenario">
+                        <div class="scenario-header">
+                            <h4>Scenario: Bridge to Custom Address - Antonio Verozqi</h4>
+                        </div>
+                        <div class="scenario-content">
+                            <p><strong>Character:</strong> Antonio Verozqi (Standard User)</p>
+                            <p><strong>Device:</strong> Google Pixel 8 Pro, Chrome, 4G</p>
+                            <div class="gherkin-steps">
+Feature: Custom Address Bridging
+Scenario: User bridges tokens to a different address
+  Given I am Antonio Verozqi on a Google Pixel 8 Pro
+  And I have 6.06 external tokens on Tezos
+  And I am connected to 4G network
+  When I navigate to the DCP bridge interface
+  Then I should see my Tezos balance: 6.06
+  
+  When I enter "0x1234567890abcdef..." in the recipient address field
+  Then I should see address validation
+  And I should see the address format is correct
+  
+  When I enter "3.00" in the bridge amount field
+  Then I should see the bridge fees calculated
+  And I should see the recipient address confirmed
+  
+  When I tap the "Bridge" button
+  Then I should see a confirmation dialog
+  And I should see the recipient address displayed
+  
+  When I confirm the bridge action
+  Then I should be prompted to connect Trust Wallet
+  And the connection should work
+  
+  When I approve the bridge transaction
+  Then I should see a loading indicator
+  And the bridge transaction should be processed
+  
+  When the bridge transaction completes
+  Then I should see a success message
+  And the tokens should be sent to the custom address
+  And I should receive a transaction hash
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bridge Status Tracking -->
+                    <div class="gherkin-scenario">
+                        <div class="scenario-header">
+                            <h4>Scenario: Bridge Status Tracking - TwitterProd</h4>
+                        </div>
+                        <div class="scenario-content">
+                            <p><strong>Character:</strong> TwitterProd (Social User)</p>
+                            <p><strong>Device:</strong> iPhone 14, Safari, 3G</p>
+                            <div class="gherkin-steps">
+Feature: Bridge Status Tracking
+Scenario: Social user tracks bridge transaction status
+  Given I am TwitterProd on an iPhone 14
+  And I have initiated a bridge transaction
+  And I am on a slow 3G connection
+  When I navigate to the DCP bridge interface
+  Then I should see my bridge transaction history
+  And I should see the transaction status
+  
+  When I tap on a pending bridge transaction
+  Then I should see detailed status information
+  And I should see estimated completion time
+  
+  When I refresh the page
+  Then the status should update automatically
+  And I should see progress indicators
+  
+  When the bridge transaction completes
+  Then I should see a completion notification
+  And I should see the final transaction hash
+  And I should see my Twitter handle: @standardtesting
+  
+  When I check my Base L3 wallet
+  Then I should see the bridged tokens received
+  And the amount should match the bridge amount
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insufficient Balance Error -->
+                    <div class="gherkin-scenario">
+                        <div class="scenario-header">
+                            <h4>Scenario: Insufficient Balance for Bridge</h4>
+                        </div>
+                        <div class="scenario-content">
+                            <p><strong>Character:</strong> Antonio Verozqi</p>
+                            <p><strong>Device:</strong> Google Pixel 8 Pro, Chrome, WiFi</p>
+                            <div class="gherkin-steps">
+Feature: Bridge Error Handling
+Scenario: User attempts to bridge more than available balance
+  Given I am Antonio Verozqi on a Google Pixel 8 Pro
+  And I have 0.98 internal tokens available
+  And I am connected to WiFi
+  When I navigate to the DCP bridge interface
+  Then I should see my current balance: 0.98
+  
+  When I enter "2.00" in the bridge amount field
+  Then I should see an error message
+  And the error should say "Insufficient balance"
+  And the bridge button should be disabled
+  
+  When I reduce the amount to "0.50"
+  Then the error message should disappear
+  And the bridge button should be enabled
+  
+  When I tap the "Max" button
+  Then the amount should be set to 0.98
+  And no error should be displayed
+  And the bridge button should be enabled
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Network Connectivity Issues -->
+                    <div class="gherkin-scenario">
+                        <div class="scenario-header">
+                            <h4>Scenario: Network Connectivity Issues</h4>
+                        </div>
+                        <div class="scenario-content">
+                            <p><strong>Character:</strong> Various users</p>
+                            <p><strong>Devices:</strong> Multiple devices</p>
+                            <div class="gherkin-steps">
+Feature: Network Error Handling
+Scenario: Bridge fails due to network connectivity issues
+  Given I am testing network connectivity
+  And I have a poor network connection
+  When I attempt to initiate a bridge transaction
+  Then I should see a network error message
+  And the error should be mobile-friendly
+  
+  When I tap "Retry"
+  Then the bridge should attempt to reconnect
+  And I should see a loading indicator
+  
+  When the network is restored
+  Then the bridge should complete successfully
+  And I should see a success message
+  
+  When I experience a wallet connection failure
+  Then I should see helpful troubleshooting steps
+  And alternative wallet options should be presented
+  
+  When I switch to a different wallet
+  Then the bridge connection should work
+  And I should be able to complete the bridge
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bridge Fee Calculation -->
+                    <div class="gherkin-scenario">
+                        <div class="scenario-header">
+                            <h4>Scenario: Bridge Fee Calculation and Display</h4>
+                        </div>
+                        <div class="scenario-content">
+                            <p><strong>Character:</strong> Keith Fellini</p>
+                            <p><strong>Device:</strong> iPhone 15 Pro Max, Safari, WiFi</p>
+                            <div class="gherkin-steps">
+Feature: Bridge Fee Calculation
+Scenario: User reviews bridge fees before confirming
+  Given I am Keith Fellini on an iPhone 15 Pro Max
+  And I have 194.9 external tokens on Tezos
+  And I am connected to WiFi
+  When I navigate to the DCP bridge interface
+  Then I should see my Tezos balance: 194.9
+  
+  When I enter "100.00" in the bridge amount field
+  Then I should see the bridge fees calculated
+  And I should see the fee breakdown
+  
+  When I change the bridge amount to "50.00"
+  Then the bridge fees should update
+  And I should see the new fee calculation
+  
+  When I select different bridge routes
+  Then I should see different fee options
+  And I should see different estimated times
+  
+  When I review the final bridge details
+  Then I should see the total amount including fees
+  And I should see the net amount to receive
+  And I should see the estimated arrival time
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Testing Checklist -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>✅ Bridge Testing Checklist</h2>
+                </div>
+                <div class="section-content">
+                    <h3>Bridge Setup</h3>
+                    <ul>
+                        <li>Source network selection</li>
+                        <li>Destination network selection</li>
+                        <li>Token amount input</li>
+                        <li>Recipient address validation</li>
+                        <li>Bridge route selection</li>
+                    </ul>
+                    
+                    <h3>Bridge Execution</h3>
+                    <ul>
+                        <li>Wallet connection for bridge</li>
+                        <li>Transaction approval process</li>
+                        <li>Bridge transaction initiation</li>
+                        <li>Gas fee estimation</li>
+                        <li>Transaction hash generation</li>
+                    </ul>
+                    
+                    <h3>Status Tracking</h3>
+                    <ul>
+                        <li>Bridge transaction status</li>
+                        <li>Progress indicators</li>
+                        <li>Estimated completion time</li>
+                        <li>Completion notifications</li>
+                        <li>Transaction history</li>
+                    </ul>
+                    
+                    <h3>Error Handling</h3>
+                    <ul>
+                        <li>Insufficient balance errors</li>
+                        <li>Network connectivity issues</li>
+                        <li>Invalid address format</li>
+                        <li>Minimum bridge amount validation</li>
+                        <li>Wallet connection failures</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html> 
