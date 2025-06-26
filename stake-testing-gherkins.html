@@ -171,8 +171,8 @@
                         <ul>
                             <li>Amount input field</li>
                             <li>Token selection dropdown</li>
-                            <li>Stake duration options</li>
                             <li>APY/Reward display</li>
+                            <li>Current staked amount</li>
                         </ul>
                     </div>
                     <div class="interface-item">
@@ -266,19 +266,19 @@ Scenario: Baker stakes tokens for the first time
   Then I should see the stake input form
   And I should see my current balance: 3080.69
   
+  When I tap on "Connect Wallet"
+  Then I should see wallet connection options
+  And Sentinel Wallet should be available
+  
+  When I connect my Sentinel Wallet
+  Then I should be logged in automatically
+  And I should see my account balance: 3080.69 internal, 194.9 external
+  
   When I enter "100" in the stake amount field
   Then I should see the APY rate displayed
   And I should see estimated rewards
   
-  When I select "30 days" as the stake duration
-  Then I should see updated reward calculations
-  And the stake button should be enabled
-  
   When I tap the "Stake" button
-  Then I should be prompted to connect my wallet
-  And Sentinel Wallet should be available
-  
-  When I connect my Sentinel Wallet
   Then I should see the transaction details
   And I should be able to approve the transaction
   
@@ -311,17 +311,21 @@ Scenario: Moderator stakes maximum available tokens
   When I navigate to the DCP staking interface
   Then I should see my current balance: 684.61
   
+  When I tap on "Connect Wallet"
+  Then I should see wallet connection options
+  And WalletConnect should be available
+  
+  When I connect via WalletConnect
+  Then I should be logged in automatically
+  And I should see my account balance: 55.88 internal, 684.61 external
+  
   When I tap the "Max" button
   Then the stake amount field should be filled with 684.61
   And I should see the maximum possible rewards
   
-  When I select "90 days" as the stake duration
-  Then I should see higher APY rates
-  And I should see increased reward calculations
-  
   When I tap the "Stake" button
-  Then I should be prompted to connect WalletConnect
-  And the connection should work seamlessly
+  Then I should see the transaction details
+  And I should be able to approve the transaction
   
   When I approve the transaction
   Then I should see the transaction processing
@@ -353,6 +357,14 @@ Scenario: User unstakes tokens before lock period ends
   When I navigate to the DCP staking interface
   Then I should see my staked amount: 5.00
   And I should see the unstake button
+  
+  When I tap on "Connect Wallet"
+  Then I should see wallet connection options
+  And Trust Wallet should be available
+  
+  When I connect my Trust Wallet
+  Then I should be logged in automatically
+  And I should see my account balance: 0.98 internal, 6.06 external
   
   When I tap the "Unstake" button
   Then I should see a confirmation dialog
@@ -394,6 +406,14 @@ Scenario: Social user claims accumulated staking rewards
   Then I should see my staked amount: 2.39
   And I should see available rewards: 0.15
   
+  When I tap on "Connect Wallet"
+  Then I should see wallet connection options
+  And Rainbow Wallet should be available
+  
+  When I connect my Rainbow Wallet
+  Then I should be logged in automatically
+  And I should see my account balance: 2.39 internal, 0 external
+  
   When I tap the "Claim Rewards" button
   Then I should see a confirmation dialog
   And I should see the reward amount to claim
@@ -431,6 +451,14 @@ Scenario: User attempts to stake more than available balance
   And I am connected to WiFi
   When I navigate to the DCP staking interface
   Then I should see my current balance: 0.98
+  
+  When I tap on "Connect Wallet"
+  Then I should see wallet connection options
+  And Trust Wallet should be available
+  
+  When I connect my Trust Wallet
+  Then I should be logged in automatically
+  And I should see my account balance: 0.98 internal, 6.06 external
   
   When I enter "2.00" in the stake amount field
   Then I should see an error message
@@ -529,8 +557,8 @@ Scenario: Network failure during stake transaction
                         <li>Initial token staking</li>
                         <li>Maximum amount staking</li>
                         <li>Partial amount staking</li>
-                        <li>Stake duration selection</li>
                         <li>APY calculation display</li>
+                        <li>Current staked amount display</li>
                     </ul>
                     
                     <h3>Unstake Functionality</h3>
